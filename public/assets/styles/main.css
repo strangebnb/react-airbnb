@@ -1,0 +1,174 @@
+/* VARIABLES */
+/* BASE */
+/* line 10, ../sass/main.scss */
+html,
+body {
+  background-color: #EDEFED;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  line-height: 1.4;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 21, ../sass/main.scss */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* line 26, ../sass/main.scss */
+.container {
+  overflow: hidden;
+  *zoom: 1;
+  margin: 0 20px;
+}
+
+/* line 31, ../sass/main.scss */
+.site-content {
+  padding-top: 66px;
+}
+
+/* HEADER */
+/* line 36, ../sass/main.scss */
+.header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 66px;
+  line-height: 66px;
+  color: #484848;
+  background-color: #fff;
+}
+
+/* line 48, ../sass/main.scss */
+.header__logo {
+  vertical-align: middle;
+  font-weight: 700;
+  padding: 16px 25px;
+  float: left;
+}
+
+/* MENU */
+/* line 55, ../sass/main.scss */
+.menu {
+  float: right;
+}
+/* line 58, ../sass/main.scss */
+.menu a {
+  padding: 0 10px;
+}
+/* line 62, ../sass/main.scss */
+.menu a:hover {
+  color: #484848;
+}
+
+/* RESPONSIVE */
+@media only screen and (max-width: 768px) {
+  /* line 69, ../sass/main.scss */
+  .site-pusher,
+  .site-container {
+    height: 100%;
+  }
+
+  /* line 74, ../sass/main.scss */
+  .site-container {
+    overflow: hidden;
+  }
+
+  /* line 78, ../sass/main.scss */
+  .site-pusher {
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+
+  /* line 83, ../sass/main.scss */
+  .site-content {
+    position: absolute;
+    top: 66px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding-top: 0;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* line 94, ../sass/main.scss */
+  .header {
+    position: static;
+  }
+
+  /* line 98, ../sass/main.scss */
+  .header__icon {
+    position: relative;
+    display: block;
+    float: left;
+    width: 50px;
+    height: 66px;
+    cursor: pointer;
+  }
+  /* line 107, ../sass/main.scss */
+  .header__icon:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 1rem;
+    height: 0;
+    top: 16px;
+    left: 15px;
+    -moz-box-shadow: 0 10px 0 1px #ff5a5f, 0 16px 0 1px #ff5a5f, 0 22px 0 1px #ff5a5f;
+    -webkit-box-shadow: 0 10px 0 1px #ff5a5f, 0 16px 0 1px #ff5a5f, 0 22px 0 1px #ff5a5f;
+    box-shadow: 0 10px 0 1px #ff5a5f, 0 16px 0 1px #ff5a5f, 0 22px 0 1px #ff5a5f;
+  }
+
+  /* line 119, ../sass/main.scss */
+  .menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    color: #fff;
+    background-color: #2B2D2D;
+    /*    overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;*/
+    width: 250px;
+    -moz-transform: translateX(-250px);
+    -ms-transform: translateX(-250px);
+    -webkit-transform: translateX(-250px);
+    transform: translateX(-250px);
+  }
+  /* line 131, ../sass/main.scss */
+  .menu a {
+    display: block;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-bottom: 1px solid #484848;
+  }
+
+  /* line 143, ../sass/main.scss */
+  .with--sidebar .site-pusher {
+      height: 100%;
+    -moz-transform: translateX(250px);
+    -ms-transform: translateX(250px);
+    -webkit-transform: translateX(250px);
+    transform: translateX(250px);
+  }
+  /* line 146, ../sass/main.scss */
+  .with--sidebar .site-cache {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}

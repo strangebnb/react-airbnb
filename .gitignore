@@ -1,0 +1,9 @@
+#Node modules
+node_modules
+
+#Config
+nodeserver/config.json
+
+#Output files
+public/bundle
+/nodeserver/AWS/config.js

@@ -1,0 +1,82 @@
+html,
+body {
+  background-color: #EDEFED;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  line-height: 1.4;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* HEADER */
+.header {
+  left: 0;
+  right: 0;
+  height: 66px;
+  line-height: 66px;
+  color: #484848;
+  background-color: #fff;
+}
+
+.header__logo {
+  font-weight: 700;
+  margin-left: 25px;
+}
+
+.air-logo {
+  vertical-align: middle;
+}
+
+/* MENU */
+.menu {
+  float: right;
+}
+
+.menu a {
+  padding: 0 10px;
+}
+
+.menu a:hover {
+  color: #484848;
+}
+
+.become-host {
+  border: 2px solid #dce0e0;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.left-border-menu {
+  border-left: 1px solid #dce0e0;
+}
+
+/* Burger Menu */
+.bm-burger-button{
+  display: none;
+}
+
+/* RESPONSIVE */
+@media only screen and (max-width: 768px) {
+  .header {
+    position: static;
+  }
+
+  .menu {
+      display: none;
+  }
+
+  .bm-burger-button{
+    display: block;
+  }
+
+  .air-logo {
+    margin-left: 30px;
+  }
+  
+}
