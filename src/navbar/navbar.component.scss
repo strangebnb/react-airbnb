@@ -18,6 +18,9 @@ a {
 .header {
   left: 0;
   right: 0;
+  top: 0;
+  position: fixed;
+  z-index: 9999;
   height: 66px;
   line-height: 66px;
   color: #484848;
@@ -63,10 +66,6 @@ a {
 
 /* RESPONSIVE */
 @media only screen and (max-width: 768px) {
-  .header {
-    position: static;
-  }
-
   .menu {
       display: none;
   }
@@ -78,5 +77,4 @@ a {
   .air-logo {
     margin-left: 30px;
   }
-  
 }
