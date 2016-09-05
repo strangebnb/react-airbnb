@@ -5,7 +5,7 @@ var CommonsChunkPlugin = require("./node_modules/webpack/lib/optimize/CommonsChu
 module.exports = {
 	entry: {
 		main: "./src/App.js",
-		becomeAHost: "./src/BecomeAHost/BecomeAHost.js",
+		becomeAHost: "./src/become-a-host/BecomeAHost.js",
 	},
 	output: {
 		path: path.join(__dirname, "public/bundle/"),
@@ -29,7 +29,10 @@ module.exports = {
         test: /\.scss$/,
         loaders: ["style", "css", "sass"],
         exclude: /node_modules/
-      }
+      },
+			{ test: /\.svg$/,
+				loader: 'babel!react-svg',
+				include: path.join(__dirname, 'src') },
 		]
 	}
 }

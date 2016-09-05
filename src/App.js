@@ -15,7 +15,7 @@ const App = React.createClass({
 		return (
 		<div>
 			<div><Navbar /></div>
-			<div>{this.props.children}</div>			
+			<div>{this.props.children}</div>
 		</div>
 		)
 	}
@@ -25,7 +25,7 @@ ReactDOM.render((
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Home}/>
-			
+
 		</Route>
 	</Router>
 ), document.getElementById('root'));
