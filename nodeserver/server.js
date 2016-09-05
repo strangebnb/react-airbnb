@@ -4,28 +4,33 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import passport from 'passport';
 import massive from 'massive';
+import path from 'path';
 import Auth0Strategy from 'passport-auth0';
-import config from './AWS/config.js';
 import AWS from 'aws-sdk';
 
-const connectionString = 'postgres://tran@localhost/youtube';
+// Configs
+import serverConfig from './config.json';
+import awsConfig from './AWS/config.json';
+
+const connectionString = serverConfig.postgresPath; //database path
 const app = module.exports = express();
 
 app.use(express.static(__dirname + '/../public'));
+
 app.use('/node_modules', express.static('./node_modules'));
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 app.use(session({
-    secret: 'KzGkzuQtd1bJOmOIKbuAyODgt2rd57jPXawuRRCAboeJKZy9K8N860WKY7jxLFKy',
+    secret: serverConfig.sessionSecret, //session secret
     saveUninitialized: false,
     resave: true
 }));
 
 AWS.config.update({
-  accessKeyId: config.aws_key,
-  secretAccessKey: config.aws_secret,
-  region: config.region
+  accessKeyId: awsConfig.aws_key,  //aws config begins
+  secretAccessKey: awsConfig.aws_secret,
+  region: awsConfig.region
 })
 
 const s3 = new AWS.S3();
@@ -37,14 +42,13 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 var strategy = new Auth0Strategy({
-   domain:       'buzzard.auth0.com',
-   clientID:     'BjezoSJferVZQ83cqTQqsc7t2hEAdZKE',
-   clientSecret: 'KzGkzuQtd1bJOmOIKbuAyODgt2rd57jPXawuRRCAboeJKZy9K8N860WKY7jxLFKy',
+   domain:       serverConfig.authDomain,      //authO config begin
+   clientID:     serverConfig.authId,
+   clientSecret: serverConfig.authSecret,
    callbackURL:  '/callback'
   },
   function(accessToken, refreshToken, extraParams, profile, done) {
-
-    console.log('profile: ', profile);
+    console.log('Login successfull');
     return done(null, profile);
   }
 );
@@ -60,7 +64,9 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-
+app.get('/become-a-host', function(request, response){
+  response.sendFile(path.resolve(__dirname, '../public', 'BecomeAHost.html'))
+});
 
 app.get('/callback',
   passport.authenticate('auth0', { failureRedirect: '/login' }),
@@ -98,7 +104,6 @@ app.post('/postImage', function(req, res, next) {
     res.status(200).json(data);
   })
 })
-
 
 http.listen(3000, function() {
     console.log('Hosting port: ', 3000);

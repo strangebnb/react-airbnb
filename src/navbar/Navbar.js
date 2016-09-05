@@ -1,6 +1,6 @@
 import React from 'react';
 import {Component} from 'react';
-import { Router, Route, Link, IndexRoute, hashHistory, DefaultRoute, IndexLink } from 'react-router'
+import { Link } from 'react-router'
 import { stack as Menu } from 'react-burger-menu';
 import Radium from 'radium';
 require ('./navbar.component.scss');
@@ -46,23 +46,23 @@ var styles = {
 var Navbar = React.createClass({
   render: function() {
     return (
-
+      
       <header className="header">
-        {/* <Menu styles={ styles }>
-          <RadiumLink id="home" className="menu-item" to="/">Home</RadiumLink>
-          <RadiumLink id="about" className="menu-item" to="/host">Become a Host</RadiumLink>
-          <RadiumLink id="contact" className="menu-item" to="/signup">Sign Up</RadiumLink>
-          <RadiumLink id="login" className="menu-item" to="/login">Login</RadiumLink>
-        </Menu> */}
-        <a href='/home'><img className="air-logo" src="./assets/images/airbnb.png" /></a>
-        <nav className="menu">
-          <a href='/BecomeAHost.html'><span className="become-host">Become a Host</span></a>
-        {/* <span className="left-border-menu"><IndexLink to="/host">Help</IndexLink></span>
-        <span className="left-border-menu"><IndexLink to="/host">Sign Up</IndexLink></span> */}
-        <a href='/login'><span className="left-border-menu">Login</span></a>
-          </nav>
-        </header>
-        );
+        <Menu styles={ styles }>
+          <a id="home" className="menu-item" href="/">Home</a>
+          <a id="about" className="menu-item" href="/become-a-host">Become a Host</a>
+          <a id="contact" className="menu-item" href="/signup">Sign Up</a>
+          <a id="login" className="menu-item" href="/login">Login</a>
+        </Menu>
+        <a href="/" className="header_logo"><img className="air-logo" src="./assets/images/airbnb.png" /></a>
+            <div className="menu">
+              <a href='/become-a-host'><span className="become-a-host">Become a Host</span></a>
+              <a href="/help" className="left-border-menu">Help</a>
+              <a href="/signup" className="left-border-menu">Sign Up</a>
+              <a href="/login" className="left-border-menu">Login</a>
+            </div>
+      </header>
+    );
   }
 });
 

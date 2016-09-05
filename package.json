@@ -1,9 +1,10 @@
 {
-  "name": "Template",
+  "name": "react-strangebnb",
   "version": "1.0.0",
   "description": "",
   "main": "nodeserver/index.js",
   "dependencies": {
+    "aws-sdk": "^2.5.5",
     "axios": "^0.14.0",
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
@@ -11,20 +12,22 @@
     "cors": "^2.8.0",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
-    "install": "^0.8.1",
     "jwt-decode": "^2.1.0",
+    "massive": "^2.5.0",
     "material-ui": "^0.15.4",
     "node-sass": "^3.8.0",
     "normalize.css": "^4.2.0",
     "npm": "^3.10.6",
     "passport": "^0.3.2",
+    "passport-auth0": "^0.5.2",
     "path": "^0.12.7",
     "radium": "^0.18.1",
     "react": "^15.3.1",
     "react-burger-menu": "^1.10.4",
     "react-dom": "^15.3.1",
     "react-router": "^2.7.0",
-    "react-tap-event-plugin": "^1.0.0"
+    "react-tap-event-plugin": "^1.0.0",
+    "socket.io": "^1.4.8"
   },
   "devDependencies": {
     "babel-core": "^6.14.0",

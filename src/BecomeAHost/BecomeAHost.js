@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react'
 import ReactDOM from 'react-dom';
 import {Component} from 'react';
-import { Router, Route, Link, IndexRoute, hashHistory, DefaultRoute, IndexLink, browserHistory } from 'react-router'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
+
+require('./becomeahost.component.scss');
 
 const styles = {
   block: {
@@ -24,10 +25,29 @@ const BecomeAHost = React.createClass ({
       <MuiThemeProvider>
         <div>
           <First/>
+          <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+            <RadioButton
+              value="light"
+              label="Simple"
+              style={styles.radioButton}
+            />
+            <RadioButton
+              value="not_light"
+              label="Selected by default"
+              style={styles.radioButton}
+            />
+            <RadioButton
+              value="ludicrous"
+              label="Custom icon"
+              checkedIcon={<ActionFavorite />}
+              uncheckedIcon={<ActionFavoriteBorder />}
+              style={styles.radioButton}
+            />
+          </RadioButtonGroup>
         </div>
       </MuiThemeProvider>
-    )
-  }
+        )
+        }
 })
 
 const First = () => (
@@ -41,6 +61,4 @@ const First = () => (
   </div>
 )
 
-export default BecomeAHost
-
-// ReactDOM.render(<BecomeAHost />, document.getElementById('host'));
+ReactDOM.render(<BecomeAHost />, document.getElementById('host'));

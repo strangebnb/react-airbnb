@@ -3,7 +3,7 @@ node_modules
 
 #Config
 nodeserver/config.json
+nodeserver/AWS/config.json
 
 #Output files
 public/bundle
-/nodeserver/AWS/config.js
