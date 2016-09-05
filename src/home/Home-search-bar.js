@@ -19,17 +19,3 @@ render(){
 })
 
 export default HomeSearchBar
-
-{/* <SingleDatePicker
-  id="date_input"
-  date={date}
-  focused={focused}
-  onDateChange={this.onDateChange}
-  onFocusChange={this.onFocusChange}
-/> */}
-
-
-
-{/* <DateRangePicker
-  date=
-/> */}

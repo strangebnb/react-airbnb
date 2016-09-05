@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import { DateRangePicker } from 'react-dates';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -11,10 +12,15 @@ class SearchBar extends React.Component {
       focusedInput: null,
       startDate: null,
       endDate: null,
+      searchVal: null,
+      numGuests: null,
     };
 
     this.onDatesChange = this.onDatesChange.bind(this);
     this.onFocusChange = this.onFocusChange.bind(this);
+    this.onSubmitSearch = this.onSubmitSearch.bind(this);
+    this.onTyping = this.onTyping.bind(this);
+    this.guestNumSelected = this.guestNumSelected.bind(this);
   }
 
   onDatesChange({ startDate, endDate }) {
@@ -22,9 +28,38 @@ class SearchBar extends React.Component {
   }
 
   onFocusChange(focusedInput) {
+    console.log('focusedInput: ',focusedInput)
     this.setState({ focusedInput });
   }
 
+  onSubmitSearch(e) {
+    console.log(this.state.startDate)
+    console.log(this.state.endDate)
+
+    axios.post('/search',{
+      searchVal: this.state.searchVal,
+      startDate: this.state.startDate.format('MM/DD/YYYY'),
+      endDate: this.state.endDate.format('MM/DD/YYYY'),
+      numGuests: this.state.numGuests
+    }).then(response =>{
+      console.log('response from server: ', response)
+    })
+
+    e.preventDefault();
+  }
+
+  onTyping(e){
+    console.log(e.target.value);
+    this.setState({searchVal: e.target.value});
+  }
+
+  guestNumSelected(e){
+      console.log(e.target.value);
+      const x = e.target.value.match(/\d\d?/)
+
+      this.setState({numGuests: parseInt(x[0])});
+      // this.setState({})
+  }
 
 
   render() {
@@ -57,22 +92,23 @@ class SearchBar extends React.Component {
         })
 
     return (
-      <div className='SearchBarContainer'>
-        <input className='SearchBar'></input>
-        <DateRangePicker className ='DatePicker'
-          {...this.props}
-          onDatesChange={this.onDatesChange}
-          onFocusChange={this.onFocusChange}
-          focusedInput={focusedInput}
-          startDate={startDate}
-          endDate={endDate}
-        />
-        <select className='selectGuest'>
-          {roomSelection}
-        </select>
+      <div >
+        <form className='SearchBarContainer' onSubmit={this.onSubmitSearch}>
+          <input onChange={this.onTyping} type='text' className='SearchBar'></input>
+          <DateRangePicker className ='DatePicker'
+            {...this.props}
+            onDatesChange={this.onDatesChange}
+            onFocusChange={this.onFocusChange}
+            focusedInput={focusedInput}
+            startDate={startDate}
+            endDate={endDate}
+          />
+          <select onChange={this.guestNumSelected} className='selectGuest'>
+            {roomSelection}
+          </select>
 
-        <button className='SearchBtn'>Search</button>
-
+          <button className='SearchBtn'>Search</button>
+        </form>
       </div>
     );
   }

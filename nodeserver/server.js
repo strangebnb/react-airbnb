@@ -7,6 +7,8 @@ import massive from 'massive';
 import path from 'path';
 import Auth0Strategy from 'passport-auth0';
 import AWS from 'aws-sdk';
+import request from 'request';
+var airbnb = require('airapi');
 
 // Configs
 import serverConfig from './config.json';
@@ -82,6 +84,23 @@ app.get('/login',
   passport.authenticate('auth0', {}), function (req, res) {
   res.redirect("/");
 });
+
+app.post('/search', (req, res, next) => {
+  console.log(req.body)
+  airbnb.search({
+   location: req.body.searchVal,
+   checkin: req.body.startDate,
+   checkout: req.body.endDate,
+   guests: req.body.numGuests,
+   page: 2,
+   ib: true
+ }).then(function(searchResults) {
+    console.log(searchResults);
+  });
+  res.send({'oh': 'well'});
+})
+
+
 
 app.post('/postImage', function(req, res, next) {
   console.log('hi');
