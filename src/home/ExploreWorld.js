@@ -6,6 +6,33 @@ const styles ={
     fontSize: '32px',
     color: 'white',
   },
+  price: {
+    backgroundColor: "rgba(45,45,45,0.9)",
+    position: "absolute",
+    bottom: "30px",
+    left: "0",
+    color: "white",
+    fontSize: "22px",
+    fontWeight: "300",
+    padding: "8px 19px",
+  },
+  hostPic: {
+    height: "60px",
+    width: "60px",
+    borderRadius: "50%",
+    border: "2px solid white",
+  },
+  hostName: {
+    marginTop: "12px",
+    color: "white",
+    fontSize: "22px",
+    fontWeight: "300",
+  },
+  hostPlace: {
+    color: "white",
+    fontSize: "13px",
+    fontWeight: "300",
+  },
   table: {
     display: "table",
     position: "relative",
@@ -41,6 +68,7 @@ const styles ={
     backgroundImage: 'url(' + 'https://a1.muscache.com/im/pictures/15273358/d7329e9a_original.jpg?aki_policy=x_medium' + ')',
     backgroundSize: 'cover',
     height: '344px',
+    backgroundPosition: "center",
   },
   newYork: {
     backgroundImage: 'url(' + 'https://a1.muscache.com/ic/discover/84?interpolation=lanczos-none&output-format=jpg&output-quality=70&v=33b4f2&downsize=326px:326px' + ')',
@@ -88,7 +116,7 @@ const styles ={
 export default React.createClass({
 render(){
   return(
-    <div className="explore-container">
+    <div className="main-home-container">
               <div style={styles.title}>Explore the world</div>
               <div style={styles.subtitle}>See where people are traveling, all around the world.</div>
 
@@ -107,12 +135,14 @@ render(){
             <div style={{marginBottom: "30px"}} className="col-lg-4 col-md-6 col-sm-12">
               <div style={styles.anna}>
                 <a href="http://www.patagonia.com/">
-                  <div>
-                    <div>
-                      <div>picture here</div>
-                      <div>Hosted by Anna</div>
-                      <div>Ostuni</div>
-                      <div style={{backgroundColor: "rgba(45,45,45,0.9)", position: "absolute", bottom: "30px", left: "0"}}>$69</div>
+                  <div style={styles.table}>
+                    <div style={styles.tableCell}>
+                      <div>
+                        <img style={styles.hostPic} src="https://a1.muscache.com/im/users/294274/profile_pic/1333617457/original.jpg?aki_policy=profile_medium"/>
+                      </div>
+                      <div style={styles.hostName}>Hosted by Anna</div>
+                      <div style={styles.hostPlace}>Ostuni</div>
+                      <div style={styles.price}><span style={{fontSize: "14px", verticalAlign: "text-top", marginRight: "3px"}}>$</span>69</div>
                     </div>
                   </div>
                 </a>
@@ -154,12 +184,14 @@ render(){
             <div style={{marginBottom: "30px"}} className="col-lg-4 col-md-6 col-sm-12">
               <div style={styles.torsten}>
                 <a href="http://www.patagonia.com/">
-                  <div>
+                <div style={styles.table}>
+                  <div style={styles.tableCell}>
                     <div>
-                      <div>picture here</div>
-                      <div>Hosted by Torsten</div>
-                      <div>Cologne</div>
-                      <div>$90</div>
+                      <img style={styles.hostPic} src="https://a0.muscache.com/im/pictures/34771e28-63da-46b4-9f29-d5beebb27bc3.jpg?aki_policy=profile_medium"/>
+                    </div>
+                    <div style={styles.hostName}>Hosted by Torsten</div>
+                    <div style={styles.hostPlace}>Cologne</div>
+                      <div style={styles.price}><span style={{fontSize: "14px", verticalAlign: "text-top", marginRight: "3px"}}>$</span>90</div>
                     </div>
                   </div>
                 </a>

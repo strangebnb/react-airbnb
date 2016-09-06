@@ -2,6 +2,8 @@ import React from 'react';
 import Slider from 'react-slick';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
+import LeftNavButton from './LeftNavButton.js';
+import RightNavButton from './RightNavButton.js';
 
 const styles ={
   width: "100%",
@@ -40,7 +42,8 @@ const styles ={
 export default React.createClass({
   render: function () {
     var settings = {
-      dots: true,
+      nextArrow: <RightNavButton />,
+      prevArrow: <LeftNavButton />,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
