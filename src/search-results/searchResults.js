@@ -10,15 +10,13 @@ const coords = {
   lng: -0.08040660000006028
 };
 
-const Gmap = React.createClass({
+const ResultsPage = React.createClass({
 
   componentWillMount(){
 
     axios.get('/getData').then(response => {
       console.log('Response from mount: ',  response);
     })
-
-
   },
 
   onMapCreated(map) {
@@ -71,4 +69,4 @@ const Gmap = React.createClass({
 
 });
 
-ReactDOM.render(<Gmap />, document.getElementById('gmaps'));
+ReactDOM.render(<ResultsPage />, document.getElementById('ResultsPage'));
