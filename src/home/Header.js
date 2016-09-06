@@ -1,4 +1,5 @@
 import React from 'react';
+import HomeSearchBar from './Home-search-bar.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -14,7 +15,7 @@ const style ={
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'right -130px',
-    height: '535px',
+    height: '600px',
     width: '100vw',
     padding: '0',
 
@@ -26,7 +27,18 @@ const style ={
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingTop: '70px',
   },
+  searchContainer:{
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    height: '19%',
+    width: '100vw',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+
+
+  }
 
 
 }
@@ -44,7 +56,8 @@ render(){
                   <p style={{letterSpacing: "1px"}}>Book homes from local host in 191+ countries and experience a place like you live there.</p>
                   <RaisedButton label="Learn About Airbnb" labelStyle={{textTransform: "none", fontWeight: "400px", margin: "0 20px", fontWeight: 'bold'}}  />
                 </div>
-                <div style={{backgroundColor: 'rgba(0,0,0,0.6)', height: '19%', width: '100vw'}}>
+                <div style={style.searchContainer}>
+                  <HomeSearchBar />
                 </div>
                 </div>
             </div>

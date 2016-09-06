@@ -10,7 +10,6 @@ var HomeSearchBar = React.createClass({
 render(){
   return(
     <div>
-      <h1>Hello Search Bar</h1>
       <SearchBar />
     </div>
     )
