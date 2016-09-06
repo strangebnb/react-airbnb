@@ -1,5 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import FlatButton from 'material-ui/FlatButton';
 
 const styles ={
   width: "100%",
@@ -42,7 +44,7 @@ export default React.createClass({
       infinite: true,
       speed: 500,
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
     };
     return (
       <Slider {...settings} style={styles}>
@@ -53,7 +55,13 @@ export default React.createClass({
               <div><i className="fa fa-play-circle fa-5x" aria-hidden="true" style={{opacity: ".8"}}></i></div>
             </div>
         </div>
-        <div style={styles.second}></div>
+        <div style={styles.second}>
+            <div style={styles.firstText}>
+              <div style={{fontSize: "60px", fontWeight: "500"}}>INTRODUCING THE BÉLO</div>
+              <div style={{fontSize: "22px", fontWeight: "300", marginBottom: "3vh"}}>The story of a symbol of belonging</div>
+              <div><i className="fa fa-play-circle fa-5x" aria-hidden="true" style={{opacity: ".8"}}></i></div>
+            </div>
+        </div>
         <div style={styles.third}>
             <img src="https://a1.muscache.com/airbnb/static/homepages/create-02-06fcf9119127632bdeeec8a3aa2cddce.png" style={{marginTop: "13vh"}}/>
             <div style={{display: "flex", flexDirection:"row", width: "60vw", margin: "5vh auto"}}>
@@ -64,7 +72,15 @@ export default React.createClass({
               </div>
             </div>
         </div>
-        <div style={styles.fourth}></div>
+        <div style={styles.fourth}>
+            <div style={styles.firstText}>
+              <div style={{fontSize: "60px", fontWeight: "500", lineHeight: "62px"}}>YOUR HOME, <br/> EVERYWHERE</div>
+              <div style={{fontSize: "22px", fontWeight: "300", marginBottom: "3vh", marginTop: "2vh"}}>On Airbnb, every vacation rental fells like home. Find everything <br/> from luxury villas to family friendly apartments</div>
+                <MuiThemeProvider>
+                  <div><FlatButton label="Start Exploring" style={{color: "white", backgroundColor: "rgba(255, 255, 255, .5)"}} labelStyle={{textTransform: "none"}}/></div>
+                </MuiThemeProvider>
+            </div>
+        </div>
       </Slider>
     );
   }
