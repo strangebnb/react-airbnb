@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import { DateRangePicker } from 'react-dates';
+
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -43,6 +44,7 @@ class SearchBar extends React.Component {
       numGuests: this.state.numGuests
     }).then(response =>{
       console.log('response from server: ', response)
+      window.location.href = 'http://localhost:3000/searchResults.html';
     })
 
     e.preventDefault();
@@ -109,6 +111,7 @@ class SearchBar extends React.Component {
 
           <button className='SearchBtn'>Search</button>
         </form>
+
       </div>
     );
   }
