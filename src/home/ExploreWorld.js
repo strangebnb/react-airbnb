@@ -109,7 +109,10 @@ render(){
                 <a href="http://www.patagonia.com/">
                   <div>
                     <div>
+                      <div>picture here</div>
                       <div>Hosted by Anna</div>
+                      <div>Ostuni</div>
+                      <div style={{backgroundColor: "rgba(45,45,45,0.9)", position: "absolute", bottom: "30px", left: "0"}}>$69</div>
                     </div>
                   </div>
                 </a>
@@ -153,7 +156,10 @@ render(){
                 <a href="http://www.patagonia.com/">
                   <div>
                     <div>
+                      <div>picture here</div>
                       <div>Hosted by Torsten</div>
+                      <div>Cologne</div>
+                      <div>$90</div>
                     </div>
                   </div>
                 </a>
