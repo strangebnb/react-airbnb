@@ -1,17 +1,6 @@
 .row {
     margin: 0;
 }
-//for OUR COMMUNITY
-// .cover {
-//   position: absolute;
-//   height: 200%;
-//   width: 100%;
-//   opacity: 0;
-//   background: rgba(0,0,0,.5);
-// }
-// #pictureOne:hover .cover {
-//   opacity: 1;
-// }
 #picture {
   position: relative;
 }
@@ -38,4 +27,7 @@
     margin-left: auto;
     margin-right: auto;
   }
+}
+.home-container{
+    margin-top: 70px;
 }

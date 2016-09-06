@@ -8,3 +8,4 @@ nodeserver/AWS/config.json
 #Output files
 public/bundle
 public/assets
+misc
