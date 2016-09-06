@@ -15,20 +15,13 @@ class Home extends Component {
         return (
           <div>
               <Header />
+              <HomeSearchBar />
             <HostCarousel />
           <JustForWknd />
         <ExploreWorld />
       <BelongAnywhere />
     <OurCommunity />
           </div>
-            <div className="row home-container">
-              <div className="col-xs-offset-3 col-xs-9">
-                <div className="box">Welcome Page to be filled by Pax and Jesse</div>
-              </div>
-
-              <HomeSearchBar />
-              
-            </div>
         );
     }
 }

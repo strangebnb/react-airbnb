@@ -17,10 +17,7 @@ const App = React.createClass({
 		<div>
 			<div><Navbar /></div>
 			<div>{this.props.children}</div>
-<<<<<<< HEAD
 			<Footer />
-=======
->>>>>>> 76f1b4128acadf83dd0ca5135fe58edb90fa3051
 		</div>
 		)
 	}
