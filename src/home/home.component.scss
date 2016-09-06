@@ -22,3 +22,20 @@
   background-color:#000;
   opacity:0.1;
 }
+.explore-container {
+  width: 100%;
+}
+.seattle {
+  background-position: center;
+}
+
+
+
+
+@media (min-width: 744px) {
+  .explore-container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
