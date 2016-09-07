@@ -13,7 +13,15 @@ class GMap extends React.Component {
     this.state = {
       zoom: 12,
       iCenter: { lng: -90.1056957, lat: 29.9717272 },
-      checker: false
+      checker: false,
+      icon : {
+        path: 'M 0,0 20,0 20,16 14,16 10,24 6,16 0,16 z',
+        fillColor: '#FF5A5F',
+        fillOpacity: 1,
+        scale: 1.5,
+        strokeColor: 'RGBA(100,100,100,0.5)',
+        strokeWeight: 1
+      }
     }
   }
 
@@ -45,7 +53,7 @@ class GMap extends React.Component {
       const lng = data.results_json.search_results[0].listing.lng
 
       const listingsArray = data.results_json.search_results
-      
+
       this.map = this.createMap()
 
       for(let i = 0 ; i < listingsArray.length; i++){
@@ -82,8 +90,8 @@ class GMap extends React.Component {
   }
 
   createMarker(lat, lng) {
-    console.log('lat: ', lat)
-    console.log('lng: ', lng)
+
+    console.log('ICON: ' ,this.state.icon)
     var marker = new google.maps.LatLng(
       lat, lng
     );
@@ -91,7 +99,8 @@ class GMap extends React.Component {
     console.log('Marker' , marker);
     return new google.maps.Marker({
       position: marker,
-      map: this.map
+      map: this.map,
+      icon: this.state.icon
     })
 	}
 
