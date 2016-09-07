@@ -29,7 +29,7 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     float: left;
-    height: 50px;
+    height: 40px;
     width: 250px;
 }
 
@@ -79,7 +79,7 @@
     background-position: right;
     background-repeat: no-repeat;
     background-color: white;
-    height: 50px;
+    height: 40px;
 }
 
 .SearchBtn {
@@ -385,11 +385,11 @@ background-color: #fa0008;
 
 .DateInput {
   font-weight: 200;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 24px;
   color: #757575;
   margin: 0;
-  padding: 8px;
+  padding: 3px;
   background: #fff;
   position: relative;
   display: inline-block;
@@ -529,7 +529,9 @@ background-color: #fa0008;
 .DateRangePickerInput {
   background-color: #fff;
   border: 1px solid #cacccd;
-  display: inline-block; }
+  display: inline-block;
+  height: 40px;
+}
 
 .DateRangePickerInput--disabled {
   background: #cacccd; }

@@ -5,13 +5,14 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 
 const photo = {
-  hero: 'https://www.airbnb.com/static/engagement/four-people-bike-99597e51f3a69bfa567999e79eb51109.jpg'
+  hero: 'https://www.airbnb.com/static/engagement/four-people-bike-99597e51f3a69bfa567999e79eb51109.jpg',
+  vid: 'https://a0.muscache.com/airbnb/static/P1F1.jpg',
 }
 
 const style ={
   margin: 12,
   heroImage: {
-    backgroundImage: 'url('+ photo.hero +')',
+    backgroundImage: 'url('+ photo.vid +')',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'right -130px',
