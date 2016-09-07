@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import { DateRangePicker } from 'react-dates';
 
-class SearchBar extends React.Component {
+class DateRangePickerGmapPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -94,7 +94,7 @@ class SearchBar extends React.Component {
     return (
       <div >
         <form className='SearchBarContainer' onSubmit={this.onSubmitSearch}>
-          <input placeholder='Manila' onChange={this.onTyping} type='text' className='SearchBar'></input>
+
           <DateRangePicker className ='DatePicker'
             {...this.props}
             onDatesChange={this.onDatesChange}
@@ -107,7 +107,6 @@ class SearchBar extends React.Component {
             {roomSelection}
           </select>
 
-          <button className='SearchBtn'>Search</button>
         </form>
 
       </div>
@@ -115,4 +114,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+export default DateRangePickerGmapPage;
