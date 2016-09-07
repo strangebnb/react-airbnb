@@ -1,9 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+import Navbar from '../navbar/Navbar.js'
 
+import DateRangePicker from '../date-range-picker/DateRangePickerGmapPage.jsx';
 
 require('./searchResults.scss');
+require('./_datepicker2.scss');
 
 class GMap extends React.Component {
 
@@ -20,7 +23,7 @@ class GMap extends React.Component {
         fillOpacity: 1,
         scale: 1.5,
         strokeColor: 'RGBA(100,100,100,0.5)',
-        strokeWeight: 1
+        strokeWeight: 1,
       }
     }
   }
@@ -30,20 +33,34 @@ class GMap extends React.Component {
   }
 
 	render() {
-    return <div className="GMap">
+    return <div >
+      <Navbar />
       <div className='UpdatedText'>
         <p>Current Zoom: { this.state.zoom }</p>
       </div>
-      <div className='GMap-canvas' ref="mapCanvas">
+      <main className='container'>
+        <div className='cards-container'>
+          <div className='date-panel'>
+            <span>Dates</span>
+            <DateRangePicker className='date-picker' />
+          </div>
+          <div className='room-panel'>
+            <span>Room Types</span>
+            <label>Entire Home</label><input type='checkbox' />
+            <label>Private Room</label><input type='checkbox' />
+            <label>Shared Room</label><input type='checkbox' />
+          </div>
+        </div>
+          <div className='GMap-canvas' ref="mapCanvas"></div>
+        </main>
       </div>
-    </div>
-  }
+      }
 
-  componentWillMount() {
-    axios.get('/getData').then(response => {
+      componentWillMount() {
+        axios.get('/getData').then(response => {
 
-      const data = response.data;
-      console.log(data.results_json.search_results[0]);
+          const data = response.data;
+          console.log(response.data);
 
       this.setState({
         iCenter : {lat: data.center_lat, lng: data.center_lng}
@@ -54,11 +71,13 @@ class GMap extends React.Component {
 
       const listingsArray = data.results_json.search_results
 
+      console.log('price: ', listingsArray[0].pricing_quote.rate.amount)
+
       this.map = this.createMap()
 
       for(let i = 0 ; i < listingsArray.length; i++){
         console.log('length: ', listingsArray.length)
-        this.marker = this.createMarker(listingsArray[i].listing.lat, listingsArray[i].listing.lng)
+        this.marker = this.createMarker(listingsArray[i].listing.lat, listingsArray[i].listing.lng, listingsArray[i].pricing_quote.rate.amount)
       }
 
       this.infoWindow = this.createInfoWindow()
@@ -89,7 +108,7 @@ class GMap extends React.Component {
     )
   }
 
-  createMarker(lat, lng) {
+  createMarker(lat, lng, price) {
 
     console.log('ICON: ' ,this.state.icon)
     var marker = new google.maps.LatLng(
@@ -97,10 +116,17 @@ class GMap extends React.Component {
     );
 
     console.log('Marker' , marker);
-    return new google.maps.Marker({
+    return new Marker({
       position: marker,
       map: this.map,
-      icon: this.state.icon
+      icon: {
+        path: SQUARE_PIN,
+        fillColor: '#FF5A5F',
+        fillOpacity: 1,
+        strokeColor: '#9BA198',
+        strokeWeight: 1
+    },
+     map_icon_label: '<span class=price>$'+ price + '</span>'
     })
 	}
 
