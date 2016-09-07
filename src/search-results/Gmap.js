@@ -51,7 +51,10 @@ class GMap extends React.Component {
             <label>Shared Room</label><input type='checkbox' />
           </div>
         </div>
-          <div className='GMap-canvas' ref="mapCanvas"></div>
+        
+        {/* //Suman's history gram */}
+
+        <div className='GMap-canvas' ref="mapCanvas"></div>
         </main>
       </div>
       }
