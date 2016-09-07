@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 import { DateRangePicker } from 'react-dates';
 
@@ -11,9 +12,9 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       focusedInput: null,
-      startDate: null,
-      endDate: null,
-      searchVal: null,
+      startDate: moment('2016-09-10'),
+      endDate: moment('2016-09-30'),
+      searchVal: 'Manila',
       numGuests: null,
     };
 
@@ -96,7 +97,7 @@ class SearchBar extends React.Component {
     return (
       <div >
         <form className='SearchBarContainer' onSubmit={this.onSubmitSearch}>
-          <input onChange={this.onTyping} type='text' className='SearchBar'></input>
+          <input placeholder='Manila' onChange={this.onTyping} type='text' className='SearchBar'></input>
           <DateRangePicker className ='DatePicker'
             {...this.props}
             onDatesChange={this.onDatesChange}
