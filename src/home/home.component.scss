@@ -11,23 +11,25 @@
   background-color:#000;
   opacity:0.1;
 }
-.explore-container {
+.main-home-container {
   width: 100%;
 }
 .seattle {
   background-position: center;
 }
 
-
-
-
-@media (min-width: 744px) {
-  .explore-container {
-    width: 80%;
+@media (min-width: 745px) {
+  .main-home-container {
+    width: 680px;
     margin-left: auto;
     margin-right: auto;
   }
 }
 .home-container{
     margin-top: 70px;
+}
+@media (min-width: 1128px) {
+  .main-home-container {
+    width: 1050px;
+  }
 }
