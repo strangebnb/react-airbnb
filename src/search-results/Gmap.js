@@ -50,10 +50,10 @@ class GMap extends React.Component {
             <label>Private Room</label><input type='checkbox' />
             <label>Shared Room</label><input type='checkbox' />
           </div>
-        </div>
-        
-        {/* //Suman's history gram */}
 
+          {/* //Suman's history gram */}
+          
+        </div>
         <div className='GMap-canvas' ref="mapCanvas"></div>
         </main>
       </div>
