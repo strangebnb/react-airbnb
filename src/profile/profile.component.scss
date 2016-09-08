@@ -1,0 +1,46 @@
+body{
+  background-color: #F5F5F5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover{
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .profilePic{
+    max-width: 661px;
+    max-height: 661px;
+  }
+}
+
+@media (min-width: 768px) {
+  .profileDash  {
+    width: 730px;
+  }
+  .bodyWidth {
+    width: 730px;
+  }
+  .profilePic{
+    height: 143px;
+    width: 143px;
+  }
+
+}
+@media (min-width: 1128px) {
+  .bodyWidth {
+    width: 1080px;
+  }
+  .profilePic{
+    height: 227px;
+    width: 227px;
+  }
+  .profileDash  {
+    width: 1080px;
+  }
+}
