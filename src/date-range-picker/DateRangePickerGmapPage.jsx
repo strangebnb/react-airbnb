@@ -9,48 +9,35 @@ class DateRangePickerGmapPage extends React.Component {
     super(props);
     this.state = {
       focusedInput: null,
-      startDate: moment('2016-09-10'),
-      endDate: moment('2016-09-30'),
+      startDate: moment('2016-10-10'),
+      endDate: moment('2016-10-30'),
       searchVal: 'Manila',
-      numGuests: null,
+      numGuests: 1,
     };
 
     this.onDatesChange = this.onDatesChange.bind(this);
     this.onFocusChange = this.onFocusChange.bind(this);
-    this.onSubmitSearch = this.onSubmitSearch.bind(this);
-    this.onTyping = this.onTyping.bind(this);
     this.guestNumSelected = this.guestNumSelected.bind(this);
   }
 
   onDatesChange({ startDate, endDate }) {
-    this.setState({ startDate, endDate });
+      console.log('hi');
+
+      this.setState({ startDate, endDate });
+
+      axios.post('/search',{
+        searchVal: this.props.location,
+        startDate: this.state.startDate.format('MM/DD/YYYY'),
+        endDate: this.state.endDate.format('MM/DD/YYYY'),
+        numGuests: this.state.numGuests
+      }).then(response =>{
+        console.log('OOMFGGGFGGG ', response);
+          this.props.callback(response.data);
+      })
   }
 
   onFocusChange(focusedInput) {
-    console.log('focusedInput: ',focusedInput)
     this.setState({ focusedInput });
-  }
-
-  onSubmitSearch(e) {
-    console.log(this.state.startDate)
-    console.log(this.state.endDate)
-
-    axios.post('/search',{
-      searchVal: this.state.searchVal,
-      startDate: this.state.startDate.format('MM/DD/YYYY'),
-      endDate: this.state.endDate.format('MM/DD/YYYY'),
-      numGuests: this.state.numGuests
-    }).then(response =>{
-      console.log('response from server: ', response)
-      window.location.href = 'http://localhost:3000/searchResults.html';
-    })
-
-    e.preventDefault();
-  }
-
-  onTyping(e){
-    console.log(e.target.value);
-    this.setState({searchVal: e.target.value});
   }
 
   guestNumSelected(e){
@@ -58,9 +45,7 @@ class DateRangePickerGmapPage extends React.Component {
       const x = e.target.value.match(/\d\d?/)
 
       this.setState({numGuests: parseInt(x[0])});
-      // this.setState({})
   }
-
 
   render() {
     const { focusedInput, startDate, endDate } = this.state;
@@ -93,7 +78,7 @@ class DateRangePickerGmapPage extends React.Component {
 
     return (
       <div >
-        <form className='SearchBarContainer' onSubmit={this.onSubmitSearch}>
+        <form className='SearchBarContainer'>
 
           <DateRangePicker className ='DatePicker'
             {...this.props}

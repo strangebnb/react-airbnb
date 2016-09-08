@@ -90,6 +90,7 @@ MarkerLabel.prototype.onRemove = function() {
 
 // Implement draw
 MarkerLabel.prototype.draw = function() {
+	console.log('MARKER LABEL THIS: ' , this);
 	var projection = this.getProjection();
 	var position = projection.fromLatLngToDivPixel(this.get('position'));
 	var div = this.div;
@@ -101,5 +102,6 @@ MarkerLabel.prototype.draw = function() {
 	div.style.display = 'block';
 	div.style.left = (position.x - (div.offsetWidth / 2)) + 'px';
 	div.style.top = (position.y - div.offsetHeight) + 'px';
+	div.style.background = '#FF5A5F'
 
 };

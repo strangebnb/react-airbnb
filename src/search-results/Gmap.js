@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import axios from 'axios'
 import Navbar from '../navbar/Navbar.js'
 
-import DateRangePicker from '../date-range-picker/DateRangePickerGmapPage.jsx';
+import DateRangePickerGmapPage from '../date-range-picker/DateRangePickerGmapPage.jsx';
 
 require('./searchResults.scss');
 require('./_datepicker2.scss');
@@ -24,8 +24,11 @@ class GMap extends React.Component {
         scale: 1.5,
         strokeColor: 'RGBA(100,100,100,0.5)',
         strokeWeight: 1,
-      }
+      },
     }
+    location: null,
+
+    this.renderMap = this.renderMap.bind(this);
   }
 
   static propTypes() {
@@ -42,7 +45,7 @@ class GMap extends React.Component {
         <div className='cards-container'>
           <div className='date-panel'>
             <span>Dates</span>
-            <DateRangePicker className='date-picker' />
+            <DateRangePickerGmapPage location={this.state.location} callback={this.renderMap.bind(this)} className='date-picker' />
           </div>
           <div className='room-panel'>
             <span>Room Types</span>
@@ -52,43 +55,46 @@ class GMap extends React.Component {
           </div>
 
           {/* //Suman's history gram */}
-          
+
         </div>
         <div className='GMap-canvas' ref="mapCanvas"></div>
-        </main>
-      </div>
+      </main>
+    </div>
       }
 
       componentWillMount() {
+
         axios.get('/getData').then(response => {
 
-          const data = response.data;
-          console.log(response.data);
+          const x = response.data;
 
-      this.setState({
-        iCenter : {lat: data.center_lat, lng: data.center_lng}
-      })
+          this.setState({
+            iCenter : {lat: x.center_lat, lng: x.center_lng},
+            location: x.canonical_location_en
+          })
 
-      const lat = data.results_json.search_results[0].listing.lat
-      const lng = data.results_json.search_results[0].listing.lng
+          const listingsArray = x.results_json.search_results;
 
-      const listingsArray = data.results_json.search_results
+          this.map = this.createMap()
+          this.latlngbounds = new google.maps.LatLngBounds();
 
-      console.log('price: ', listingsArray[0].pricing_quote.rate.amount)
+          for(let i = 0 ; i < listingsArray.length; i++){
 
-      this.map = this.createMap()
+            const lat = listingsArray[i].listing.lat
+            const lng = listingsArray[i].listing.lng
 
-      for(let i = 0 ; i < listingsArray.length; i++){
-        console.log('length: ', listingsArray.length)
-        this.marker = this.createMarker(listingsArray[i].listing.lat, listingsArray[i].listing.lng, listingsArray[i].pricing_quote.rate.amount)
+            this.marker = this.createMarker(lat, lng, listingsArray[i].pricing_quote.rate.amount)
+            var myLatLng = new google.maps.LatLng(lat, lng);
+            this.latlngbounds.extend(myLatLng);
+          }
+
+          this.map.fitBounds(this.latlngbounds);
+
+          this.infoWindow = this.createInfoWindow()
+          google.maps.event.addListener(this.map, 'zoom_changed', ()=> this.handleZoomChange())
+        })
       }
 
-      this.infoWindow = this.createInfoWindow()
-      google.maps.event.addListener(this.map, 'zoom_changed', ()=> this.handleZoomChange())
-
-      console.log(this.state.iCenter);
-    })
-  }
 
   // clean up event listeners when component unmounts
   componentDidUnMount() {
@@ -104,7 +110,7 @@ class GMap extends React.Component {
   }
 
   mapCenter() {
-    console.log('map center')
+
     return new google.maps.LatLng(
       this.state.iCenter.lat,
       this.state.iCenter.lng
@@ -113,12 +119,10 @@ class GMap extends React.Component {
 
   createMarker(lat, lng, price) {
 
-    console.log('ICON: ' ,this.state.icon)
     var marker = new google.maps.LatLng(
       lat, lng
     );
 
-    console.log('Marker' , marker);
     return new Marker({
       position: marker,
       map: this.map,
@@ -129,7 +133,7 @@ class GMap extends React.Component {
         strokeColor: '#9BA198',
         strokeWeight: 1
     },
-     map_icon_label: '<span class=price>$'+ price + '</span>'
+     map_icon_label: '<span class=price>$' + price + '</span>'
     })
 	}
 
@@ -147,8 +151,38 @@ class GMap extends React.Component {
       zoom: this.map.getZoom()
     })
   }
+
+  consoleLogger(){
+    console.log('context: ', this);
+  }
+
+  renderMap(x){
+    console.log('x: ', x);
+    const listingsArray = x.results_json.search_results;
+
+    this.map = this.createMap()
+    this.latlngbounds = new google.maps.LatLngBounds();
+    for(let i = 0 ; i < listingsArray.length; i++){
+
+      const lat = listingsArray[i].listing.lat
+      const lng = listingsArray[i].listing.lng
+
+      this.marker = this.createMarker(lat, lng, listingsArray[i].pricing_quote.rate.amount)
+      var myLatLng = new google.maps.LatLng(lat, lng);
+      this.latlngbounds.extend(myLatLng);
+    }
+
+    this.map.fitBounds(this.latlngbounds);
+
+    this.setState({
+      iCenter : {lat: x.center_lat, lng: x.center_lng}
+    })
+
+    google.maps.event.addListener(this.map, 'zoom_changed', ()=> this.handleZoomChange())
+
+  }
 }
 
 var initialCenter = { lng: -90.1056957, lat: 29.9717272 }
 
-ReactDOM.render(<GMap initialCenter={initialCenter} />, document.getElementById('container'));
+ReactDOM.render(<GMap initialCenter={initialCenter}  />, document.getElementById('container'));
