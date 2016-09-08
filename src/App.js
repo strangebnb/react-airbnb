@@ -8,8 +8,15 @@ import Navbar from './navbar/Navbar';
 import Home from './home/Home';
 import Footer from './footer/Footer';
 
+import Profile from './profile/Profile';
 import BecomeAHost from './become-a-host/BecomeAHost';
-import Profile from './profile/Profile'
+import Room from './become-a-host/steps/stepOne/Room';
+import Bedrooms from './become-a-host/steps/stepOne/Bedrooms';
+import Bathrooms from './become-a-host/steps/stepOne/Bathrooms';
+import Location from './become-a-host/steps/stepOne/Location';
+import Amenities from './become-a-host/steps/stepOne/Amenities';
+import Spaces from './become-a-host/steps/stepOne/Spaces';
+
 
 injectTapEventPlugin();
 
@@ -30,9 +37,18 @@ ReactDOM.render((
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Home} />
-		<Route path="/host" component={BecomeAHost} />
-			<IndexRoute component={Home}/>
-		<Route path="/profile" component={Profile} />
+			<Route path="/room" component={Room} />
+			<Route path="/host" component={BecomeAHost}>
+						<Route path="/host/room" component={Room} >
+													<Route path="/host/bedrooms" component={Bedrooms} />
+												<Route path="/host/bathrooms" component={Bathrooms} />
+											<Route path="/host/location" component={Location} />
+										<Route path="/host/amenities" component={Amenities} />
+									<Route path="/host/spaces" component={Spaces} />
+								</Route>
+				</Route>
+			<Route path="/profile" component={Profile} />
 		</Route>
-	</Router>
+
+</Router>
 ), document.getElementById('root'));
