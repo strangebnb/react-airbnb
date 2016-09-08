@@ -58,7 +58,7 @@ const styles ={
 export default React.createClass({
 render(){
   return(
-    <div id="just-for-wknd" className="row explore-container" >
+    <div id="just-for-wknd" className="row main-home-container" >
                     <div style={styles.title}>Just for the Weekend</div>
                     <div style={styles.subtitle}>Discover new, inspiring places close to home.</div>
 

@@ -46,17 +46,17 @@ var styles = {
 var Navbar = React.createClass({
   render: function() {
     return (
-      
+
       <header className="header">
         <Menu styles={ styles }>
           <a id="home" className="menu-item" href="/">Home</a>
-          <a id="about" className="menu-item" href="/become-a-host">Become a Host</a>
+          <RadiumLink className="menu-item" to="/host">Become a Host</RadiumLink>
           <a id="contact" className="menu-item" href="/signup">Sign Up</a>
           <a id="login" className="menu-item" href="/login">Login</a>
         </Menu>
         <a href="/" className="header_logo"><img className="air-logo" src="./assets/images/airbnb.png" /></a>
             <div className="menu">
-              <a href='/become-a-host'><span className="become-a-host">Become a Host</span></a>
+              <Link to="/host"><span className="become-a-host">Become a Host</span></Link>
               <a href="/help" className="left-border-menu">Help</a>
               <a href="/signup" className="left-border-menu">Sign Up</a>
               <a href="/login" className="left-border-menu">Login</a>

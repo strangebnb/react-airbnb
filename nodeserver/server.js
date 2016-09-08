@@ -71,8 +71,8 @@ passport.deserializeUser(function(user, done) {
     done(null, user);
 });
 
-app.get('/become-a-host', function(request, response) {
-    response.sendFile(path.resolve(__dirname, '../public', 'BecomeAHost.html'))
+app.get('/host', function(request, response) {
+    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
 });
 
 app.get('/callback',

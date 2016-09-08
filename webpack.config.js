@@ -5,7 +5,7 @@ var CommonsChunkPlugin = require("./node_modules/webpack/lib/optimize/CommonsChu
 module.exports = {
 	entry: {
 		main: "./src/App.js",
-		becomeAHost: "./src/become-a-host/BecomeAHost.js",
+		becomeAHost: ["./src/become-a-host/BecomeAHost.js"],
 		gmap: "./src/search-results/searchResults.js",
 	},
 	output: {
@@ -24,7 +24,10 @@ module.exports = {
 			{
 				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				loader: "babel"
+				loader: "babel",
+				query: {
+        presets: ['es2015', 'react', 'stage-0'],
+      }
 			},
       {
         test: /\.scss$/,
