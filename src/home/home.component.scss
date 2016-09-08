@@ -12,7 +12,7 @@
   opacity:0.1;
 }
 .main-home-container {
-  width: 100vw;
+  width: 100%;
 }
 #explore-card-margin {
   margin-bottom: -30px !important;
@@ -50,5 +50,10 @@
   }
   #explore-card-margin {
     margin-bottom: 30px !important;
+  }
+}
+@media (min-width: 1128px) {
+  .main-home-container {
+    width: 1050px;
   }
 }

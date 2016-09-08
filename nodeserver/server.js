@@ -55,7 +55,10 @@ var strategy = new Auth0Strategy({
         callbackURL: '/callback'
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
-        console.log('Login successfull');
+        console.log('accessToken: ', accessToken);
+        console.log('refreshToken: ', refreshToken);
+        console.log('extraParams: ', extraParams);
+        console.log('profile: ', profile);
         return done(null, profile);
     }
 );
@@ -75,6 +78,15 @@ app.get('/host', function(request, response) {
     response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
 });
 
+app.get('/profile', function(request, response) {
+    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
+});
+
+app.get('/login',
+  passport.authenticate('auth0', {}), function (req, res) {
+  res.redirect("/");
+});
+
 app.get('/callback',
     passport.authenticate('auth0', {
         failureRedirect: '/login'
@@ -87,11 +99,23 @@ app.get('/callback',
     }
 );
 
+
+
 app.get('/getData', (req, res, next) => {
     if (req.session.searchResults) {
         res.json(req.session.searchResults);
     } else {
-        res.send(204);
+      airbnb.search({
+          location: 'Manila',
+          checkin: '10/24/2016',
+          checkout: '10/31/2016',
+          guests: 2,
+          page: 2,
+          ib: true
+      }).then(function(searchResults) {
+
+        res.json(searchResults);
+      });
     }
 });
 
@@ -109,7 +133,7 @@ app.post('/search', (req, res, next) => {
 
         req.session.searchResults = searchResults;
         console.log(req.session.searchResults);
-        res.send(200);
+        res.json(req.session.searchResults);
     });
 })
 

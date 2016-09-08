@@ -9,6 +9,7 @@ import Home from './home/Home';
 import Footer from './footer/Footer';
 
 import BecomeAHost from './become-a-host/BecomeAHost';
+import Profile from './profile/Profile'
 
 injectTapEventPlugin();
 
@@ -30,7 +31,8 @@ ReactDOM.render((
 		<Route path="/" component={App}>
 			<IndexRoute component={Home} />
 		<Route path="/host" component={BecomeAHost} />
-
+			<IndexRoute component={Home}/>
+		<Route path="/profile" component={Profile} />
 		</Route>
 	</Router>
 ), document.getElementById('root'));
