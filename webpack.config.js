@@ -7,7 +7,7 @@ module.exports = {
         main: "./src/App.js",
         becomeAHost: ["./src/become-a-host/BecomeAHost.js"],
         profile: ["./src/profile/Profile.js"],
-        gmap: "./src/search-results/searchResults.js",
+        searchResults: "./src/search-results/Gmap.js",
     },
     output: {
         path: path.join(__dirname, "public/bundle/"),
@@ -27,6 +27,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: "babel"
             },
+
       {
         test: /\.scss$/,
         loaders: ["style", "css", "sass"],

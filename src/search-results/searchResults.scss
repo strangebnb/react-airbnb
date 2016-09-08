@@ -1,0 +1,74 @@
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.GMap-canvas {
+  top: 20px;
+  display: block;
+  width: 41%;
+  height: 100%;
+  float: right;
+}
+.cards-container {
+  width: 59%;
+  float: left;
+}
+
+.UpdatedText {
+  color: red;
+}
+
+.price {
+  color: white;
+}
+
+.date-panel {
+  border-top: 1px solid RGBA(100,100,100,0.5);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #fff;
+  z-index: 10;
+  position: relative;
+  margin: 15px 0 0 0;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Roboto',"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.43;
+  color: #484848;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+}
+
+.room-panel {
+border-top: 1px solid RGBA(100,100,100,0.5);
+padding-top: 15px;
+padding-bottom: 15px;
+background-color: #fff;
+z-index: 10;
+position: relative;
+margin: 15px 0 0 0;
+padding: 20px;
+box-sizing: border-box;
+font-family: 'Roboto',"Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 14px;
+line-height: 1.43;
+color: #484848;
+-webkit-font-smoothing: antialiased;
+width: 100%;
+height: 70px;
+display: flex;
+flex-direction: row;
+}
+
+.dates {
+  font-family: 'Roboto',"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  line-height: 1.43;
+  color: #484848;
+  -webkit-font-smoothing: antialiased;
+}
