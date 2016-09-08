@@ -129,7 +129,7 @@ app.post('/search', (req, res, next) => {
 
         req.session.searchResults = searchResults;
         console.log(req.session.searchResults);
-        res.send(200);
+        res.json(req.session.searchResults);
     });
 })
 

@@ -81,6 +81,7 @@ MarkerLabel.prototype.onAdd = function() {
 
 // Marker Label onRemove
 MarkerLabel.prototype.onRemove = function() {
+
 	this.div.parentNode.removeChild(this.div);
 
 	for (var i = 0, I = this.listeners.length; i < I; ++i) {
@@ -90,6 +91,7 @@ MarkerLabel.prototype.onRemove = function() {
 
 // Implement draw
 MarkerLabel.prototype.draw = function() {
+	console.log('MARKER LABEL THIS: ' , this.text);
 	var projection = this.getProjection();
 	var position = projection.fromLatLngToDivPixel(this.get('position'));
 	var div = this.div;
@@ -100,6 +102,32 @@ MarkerLabel.prototype.draw = function() {
 	div.style.position = 'absolute';
 	div.style.display = 'block';
 	div.style.left = (position.x - (div.offsetWidth / 2)) + 'px';
-	div.style.top = (position.y - div.offsetHeight) + 'px';
+	div.style.top = (position.y - div.offsetHeight-14) + 'px';
+	// div.style.background = "URL('assets/map-icons/price-icon.png')";
+	div.style.padding = '5px'
+
+	var img = document.createElement('img');
+
+	img.src = this.image_;
+			img.style.zIndex = '0';
+		 img.style.width = '135%';
+		 img.style.position = 'absolute';
+		//  img.style.height = '100%';
+		 img.style.top = '1px'
+		 img.style.left = '-11px';
+		 img.src = "assets/map-icons/price-icon.png";
+		 div.appendChild(img)
+
+	var p = document.createElement('p');
+
+	p.innerHTML = this.text
+
+	div.appendChild(p);
+	p.style.zIndex = '0';
+ 	p.style.width = '100%';
+ 	p.style.position = 'absolute';
+//  img.style.height = '100%';
+ 	p.style.top = '0px'
+ 	p.style.left = '-1px';
 
 };
