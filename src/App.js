@@ -8,6 +8,8 @@ import Navbar from './navbar/Navbar';
 import Home from './home/Home';
 import Footer from './footer/Footer';
 
+import Profile from './profile/Profile'
+
 injectTapEventPlugin();
 
 //Routing for Navbar
@@ -27,6 +29,7 @@ ReactDOM.render((
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Home}/>
+		<Route path="/profile" component={Profile} />
 
 		</Route>
 	</Router>
