@@ -2,6 +2,8 @@ import React from 'react';
 import Slider from 'react-slick';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
+import LeftNavButton from './LeftNavButton.js';
+import RightNavButton from './RightNavButton.js';
 
 const styles ={
   width: "100%",
@@ -40,7 +42,8 @@ const styles ={
 export default React.createClass({
   render: function () {
     var settings = {
-      dots: true,
+      nextArrow: <RightNavButton />,
+      prevArrow: <LeftNavButton />,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
@@ -52,7 +55,11 @@ export default React.createClass({
             <div style={styles.firstText}>
               <div style={{fontSize: "60px", fontWeight: "500"}}>BELONG ANYWHERE</div>
               <div style={{fontSize: "22px", fontWeight: "300", marginBottom: "3vh"}}>See how Airbnb hosts create a sense of belonging around the world</div>
-              <div><i className="fa fa-play-circle fa-5x" aria-hidden="true" style={{opacity: ".8"}}></i></div>
+              <div>
+                
+                  <i className="fa fa-play-circle fa-5x" aria-hidden="true" style={{opacity: ".8"}}></i>
+
+              </div>
             </div>
         </div>
         <div style={styles.second}>

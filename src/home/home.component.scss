@@ -14,8 +14,21 @@
 .main-home-container {
   width: 100%;
 }
-.seattle {
-  background-position: center;
+#explore-card-margin {
+  margin-bottom: -30px !important;
+}
+.fullscreen-video-player {
+    background-color: #000;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    -webkit-transition: opacity 800ms ease;
+    -moz-transition: opacity 800ms ease;
+    -o-transition: opacity 800ms ease;
+    transition: opacity 800ms ease;
+    width: 100%;
+    z-index: -1001;
 }
 
 @media (min-width: 745px) {
@@ -24,9 +37,20 @@
     margin-left: auto;
     margin-right: auto;
   }
+  #explore-card-margin {
+    margin-bottom: 30px !important;
+  }
+  .home-container{
+      margin-top: 70px;
+  }
 }
-.home-container{
-    margin-top: 70px;
+@media (max-width: 1128px) {
+  .main-home-container {
+    width: 1050px;
+  }
+  #explore-card-margin {
+    margin-bottom: 30px !important;
+  }
 }
 @media (min-width: 1128px) {
   .main-home-container {
