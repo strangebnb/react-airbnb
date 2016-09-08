@@ -122,16 +122,15 @@ class GMap extends React.Component {
     var marker = new google.maps.LatLng(
       lat, lng
     );
-
+    console.log('A wild marker has appeared: ', marker)
     return new Marker({
       position: marker,
       map: this.map,
       icon: {
         path: SQUARE_PIN,
-        fillColor: '#FF5A5F',
-        fillOpacity: 1,
+        fillOpacity: 0,
         strokeColor: '#9BA198',
-        strokeWeight: 1
+        strokeWeight: 0,
     },
      map_icon_label: '<span class=price>$' + price + '</span>'
     })
@@ -150,6 +149,7 @@ class GMap extends React.Component {
     this.setState({
       zoom: this.map.getZoom()
     })
+    console.log('zoom: ', this.map.getZoom())
   }
 
   consoleLogger(){
