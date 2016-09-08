@@ -1,0 +1,25 @@
+li:hover {
+  color: rgba(255, 255, 255, .6);
+  cursor: pointer;
+}
+#site-nav {
+  visibility: visible;
+}
+#join {
+  visibility: visible;
+}
+
+@media (max-width: 767px) {
+    #site-nav {
+      visibility: hidden;
+    }
+    #drop-downs {
+      width: 80%;
+    }
+    #join {
+      visibility: hidden;
+    }
+    #social-media{
+      border: none;
+    }
+}

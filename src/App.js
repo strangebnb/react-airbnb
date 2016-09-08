@@ -6,6 +6,7 @@ import { browserHistory } from 'react-router'
 
 import Navbar from './navbar/Navbar';
 import Home from './home/Home';
+import Footer from './footer/Footer';
 
 injectTapEventPlugin();
 
@@ -16,6 +17,7 @@ const App = React.createClass({
 		<div>
 			<div><Navbar /></div>
 			<div>{this.props.children}</div>
+			<Footer />
 		</div>
 		)
 	}
