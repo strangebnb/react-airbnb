@@ -1,6 +1,26 @@
 import React from 'react';
+import Checkbox from 'material-ui/Checkbox';
+import ActionFavorite from 'material-ui/svg-icons/action/favorite';
+import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Lightbulb from 'material-ui/svg-icons/action/lightbulb-outline';
+import Home from 'material-ui/svg-icons/action/home';
+import Seat from 'material-ui/svg-icons/action/event-seat';
+import Hotel from 'material-ui/svg-icons/maps/hotel';
+
 require ("../steps.scss")
 
+
+
+
+const styles = {
+  block: {
+    maxWidth: 250,
+  },
+  checkbox: {
+    marginBottom: 16,
+  },
+};
 
 export default React.createClass({
 render(){
@@ -8,7 +28,7 @@ render(){
       <div className="main-container">
             <div className="progress-bar-container">
               <div className="progress-items">
-                  <div className="work">
+                  <div>
                     <div className= "active-tab">Place type</div>
                   </div>
                   <div>
@@ -35,8 +55,52 @@ render(){
               <div className="form-side">
                 <div className="form-container">
                   <div>
+                    <div className="form-title-large">What kind of place are you listing?</div>
+
                     <div className="button-container">
 
+                    <MuiThemeProvider>
+                      <div>
+                        <div className="lineItem">
+                          <Home style={{color: "#E6E6E6"}}/>
+                            <div className="button">
+                              <Checkbox
+                                label="Entire place"
+                                labelPosition="left"
+                                style={styles.checkbox}
+                              />
+                            </div>
+                        </div>
+                        <div className="lineItem">
+                        <Hotel style={{color: "#E6E6E6"}}/>
+                            <div className="button">
+                          <Checkbox
+                              label="Private room"
+                              labelPosition="left"
+                              disabled={false}
+                              style={styles.checkbox}
+                            />
+                            </div>
+                        </div>
+                        <div className="lineItem">
+                          <Seat style={{color: "#E6E6E6"}}/>
+                            <div className="button">
+                          <Checkbox
+                              label="Shared room"
+                              labelPosition="left"
+                              disabled={false}
+                              style={styles.checkbox}
+                            />
+                            </div>
+                        </div>
+                      </div>
+
+                      </MuiThemeProvider>
+
+                    </div>
+                    <div>
+                      <div className="form-title-medium">What type of property is this?</div>
+                      <div></div>
                     </div>
                   </div>
                 </div>
@@ -44,9 +108,9 @@ render(){
 
               <div className="instruction-side">
                 <div className="note-container">
-                  <div className="icon">
-                      <i style={{ color: "#40BDB6" }} className="fa fa-lightbulb-o fa-2x" aria-hidden="true"></i>
-                  </div>
+                    <MuiThemeProvider>
+                      <Lightbulb style={{ color: "#40BDB6", height: "30px", width: "30px", marginBottom: "18px" }}/>
+                    </MuiThemeProvider>
                   <div className="note">
                       <div >
                         <div className="note-title"> Entire Place </div>

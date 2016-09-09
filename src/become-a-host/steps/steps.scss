@@ -41,7 +41,7 @@ $darkest: #4B4B4B;
   cursor: pointer;
 }
 .content {
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
 }
@@ -49,12 +49,44 @@ $darkest: #4B4B4B;
   width: 100%;
   height: 100vh;
   background-color: white;
+  display: flex;
+  justify-content: flex-end;
 }
 .form-container {
   width: 484px;
+  margin: 50px 20px 0 0;
+  .form-title-large {
+    color: $darkest;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .form-title-medium {
+    color: $dark;
+    font-size: 18px;
+  }
 }
 .button-container {
   width: 320px;
+  border: 1px solid $medium;
+  border-radius: 4px;
+  .lineItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid $medium;
+    height: 65px;
+    padding: 20px;
+    padding-right: 15px;
+  }
+  .checkboxIcon {
+    color: $medium;
+    // padding-right: 20px;
+    height: 40px;
+    width: 40px;
+  }
+  .button {
+    width: 250px;
+  }
 }
 .instruction-side{
   visibility: hidden;
@@ -63,16 +95,13 @@ $darkest: #4B4B4B;
   background-color: #FAFAFA;
 }
 .note-container {
-  max-height: 370px;
+  height: auto;
   width: 320px;
   padding: 26px;
   margin: 50px 0 0 26px;
   background-color: white;
   border: 1px solid $medium;
   border-radius: 3px;
-  .icon {
-    margin-bottom: 18px;
-  }
   .note {
     width: 254px;
     height: 270px;
@@ -85,6 +114,11 @@ $darkest: #4B4B4B;
   }
   .note-content {
     color: $dark;
+    margin-top: 3px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 300;
   }
 }
 
