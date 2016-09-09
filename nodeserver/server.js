@@ -130,7 +130,7 @@ app.get('/getData', (req, res, next) => {
 
 
 app.post('/search', (req, res, next) => {
-    console.log('hit')
+
     airbnb.search({
         location: req.body.searchVal,
         checkin: req.body.startDate,
@@ -139,14 +139,14 @@ app.post('/search', (req, res, next) => {
         page: 2,
         room_types: req.body.room_types
     }).then(function(searchResults) {
-
+        console.log('hit')
         searchResults.location = req.body.searchVal
         searchResults.startDate = req.body.startDate
         searchResults.endDate = req.body.endDate
         searchResults.numGuests = req.body.numGuests
 
         req.session.searchResults = searchResults;
-        console.log(req.session.searchResults);
+        // console.log(req.session.searchResults);
         res.json(req.session.searchResults);
     });
 })

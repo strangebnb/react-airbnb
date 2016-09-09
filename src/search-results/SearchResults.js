@@ -103,17 +103,33 @@ render = () => {
       handleRoomTypes = (e) => {
 
         if (e.target.value === 'false') {
-
            this.setState({[e.target.id]: true}, ()=>{
-             return this.renderMap(this.state.data);
+             let arr = [this.state.entireHome, this.state.privateRoom, this.state.sharedRoom];
+             return this.renderMap(this.convertToNames(arr));
            });
         } else if (e.target.value === 'true') {
 
         this.setState({[e.target.id]: false}, ()=>{
-          return this.renderMap(this.state.data);
+           let arr = [this.state.entireHome, this.state.privateRoom, this.state.sharedRoom];
+          return this.renderMap(this.convertToNames(arr));
         }
         );
       }
+    }
+
+    convertToNames = (arr) => {
+      var names = ['Entire home/apt', 'Private room', 'Shared room'];
+
+      for(let i = 0; i < arr.length; i++){
+
+        if(arr[i] === false){
+          names.splice(i,1);
+          arr.splice(i,1);
+          i--;
+        }
+      }
+      console.log('names: ', names);
+      return names
     }
 
     componentDidUnMount() {
@@ -173,10 +189,6 @@ render = () => {
 
     renderMap = (arr) => {
 
-      console.log(this.state.location)
-      console.log(this.state.startDate)
-      console.log(this.state.endDate)
-      console.log(this.state.numGuests)
       console.log(arr);
 
       axios.post('/search',{
@@ -190,7 +202,6 @@ render = () => {
         let x = response.data
 
       let listingsArray = response.data.results_json.search_results;
-      console.log(listingsArray);
       this.map = this.createMap()
 
       this.latlngbounds = new google.maps.LatLngBounds();
@@ -198,8 +209,6 @@ render = () => {
 
         const lat = listingsArray[i].listing.lat
         const lng = listingsArray[i].listing.lng
-
-        console.log(lat,lng)
 
         this.marker = this.createMarker(lat, lng, listingsArray[i].pricing_quote.rate.amount)
         var myLatLng = new google.maps.LatLng(lat, lng);
