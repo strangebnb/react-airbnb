@@ -91,7 +91,7 @@ MarkerLabel.prototype.onRemove = function() {
 
 // Implement draw
 MarkerLabel.prototype.draw = function() {
-	console.log('MARKER LABEL THIS: ' , this.text);
+	// console.log('MARKER LABEL THIS: ' , this.text);
 	var projection = this.getProjection();
 	var position = projection.fromLatLngToDivPixel(this.get('position'));
 	var div = this.div;
@@ -115,7 +115,7 @@ MarkerLabel.prototype.draw = function() {
 		//  img.style.height = '100%';
 		 img.style.top = '1px'
 		 img.style.left = '-11px';
-		 img.src = "assets/map-icons/price-icon.png";
+		 img.src = "map-icons/price-icon.png";
 		 div.appendChild(img)
 
 	var p = document.createElement('p');

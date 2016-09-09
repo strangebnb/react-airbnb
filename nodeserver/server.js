@@ -82,6 +82,10 @@ app.get('/profile', function(request, response) {
     response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
 });
 
+app.get('/searchResults', function(request, response) {
+    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
+});
+
 app.get('/login',
   passport.authenticate('auth0', {}), function (req, res) {
   res.redirect("/");
@@ -128,7 +132,8 @@ app.post('/search', (req, res, next) => {
         checkout: req.body.endDate,
         guests: req.body.numGuests,
         page: 2,
-        ib: true
+        ib: true,
+        room_types: req.body.room_types
     }).then(function(searchResults) {
 
         req.session.searchResults = searchResults;

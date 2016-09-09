@@ -72,3 +72,14 @@ flex-direction: row;
   color: #484848;
   -webkit-font-smoothing: antialiased;
 }
+
+.checkboxes {
+  margin-left: 80px;
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.checkbox {
+  margin-right: 20px;
+}
