@@ -8,6 +8,8 @@ import path from 'path';
 import Auth0Strategy from 'passport-auth0';
 import AWS from 'aws-sdk';
 import request from 'request';
+import moment from 'moment'
+
 var airbnb = require('airapi');
 
 // Configs
@@ -104,7 +106,6 @@ app.get('/callback',
 );
 
 
-
 app.get('/getData', (req, res, next) => {
     if (req.session.searchResults) {
         res.json(req.session.searchResults);
@@ -115,8 +116,12 @@ app.get('/getData', (req, res, next) => {
           checkout: '10/31/2016',
           guests: 2,
           page: 2,
-          ib: true
       }).then(function(searchResults) {
+
+        searchResults.location = 'Manila'
+        searchResults.startDate = moment('10/24/2016')
+        searchResults.endDate = moment('10/31/2016')
+        searchResults.numGuests = 1
 
         res.json(searchResults);
       });
@@ -132,9 +137,13 @@ app.post('/search', (req, res, next) => {
         checkout: req.body.endDate,
         guests: req.body.numGuests,
         page: 2,
-        ib: true,
         room_types: req.body.room_types
     }).then(function(searchResults) {
+
+        searchResults.location = req.body.searchVal
+        searchResults.startDate = req.body.startDate
+        searchResults.endDate = req.body.endDate
+        searchResults.numGuests = req.body.numGuests
 
         req.session.searchResults = searchResults;
         console.log(req.session.searchResults);
