@@ -56,8 +56,8 @@ class SearchResults extends React.Component {
 
       this.setState({
           iCenter: {
-              lat: x.center_lat,
-              lng: x.center_lng
+            lat: x.center_lat,
+            lng: x.center_lng
           },
           location: x.canonical_location_en
       })
@@ -88,27 +88,31 @@ render = () => {
   var settings = {
     //  prevArrow: {PrevArrow},
      arrows: true,
-     dots: true,
      infinite: true,
-     speed: 500,
      slidesToShow: 1,
-     slidesToScroll: 1
+     slidesToScroll: 1,
+     speed: 0.0001
    };
 
+let arrOfSliders = [];
+
+if(this.state.picture_urls.length != 0){
+  for(let i = 0; i < this.state.picture_urls.length; i++){
    var slider = <Slider className='slider' {...settings}>
-     <div><img src=''></img></div>
-     <div><h3>2</h3></div>
-     <div><h3>3</h3></div>
-     <div><h3>4</h3></div>
-     <div><h3>5</h3></div>
-     <div><h3>6</h3></div>
+     <div><img src={this.state.picture_urls[i][0]} ></img></div>
+     <div><img src={this.state.picture_urls[i][1]} ></img></div>
+     <div><img src={this.state.picture_urls[i][2]} ></img></div>
+     <div><img src={this.state.picture_urls[i][3]} ></img></div>
+     <div><img src={this.state.picture_urls[i][4]} ></img></div>
    </Slider>
 
-   const arrOfSliders = [
-     slider, slider, slider,
-   ]
+   arrOfSliders.push(slider);
+ }
 
-      const updateValues = _.debounce(this.updateValue, 350, { 'maxWait': 1000 });
+
+}
+
+  const updateValues = _.debounce(this.updateValue, 200, { 'maxWait': 1000 });
 
   return(
     <div>
@@ -259,11 +263,11 @@ render = () => {
         endDate: this.state.endDate,
         numGuests: this.state.numGuests,
         room_types: arr,
-        price_min: priceRange[0],
-        price_max: priceRange[1],
-      }).then(response =>{
+        price_min: this.state.sliderMin,
+        price_max: this.state.sliderMax,
+      }).then(response => {
 
-        let x = response.data
+      const x = response.data;
 
       let listingsArray = response.data.results_json.search_results;
       this.map = this.createMap()
@@ -282,16 +286,8 @@ render = () => {
 
         pics_array.push(listingsArray[i].listing.picture_urls)
 
-
-          this.setState({picture_urls: pics_array},
-          () => {
-            console.log(this.state.picture_urls)
+          this.setState({picture_urls: pics_array})
           }
-        )
-
-      }
-
-      console.log(listingsArray.length);
 
       this.map.fitBounds(this.latlngbounds);
 

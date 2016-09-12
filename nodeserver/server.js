@@ -122,7 +122,8 @@ app.get('/getData', (req, res, next) => {
         searchResults.startDate = '10/24/2016'
         searchResults.endDate = '10/31/2016'
         searchResults.numGuests = 1
-
+        searchResults.minPrice =
+        searchResults.maxPrice =
         res.json(searchResults);
       });
     }
@@ -136,17 +137,20 @@ app.post('/search', (req, res, next) => {
         checkin: req.body.startDate,
         checkout: req.body.endDate,
         guests: req.body.numGuests,
-        page: 1,
-        room_types: req.body.room_types
+        page: Math.round(Math.random()*10),
+        room_types: req.body.room_types,
+        price_min: req.body.price_min,
+        price_max: req.body.price_max
     }).then(function(searchResults) {
-        console.log('hit')
+        console.log('max price total: ', searchResults.max_price_total)
+        console.log('min price total: ', searchResults.min_price_total)
         searchResults.location = req.body.searchVal
         searchResults.startDate = req.body.startDate
         searchResults.endDate = req.body.endDate
         searchResults.numGuests = req.body.numGuests
 
         req.session.searchResults = searchResults;
-        // console.log(req.session.searchResults);
+
         res.json(req.session.searchResults);
     });
 })
