@@ -80,6 +80,10 @@ app.get('/host', function(request, response) {
     response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
 });
 
+app.get('/room', function(request, response) {
+    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
+});
+
 app.get('/profile', function(request, response) {
     response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
 });
