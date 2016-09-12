@@ -9,7 +9,6 @@ import Auth0Strategy from 'passport-auth0';
 import AWS from 'aws-sdk';
 import request from 'request';
 import moment from 'moment'
-import axios from 'axios';
 
 var inspect = require('eyespect').inspector();
 var airbnb = require('airapi');
@@ -69,29 +68,12 @@ var strategy = new Auth0Strategy({
 
 passport.use(strategy);
 
-
 passport.serializeUser(function(user, done) {
     done(null, user);
 });
 
 passport.deserializeUser(function(user, done) {
     done(null, user);
-});
-
-app.get('/host', function(request, response) {
-    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
-});
-
-app.get('/room', function(request, response) {
-    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
-});
-
-app.get('/profile', function(request, response) {
-    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
-});
-
-app.get('/searchResults', function(request, response) {
-    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
 });
 
 app.get('/login',
@@ -110,7 +92,6 @@ app.get('/callback',
         res.redirect("/");
     }
 );
-
 
 app.get('/getData', (req, res, next) => {
     if (req.session.searchResults) {
@@ -134,7 +115,6 @@ app.get('/getData', (req, res, next) => {
       });
     }
 });
-
 
 app.post('/search', (req, res, next) => {
 
@@ -161,8 +141,6 @@ app.post('/search', (req, res, next) => {
     });
 })
 
-
-
 app.post('/postImage', function(req, res, next) {
     console.log('hi');
     const buf = new Buffer(req.body.imageBody.replace(/^data:image\/\w+;base64,/, ""), 'base64');
@@ -185,12 +163,6 @@ app.post('/postImage', function(req, res, next) {
         res.status(200).json(data);
     })
 })
-
-
-
-
-
-
 
 app.post('/sendMessage', (req, res, next) => {
   var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
@@ -223,10 +195,9 @@ request(options, function(err, res, body) {
 })
 })
 
-
-
-
-
+app.get('*', function(request, response) {
+    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
+});
 
 http.listen(3000, function() {
     console.log('Hosting port: ', 3000);

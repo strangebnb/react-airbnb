@@ -59,26 +59,11 @@ class Profile extends Component {
 
     render() {
         return (
-          <div>
+          <div className="profile-container">
+        
             <ProfileDash />
-
-          <br/>
-          <br/>
-
-
-
-
-
-
-
-          <br/>
-          <br/>
-
-
-
-
-
-            <div style={style} className="row bodyWidth">
+              <h2>User id: {this.props.params.id} </h2>
+             <div style={style} className="row bodyWidth profile-container">
               <div className="col-md-3 col-sm-3 col-xs-12">
                   <img className="profilePic" src="https://a2.muscache.com/im/pictures/07389693-7185-429e-8e86-9c7d3f9dd248.jpg"/>
                   <div style={style.info}>
@@ -131,10 +116,6 @@ class Profile extends Component {
                   </div>
               </div>
             </div>
-
-
-
-
           </div>
         );
     }
