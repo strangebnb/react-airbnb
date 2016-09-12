@@ -119,8 +119,8 @@ app.get('/getData', (req, res, next) => {
       }).then(function(searchResults) {
 
         searchResults.location = 'Manila'
-        searchResults.startDate = moment('10/24/2016')
-        searchResults.endDate = moment('10/31/2016')
+        searchResults.startDate = '10/24/2016'
+        searchResults.endDate = '10/31/2016'
         searchResults.numGuests = 1
 
         res.json(searchResults);
@@ -136,7 +136,7 @@ app.post('/search', (req, res, next) => {
         checkin: req.body.startDate,
         checkout: req.body.endDate,
         guests: req.body.numGuests,
-        page: 2,
+        page: 1,
         room_types: req.body.room_types
     }).then(function(searchResults) {
         console.log('hit')
