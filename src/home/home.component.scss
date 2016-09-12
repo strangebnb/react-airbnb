@@ -31,11 +31,28 @@
     z-index: -1001;
 }
 
-@media (min-width: 745px) {
+@media (max-width: 767px) {
+  //TODO: make image shrink
+  .profilePic{
+    // max-width: 661px;
+    // max-height: 661px;
+  }
+  .heroImage{
+    height: 450px;
+  }
+  .homeCaro{
+    width: 425px;
+  }
+
+}
+@media (min-width: 768px) {
   .main-home-container {
     width: 680px;
     margin-left: auto;
     margin-right: auto;
+  }
+  .heroImage{
+    height: 600px;
   }
   #explore-card-margin {
     margin-bottom: 30px !important;
@@ -43,13 +60,8 @@
   .home-container{
       margin-top: 70px;
   }
-}
-@media (max-width: 1128px) {
-  .main-home-container {
-    width: 1050px;
-  }
-  #explore-card-margin {
-    margin-bottom: 30px !important;
+  .homeCaro{
+    width: 686px;
   }
 }
 @media (min-width: 1128px) {

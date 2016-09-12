@@ -8,6 +8,7 @@ import {
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {Link} from 'react-router';
 
 /**
  * Vertical steppers are designed for narrow screen sizes. They are ideal for mobile.
@@ -119,9 +120,11 @@ class VerticalLinearStepper extends React.Component {
                 <div style={styles.stepTitle}>Start with the basics</div>
                 <div style={styles.stepSubtitle}>Beds, bathrooms, amenities, and more</div>
               </StepLabel>
-              <div style={styles.buttonContainer}>
-                {this.renderStepActions(1)}
-              </div>
+              <Link to='/room'>
+                <div style={styles.buttonContainer}>
+                  {this.renderStepActions(1)}
+                </div>
+              </Link>
             </Step>
             <Step>
               <StepLabel style={styles.stepLabel} icon={<div></div>}>

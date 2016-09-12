@@ -3,6 +3,11 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 import ProfileDash from "./ProfileDash";
 
+import axios from 'axios';
+
+
+
+
 const style = {
   padding: '0px 20px',
   marginLeft: 'auto',
@@ -31,14 +36,48 @@ const style = {
   }
 }
 
+var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
+var data = {
+  listing_id: "14978040",
+  number_of_guests: "1",
+  client_id: "d306zoyjsyarp7ifhu67rjxn52tv0t20",
+  currency: 'USD',
+  checkout_date: "2018-04-02T22:00:00.000-0700",
+  checkin_date: "2018-04-01T00:00:00.000-0700",
+  locale: "en-US",
+  message: "hello Paxton. this is coming from our code!!!"
+};
+
 
 
 class Profile extends Component {
+  componentWillMount(){
+
+      axios.post('/sendMessage', data, config).then(response =>{ console.log(response)});
+
+  }
+
     render() {
         return (
           <div>
             <ProfileDash />
-            <br/>
+
+          <br/>
+          <br/>
+
+
+
+
+
+
+
+          <br/>
+          <br/>
+
+
+
+
+
             <div style={style} className="row bodyWidth">
               <div className="col-md-3 col-sm-3 col-xs-12">
                   <img className="profilePic" src="https://a2.muscache.com/im/pictures/07389693-7185-429e-8e86-9c7d3f9dd248.jpg"/>
