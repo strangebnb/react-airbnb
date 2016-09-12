@@ -8,7 +8,9 @@ import path from 'path';
 import Auth0Strategy from 'passport-auth0';
 import AWS from 'aws-sdk';
 import request from 'request';
+import moment from 'moment'
 import axios from 'axios';
+
 var inspect = require('eyespect').inspector();
 var airbnb = require('airapi');
 
@@ -88,6 +90,10 @@ app.get('/profile', function(request, response) {
     response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
 });
 
+app.get('/searchResults', function(request, response) {
+    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
+});
+
 app.get('/login',
   passport.authenticate('auth0', {}), function (req, res) {
   res.redirect("/");
@@ -106,7 +112,6 @@ app.get('/callback',
 );
 
 
-
 app.get('/getData', (req, res, next) => {
     if (req.session.searchResults) {
         res.json(req.session.searchResults);
@@ -117,9 +122,14 @@ app.get('/getData', (req, res, next) => {
           checkout: '10/31/2016',
           guests: 2,
           page: 2,
-          ib: true
       }).then(function(searchResults) {
 
+        searchResults.location = 'Manila'
+        searchResults.startDate = '10/24/2016'
+        searchResults.endDate = '10/31/2016'
+        searchResults.numGuests = 1
+        searchResults.minPrice =
+        searchResults.maxPrice =
         res.json(searchResults);
       });
     }
@@ -127,18 +137,26 @@ app.get('/getData', (req, res, next) => {
 
 
 app.post('/search', (req, res, next) => {
-    console.log('hit')
+
     airbnb.search({
         location: req.body.searchVal,
         checkin: req.body.startDate,
         checkout: req.body.endDate,
         guests: req.body.numGuests,
-        page: 2,
-        ib: true
+        page: Math.round(Math.random()*10),
+        room_types: req.body.room_types,
+        price_min: req.body.price_min,
+        price_max: req.body.price_max
     }).then(function(searchResults) {
+        console.log('max price total: ', searchResults.max_price_total)
+        console.log('min price total: ', searchResults.min_price_total)
+        searchResults.location = req.body.searchVal
+        searchResults.startDate = req.body.startDate
+        searchResults.endDate = req.body.endDate
+        searchResults.numGuests = req.body.numGuests
 
         req.session.searchResults = searchResults;
-        console.log(req.session.searchResults);
+
         res.json(req.session.searchResults);
     });
 })

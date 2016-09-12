@@ -1,74 +1,189 @@
-.container {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-.GMap-canvas {
-  top: 20px;
-  display: block;
-  width: 41%;
-  height: 100%;
-  float: right;
-}
-.cards-container {
-  width: 59%;
-  float: left;
-}
-
-.UpdatedText {
-  color: red;
-}
-
-.price {
-  color: white;
-}
-
-.date-panel {
-  border-top: 1px solid RGBA(100,100,100,0.5);
-  padding-top: 15px;
-  padding-bottom: 15px;
-  background-color: #fff;
-  z-index: 10;
-  position: relative;
-  margin: 15px 0 0 0;
-  padding: 20px;
-  box-sizing: border-box;
-  font-family: 'Roboto',"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 1.43;
-  color: #484848;
-  -webkit-font-smoothing: antialiased;
-  width: 100%;
-  height: 70px;
+.tempVals {
   display: flex;
   flex-direction: row;
 }
 
+.val {
+  margin-left: 30px;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.GMap-canvas {
+    top: 20px;
+    display: block;
+    width: 41%;
+    height: 100%;
+    float: right;
+}
+
+.cards-container {
+    width: 59%;
+    float: left;
+}
+
+.UpdatedText {
+    color: red;
+}
+
+.price {
+    color: white;
+}
+
+.date-panel {
+    border-top: 1px solid RGBA(100,100,100,0.5);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #fff;
+    z-index: 10;
+    position: relative;
+    margin: 15px 0 0;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Roboto',"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #484848;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+}
+
 .room-panel {
-border-top: 1px solid RGBA(100,100,100,0.5);
-padding-top: 15px;
-padding-bottom: 15px;
-background-color: #fff;
-z-index: 10;
-position: relative;
-margin: 15px 0 0 0;
-padding: 20px;
-box-sizing: border-box;
-font-family: 'Roboto',"Helvetica Neue",Helvetica,Arial,sans-serif;
-font-size: 14px;
-line-height: 1.43;
-color: #484848;
--webkit-font-smoothing: antialiased;
-width: 100%;
-height: 70px;
-display: flex;
-flex-direction: row;
+    border-top: 1px solid RGBA(100,100,100,0.5);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #fff;
+    z-index: 10;
+    position: relative;
+    margin: 15px 0 0;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Roboto',"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #484848;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
 }
 
 .dates {
-  font-family: 'Roboto',"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 15px;
-  line-height: 1.43;
-  color: #484848;
-  -webkit-font-smoothing: antialiased;
+    font-family: 'Roboto',"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.43;
+    color: #484848;
+    -webkit-font-smoothing: antialiased;
+}
+
+.checkboxes {
+    margin-left: 80px;
+    display: flex;
+    flex-direction: row;
+}
+
+.checkbox {
+    margin-right: 20px;
+}
+
+.rheostat {
+    margin: auto;
+    width: 85%;
+    position: relative;
+    height: 24px;
+    overflow: visible;
+    margin-bottom: 12px;
+    display: block;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Roboto',"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #484848;
+    background-color: #fcfcfc;
+    border: 1px solid #d8d8d8;
+    position: relative;
+}
+
+.rheostat-background {
+    background: #dce0e0;
+    height: 2px;
+    position: relative;
+    top: 14px;
+    width: 100%;
+    display: block;
+    font-family: 'Roboto',"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #484848;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+.rheostat-progress {
+    background-color: #abc4e8;
+    position: absolute;
+}
+
+.rheostat-handle {
+    left: 0;
+    position: absolute;
+    border: 1px solid #aaa;
+    background: #fff;
+    border-radius: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+    height: 24px;
+    margin-left: -12px;
+    outline: none;
+    z-index: 2;
+    width: 24px;
+    font-size: 0;
+    line-height: inherit;
+    font-family:inherit;
+    -webkit-font-smoothing: antialiased;
+    -webkit-appearance: button;
+    text-transform: none;
+    margin: 0;
+    align-items: flex-start;
+    text-align: center;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-indent: 0;
+    text-shadow: none;
+    font: 11px BlinkMacSystemFont;
+    box-sizing: border-box;
+}
+
+.rheostat-handle:after,
+.rheostat-handle:before {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: #dadfe8;
+}
+
+.arrayOfSliders {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 1px dotted teal;
+  width: 100%;
+  height: 700px;
+}
+
+.slider-container {
+  margin: 0 0 40px 60px;
+  width: 330px;
+  border: 1px dotted red;
+  box-sizing: border-box;
+  height: 300px;
 }

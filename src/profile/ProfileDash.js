@@ -20,24 +20,20 @@ const style = {
   },
 }
 
-
-
-
-
   return(
           <div style={{backgroundColor: '#484848' }}>
-                    <div className="profileDash" style={style}>
-                    <span  >
-                      <a style={style.item} href='/profile'>Dashboard</a>
-                      <a style={style.item} href="/inbox" >Inbox</a>
-                      <a style={style.item} href="/rooms" >Your Listings</a>
-                      <a style={style.item} href="/trips/current" >Your Trips</a>
-                      <a style={style.item} href="/users/edit" >Profile</a>
-                      <a style={style.item} href="/users/notifications" >Account</a>
-                      <a style={style.item} href="/invite" >Travel Credit</a>
-                    </span>
-                    </div>
-      </div>
+            <div className="profileDash" style={style}>
+              <span>
+                <a style={style.item} href='/profile'>Dashboard</a>
+                <a style={style.item} href="/inbox" >Inbox</a>
+                <a style={style.item} href="/rooms" >Your Listings</a>
+                <a style={style.item} href="/trips/current" >Your Trips</a>
+                <a style={style.item} href="/users/edit" >Profile</a>
+                <a style={style.item} href="/users/notifications" >Account</a>
+                <a style={style.item} href="/invite" >Travel Credit</a>
+              </span>
+            </div>
+          </div>
   )
 }
 });

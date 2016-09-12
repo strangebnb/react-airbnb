@@ -32,7 +32,8 @@ class DateRangePickerGmapPage extends React.Component {
         numGuests: this.state.numGuests
       }).then(response =>{
         console.log('OOMFGGGFGGG ', response);
-          this.props.callback(response.data);
+          this.props.setDates(this.state.startDate, this.start.endDate)
+          this.props.renderMap(response.data);
       })
   }
 

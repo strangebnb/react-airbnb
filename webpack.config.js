@@ -7,7 +7,7 @@ module.exports = {
         main: "./src/App.js",
         becomeAHost: ["./src/become-a-host/BecomeAHost.js"],
         profile: ["./src/profile/Profile.js"],
-        searchResults: "./src/search-results/Gmap.js",
+        searchResults: ["./src/search-results/SearchResults.js"],
     },
     output: {
         path: path.join(__dirname, "public/bundle/"),
