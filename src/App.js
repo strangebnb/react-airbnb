@@ -46,7 +46,7 @@ ReactDOM.render((
 					<Route path="/host/spaces" component={Spaces} />
 				</Route>
 			</Route>
-			<Route path="/profile(/:id)" component={Profile} />
+			<Route path="/profile/:id" component={Profile} />
 		</Route>
 
 </Router>
