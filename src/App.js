@@ -27,7 +27,6 @@ const App = React.createClass({
 		<div>
 			<div><Navbar /></div>
 			<div>{this.props.children}</div>
-			<Footer />
 		</div>
 		)
 	}

@@ -5,6 +5,7 @@ import JustForWknd from "./JustForWknd";
 import ExploreWorld from "./ExploreWorld";
 import BelongAnywhere from "./BelongAnywhere";
 import OurCommunity from "./OurCommunity";
+import Footer from '../footer/Footer';
 require('./home.component.scss');
 
 import HomeSearchBar from './Home-search-bar.js';
@@ -20,6 +21,7 @@ class Home extends Component {
         <ExploreWorld />
       <BelongAnywhere />
     <OurCommunity />
+    <Footer />
           </div>
         );
     }
