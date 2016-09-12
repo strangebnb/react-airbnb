@@ -38,11 +38,11 @@ render(){
                 <br/>
                 <div className="row main-home-container">
 
-                  <div style={{width: '686px', paddingRight:'0px'}}className='col-sm-8 hide-sm container'>
+                  <div style={{paddingRight:'0px'}}className='col-sm-8 hide-sm container'>
                         	<Slider {...settings}>
-                          	<div><img style={{width: '686px'}} src='https://a1.muscache.com/airbnb/static/homepages/host_banner/welcome-guest-5871637891339a7308a838003ab942bd.jpg' /></div>
-                            <div><img style={{width: '686px'}} src='https://a0.muscache.com/airbnb/static/homepages/host_banner/green-doors-da92547ad2e02558af61a61405d4a414.jpg' /></div>
-                            <div><img style={{width: '686px'}} src='https://a2.muscache.com/airbnb/static/homepages/host_banner/having-dinner-42ce249609ed4a0c755bd98f4625c828.jpg' /></div>
+                          	<div><img className="homeCaro" style={{width: '686px'}} src='https://a1.muscache.com/airbnb/static/homepages/host_banner/welcome-guest-5871637891339a7308a838003ab942bd.jpg' /></div>
+                            <div><img className="homeCaro" style={{width: '686px'}} src='https://a0.muscache.com/airbnb/static/homepages/host_banner/green-doors-da92547ad2e02558af61a61405d4a414.jpg' /></div>
+                            <div><img className="homeCaro" style={{width: '686px'}} src='https://a2.muscache.com/airbnb/static/homepages/host_banner/having-dinner-42ce249609ed4a0c755bd98f4625c828.jpg' /></div>
                           </Slider>
                   </div>
                   <div style={style.words} className="col-md-4">
