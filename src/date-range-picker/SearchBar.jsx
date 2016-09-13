@@ -43,7 +43,7 @@ class SearchBar extends React.Component {
       room_types: [],
     }).then(response =>{
       console.log('response from server: ', response)
-      window.location.href = 'http://localhost:3000/searchResults.html';
+      window.location.href = 'http://localhost:3000/search-results';
     })
 
     e.preventDefault();

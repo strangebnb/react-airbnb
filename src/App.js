@@ -16,6 +16,7 @@ import Bathrooms from './become-a-host/steps/stepOne/Bathrooms';
 import Location from './become-a-host/steps/stepOne/Location';
 import Amenities from './become-a-host/steps/stepOne/Amenities';
 import Spaces from './become-a-host/steps/stepOne/Spaces';
+import SearchResults from './search-results/SearchResults';
 
 
 injectTapEventPlugin();
@@ -47,6 +48,8 @@ ReactDOM.render((
 				</Route>
 			</Route>
 			<Route path="/profile/:id" component={Profile} />
+			<Route path="/search-results" component={SearchResults} />
+
 		</Route>
 
 </Router>

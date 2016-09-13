@@ -15,7 +15,7 @@ require('./_datepicker2.scss');
 
 var sliderMin = 0;
 
-class SearchResults extends React.Component {
+export default class SearchResults extends React.Component {
 
   constructor(props) {
     super(props)
@@ -120,7 +120,7 @@ if(this.state.picture_urls.length != 0){
       <div className = 'UpdatedText'>
         <p>Current Zoom: {this.state.zoom} </p>
       </div>
-      <main className = 'container'>
+      <main className = 'container-search'>
         <div className = 'cards-container'>
           <div className = 'date-panel'>
             <span>Dates</span>
@@ -310,6 +310,6 @@ if(this.state.picture_urls.length != 0){
       lat: 29.9717272
     }
 
-    ReactDOM.render( <SearchResults initialCenter = {initialCenter} />, document.getElementById('container'));
+    // ReactDOM.render( <SearchResults initialCenter = {initialCenter} />, document.getElementById('container'));
 
     // export default SearchResults
