@@ -6,7 +6,8 @@ import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import Incrementer from '../incrementer'
+import BedIncrementer from '../bedIncrementer'
+import GuestIncrementer from '../GuestIncrementer'
 
 import Lightbulb from 'material-ui/svg-icons/action/lightbulb-outline';
 import Home from 'material-ui/svg-icons/action/home';
@@ -130,7 +131,7 @@ render(){
                     <div>
                       <div className="form-title-medium" style={{marginTop: "40px"}}>How many beds can guests use?</div>
                       <div className="incrementer">
-                        <Incrementer />
+                        <BedIncrementer />
                       </div>
                       <div className="drop-down-menu">
                       <MuiThemeProvider>
@@ -148,7 +149,7 @@ render(){
                     <div>
                       <div className="form-title-medium" style={{marginTop: "40px"}}>How many guests can stay?</div>
                         <div className="incrementer">
-                          <Incrementer />
+                          <GuestIncrementer />
                         </div>
                     </div>
                     <div className="step-nav">

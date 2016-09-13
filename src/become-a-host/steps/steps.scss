@@ -103,21 +103,27 @@ $darkest: #4B4B4B;
 }
 .incrementer {
   @extend .drop-down-menu;
+  padding: 22px 0 0 20px;
   .increment-label {
-    margin: 30px 0 0 5px;
     color: $dark;
+    padding-left: 6px;
   }
   .increment-number {
-    margin: 30px 0 0 15px;
-    color: $dark;
+    color: $medium;
   }
   .subtract {
     background: none;
     border: none;
     border-left: 1px solid $medium;
+    font-size: 42px;
+    font-weight: 300;
+    width: 63px;
+    margin-top: -22px;
+    color: $medium;
   }
   .add {
     @extend .subtract;
+    color: $dark;
   }
 }
 .instruction-side{

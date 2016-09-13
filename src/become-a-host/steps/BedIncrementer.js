@@ -9,9 +9,9 @@ export default React.createClass({
   },
   render: function() {
     return (
-    	<div style={{width: "150px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+    	<div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
       	<div style={{display: "flex", flexDirection: "row"}}>
-      	<Counter style={{margin: "30px 0px 0px 15px"}} ref="counter" />
+      	<Counter ref="counter" />
         <div className="increment-label">beds</div>
         </div>
       	<Logic decrement={this.decrement} increment={this.increment} />
