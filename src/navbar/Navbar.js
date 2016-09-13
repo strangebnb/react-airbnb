@@ -54,7 +54,7 @@ var Navbar = React.createClass({
           <a id="contact" className="menu-item" href="/signup">Sign Up</a>
           <a id="login" className="menu-item" href="/login">Login</a>
         </Menu>
-        <a href="/" className="header_logo"><img className="air-logo" src="./assets/images/airbnb.png" /></a>
+        <a href="/" className="header_logo"><img className="air-logo" src="/assets/images/airbnb.png" /></a>
             <div className="menu">
               <Link to="/host"><span className="become-a-host">Become a Host</span></Link>
               <a href="/help" className="left-border-menu">Help</a>

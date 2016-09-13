@@ -39,10 +39,11 @@ class SearchBar extends React.Component {
       searchVal: this.state.searchVal,
       startDate: this.state.startDate.format('MM/DD/YYYY'),
       endDate: this.state.endDate.format('MM/DD/YYYY'),
-      numGuests: this.state.numGuests
+      numGuests: this.state.numGuests,
+      room_types: [],
     }).then(response =>{
       console.log('response from server: ', response)
-      window.location.href = 'http://localhost:3000/searchResults.html';
+      window.location.href = 'http://localhost:3000/search-results';
     })
 
     e.preventDefault();

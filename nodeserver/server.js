@@ -8,7 +8,8 @@ import path from 'path';
 import Auth0Strategy from 'passport-auth0';
 import AWS from 'aws-sdk';
 import request from 'request';
-import axios from 'axios';
+import moment from 'moment'
+
 var inspect = require('eyespect').inspector();
 var airbnb = require('airapi');
 
@@ -67,25 +68,12 @@ var strategy = new Auth0Strategy({
 
 passport.use(strategy);
 
-
 passport.serializeUser(function(user, done) {
     done(null, user);
 });
 
 passport.deserializeUser(function(user, done) {
     done(null, user);
-});
-
-app.get('/host', function(request, response) {
-    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
-});
-
-app.get('/room', function(request, response) {
-    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
-});
-
-app.get('/profile', function(request, response) {
-    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
 });
 
 app.get('/login',
@@ -105,8 +93,6 @@ app.get('/callback',
     }
 );
 
-
-
 app.get('/getData', (req, res, next) => {
     if (req.session.searchResults) {
         res.json(req.session.searchResults);
@@ -117,33 +103,43 @@ app.get('/getData', (req, res, next) => {
           checkout: '10/31/2016',
           guests: 2,
           page: 2,
-          ib: true
       }).then(function(searchResults) {
 
+        searchResults.location = 'Manila'
+        searchResults.startDate = '10/24/2016'
+        searchResults.endDate = '10/31/2016'
+        searchResults.numGuests = 1
+        searchResults.minPrice =
+        searchResults.maxPrice =
         res.json(searchResults);
       });
     }
 });
 
-
 app.post('/search', (req, res, next) => {
-    console.log('hit')
+
     airbnb.search({
         location: req.body.searchVal,
         checkin: req.body.startDate,
         checkout: req.body.endDate,
         guests: req.body.numGuests,
-        page: 2,
-        ib: true
+        page: Math.round(Math.random()*10),
+        room_types: req.body.room_types,
+        price_min: req.body.price_min,
+        price_max: req.body.price_max
     }).then(function(searchResults) {
+        console.log('max price total: ', searchResults.max_price_total)
+        console.log('min price total: ', searchResults.min_price_total)
+        searchResults.location = req.body.searchVal
+        searchResults.startDate = req.body.startDate
+        searchResults.endDate = req.body.endDate
+        searchResults.numGuests = req.body.numGuests
 
         req.session.searchResults = searchResults;
-        console.log(req.session.searchResults);
+
         res.json(req.session.searchResults);
     });
 })
-
-
 
 app.post('/postImage', function(req, res, next) {
     console.log('hi');
@@ -167,12 +163,6 @@ app.post('/postImage', function(req, res, next) {
         res.status(200).json(data);
     })
 })
-
-
-
-
-
-
 
 app.post('/sendMessage', (req, res, next) => {
   var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
@@ -205,10 +195,9 @@ request(options, function(err, res, body) {
 })
 })
 
-
-
-
-
+app.get('*', function(request, response) {
+    response.sendFile(path.resolve(__dirname, '../public', 'index.html'))
+});
 
 http.listen(3000, function() {
     console.log('Hosting port: ', 3000);
