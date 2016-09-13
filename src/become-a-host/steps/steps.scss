@@ -4,14 +4,16 @@ $dark: #A2A2A2;
 $darkest: #4B4B4B;
 
 
-.main-container {
+.room-parent-container {
   margin-top: 67px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   color: #4B4B4B;
   width: 100vw;
+  height: 100vh;
 }
 .progress-bar-container {
   height: 40px;
+  width: 100vw;
 }
 .progress-items {
   visibility: hidden;
@@ -48,14 +50,13 @@ $darkest: #4B4B4B;
 }
 .form-side {
   width: 100%;
-  height: 84vh;
+  height: 100vh;
   background-color: white;
   display: flex;
-  justify-content: flex-end;
 }
 .form-container {
   width: 484px;
-  margin: 50px 20px 0 0;
+  margin: 0 0 0 0;
   .form-title-large {
     color: $darkest;
     font-size: 24px;
@@ -72,26 +73,13 @@ $darkest: #4B4B4B;
   border: 1px solid $medium;
   border-radius: 4px;
   margin-bottom: 30px;
-  .lineItem {
+  display: flex;
+  flex-direction: row;
+  .placetype-icon {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 1px solid $medium;
-    height: 65px;
-    padding: 20px;
-    padding-right: 15px;
-  }
-  .checkboxIcon {
-    color: $medium;
-    // padding-right: 20px;
-    height: 40px;
-    width: 40px;
-    height: 65px;
-    padding: 20px;
-    padding-right: 15px;
-  }
-  .button {
-    width: 250px;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 50px;
   }
 }
 .drop-down-menu {
@@ -113,11 +101,28 @@ $darkest: #4B4B4B;
     margin-top: 20px;
   }
 }
+.incrementer {
+  @extend .drop-down-menu;
+  .increment-label {
+    margin: 30px 0 0 5px;
+    color: $dark;
+  }
+  .increment-number {
+    margin: 30px 0 0 15px;
+    color: $dark;
+  }
+  .subtract {
+    background: none;
+    border: none;
+    border-left: 1px solid $medium;
+  }
+  .add {
+    @extend .subtract;
+  }
+}
 .instruction-side{
-  visibility: hidden;
-  width: 44%;
-  height: 85vh;
-  background-color: #FAFAFA;
+  display: none;
+
 }
 .note-container {
   height: auto;
@@ -129,7 +134,7 @@ $darkest: #4B4B4B;
   border-radius: 3px;
   .note {
     width: 254px;
-    height: 270px;
+    // height: 270px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -147,12 +152,19 @@ $darkest: #4B4B4B;
   }
 }
 
-@media (min-width: 744px) {
+@media (min-width: 797px) {
   .instruction-side {
-    visibility: visible;
+    display: block;
+    width: 44%;
+    height: 100vh;
+    background-color: #FAFAFA;
   }
   .form-side {
     width: 56%;
+    justify-content: flex-end;
+  }
+  .form-container {
+    margin: 50px 20px 0 0;
   }
   .progress-items {
     visibility: visible;

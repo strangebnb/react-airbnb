@@ -39,6 +39,22 @@ const styles = {
     marginBottom: "1vh",
     borderRadius: "3px",
   },
+  radio: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "270px",
+    borderBottom: "1px solid #E6E6E6",
+    height: "65px",
+    padding: "20px 5px",
+    paddingRight: "15px",
+  },
+  placetypeIcon: {
+    color: "#E6E6E6",
+    borderBottom: "1px solid #E6E6E6",
+    height: "65px",
+    padding: "10px ",
+    width: '48px'
+  }
 };
 
 export default React.createClass({
@@ -59,7 +75,7 @@ handleClick(){
 },
 render(){
   return(
-      <div className="main-container">
+      <div className="room-parent-container">
             <div className="progress-bar-container">
               <div className="progress-items">
                   <div>
@@ -90,36 +106,35 @@ render(){
                 <div className="form-container">
                   <div>
                     <div className="form-title-large">What kind of place are you listing?</div>
-
                     <div className="button-container">
-
-                    <MuiThemeProvider>
-
-                      <div>
-                      <RadioButtonGroup name="shipSpeed" defaultSelected="not_light" onChange={this.handleClick}>
-                         <RadioButton
-                           value="light"
-                           label="Simple"
-
-
-                         />
-                         <RadioButton
-                           value="not_light"
-                           label="Selected by default"
-
-                         />
-                         <RadioButton
-                           value="ludicrous"
-                           label="Custom icon"
-                           checkedIcon={<SelectedCircle />}
-                           uncheckedIcon={<OpenCircle />}
-
-                         />
-                       </RadioButtonGroup>
+                      <MuiThemeProvider>
+                        <div className="placetype-icon">
+                          <Home style={styles.placetypeIcon}/>
+                          <Hotel style={styles.placetypeIcon}/>
+                          <Seat style={styles.placetypeIcon}/>
+                        </div>
+                        </MuiThemeProvider>
+                        <div>
+                        <MuiThemeProvider>
+                        <RadioButtonGroup labelPosition="left" name="shipSpeed" onChange={this.handleClick}>
+                           <RadioButton
+                             value="light"
+                             label="Entire place"
+                             style={styles.radio}
+                            />
+                           <RadioButton
+                             value="not_light"
+                             label="Private room"
+                             style={styles.radio}
+                           />
+                           <RadioButton
+                             value="ludicrous"
+                             label="Shared room"
+                             style={styles.radio}
+                           />
+                         </RadioButtonGroup>
+                         </MuiThemeProvider>
                       </div>
-
-                      </MuiThemeProvider>
-
                     </div>
                     <div>
                       <div className="form-title-medium">What type of property is this?</div>
@@ -174,10 +189,10 @@ render(){
                           <div>
                             <RaisedButton
                             label="Next"
-                            labelStyle={{textTransform: "none", color: "white"}}
+                            labelStyle={{textTransform: "none", color: "white", position: "absolute", bottom: 12, right: 61}}
                             backgroundColor="#EF5350"
                             disabledBackgroundColor="#FFCDD2"
-                            style={{width: "180px", height: '45px'}}
+                            style={{width: "180px", height: '45px', positive: "relative"}}
                             disabled={this.state.enabler}
                             />
                           </div>

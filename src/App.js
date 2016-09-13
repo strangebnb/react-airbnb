@@ -37,16 +37,13 @@ ReactDOM.render((
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Home} />
-			<Route path="/room" component={Room} />
-			<Route path="/host" component={BecomeAHost}>
-				<Route path="/host/room" component={Room} >
-					<Route path="/host/bedrooms" component={Bedrooms} />
-					<Route path="/host/bathrooms" component={Bathrooms} />
-					<Route path="/host/location" component={Location} />
-					<Route path="/host/amenities" component={Amenities} />
-					<Route path="/host/spaces" component={Spaces} />
-				</Route>
-			</Route>
+			<Route path="/host" component={BecomeAHost}/>
+				<Route path="/host/room" component={Room} />
+				<Route path="/host/bedrooms" component={Bedrooms} />
+				<Route path="/host/bathrooms" component={Bathrooms} />
+				<Route path="/host/location" component={Location} />
+				<Route path="/host/amenities" component={Amenities} />
+				<Route path="/host/spaces" component={Spaces} />
 			<Route path="/profile/:id" component={Profile} />
 			<Route path="/search-results" component={SearchResults} />
 
