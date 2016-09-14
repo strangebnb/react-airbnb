@@ -50,12 +50,13 @@ $darkest: #4B4B4B;
 }
 .form-side {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: white;
   display: flex;
 }
 .form-container {
   width: 484px;
+  height: 550px;
   margin: 0 0 0 0;
   .form-title-large {
     color: $darkest;
