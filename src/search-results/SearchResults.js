@@ -166,7 +166,7 @@ if(this.state.picture_urls.length != 0){
          <div className = 'cards-container'>
            <div className = 'date-panel'>
              <span className='dates-panel-label'>Dates</span>
-             <DateRangePickerGmapPage values={this.props.values} roomTypeSelected = {this.props.roomTypeSelected} location = {this.state.location} renderMap = {this.renderMap.bind(this)} className = 'date-picker'/>
+             <div className = 'date-picker-container'><DateRangePickerGmapPage values={this.props.values} roomTypeSelected = {this.props.roomTypeSelected} location = {this.state.location} renderMap = {this.renderMap.bind(this)} className = 'date-picker'/></div>
            </div>
            <div className = 'room-panel'>
              <span className='room-types-header'>Room Types</span>
@@ -177,6 +177,7 @@ if(this.state.picture_urls.length != 0){
              </div>
            </div>
            <div className ='rheostat-container'>
+             <span className='room-types-header'>Room Types</span>
              <Rheostat progressBar={ProgressBar} min={this.state.sliderMin} max={this.state.sliderMax} onValuesUpdated={this.updateValue} values={this.state.values} className = 'rheostat' />
              <ul className='tempVals'>
                {this.state.values.map((value, i) => (
@@ -257,16 +258,19 @@ if(this.state.picture_urls.length != 0){
        )
      }
 
-     createMarker = (lat, lng, price, name, pic, id) => {
+     createMarker = (lat, lng, price, name, pic, id, room_type, infowindow) => {
 
        var position = new google.maps.LatLng(
        lat, lng
        );
 
-       let contentString = `<img src='${pic}'/><h6>${name}</h6><p>${id}</p>`
-       var infowindow = new google.maps.InfoWindow({
-         content: contentString
-       })
+       let contentString = `<div class='img-container-gmap'>
+       <img class='slider-img-gmap' src='${pic}'/></div>
+       <div class='price-inside-img-gmap'>${price}</div>
+       <div class='panel-card-section-gmap '>
+         <p class='img-title-gmap'>${name}</p>
+         <p class='room-type-card-section-gmap'>${room_type}</p>
+       </div>`
 
        var marker = new Marker({
          position: position,
@@ -281,13 +285,12 @@ if(this.state.picture_urls.length != 0){
        })
 
        google.maps.event.addListener(marker, 'click', () => {
-          console.log('this.infowindow: ',  infowindow);
+          infowindow.setContent(contentString);
           infowindow.open(this.map, marker);
         });
 
-        google.maps.event.addListener(marker, 'dblclick', () => {
-          console.log('dblclick');
-            infowindow.close(this.map, marker);
+        google.maps.event.addListener(this.map, "click", () => {
+          infowindow.close();
         });
 
        return marker
@@ -319,12 +322,14 @@ if(this.state.picture_urls.length != 0){
          let price_array = [];
          let room_type_array = [];
 
+         var infowindow = new google.maps.InfoWindow()
+
          for (let i = 0; i < listingsArray.length; i++) {
 
            const lat = listingsArray[i].listing.lat
            const lng = listingsArray[i].listing.lng
 
-           this.marker = this.createMarker(lat, lng, listingsArray[i].pricing_quote.rate.amount, listingsArray[i].listing.name, listingsArray[i].listing.picture_url, listingsArray[i].listing.id)
+           this.marker = this.createMarker(lat, lng, listingsArray[i].pricing_quote.rate.amount, listingsArray[i].listing.name, listingsArray[i].listing.picture_url, listingsArray[i].listing.id, listingsArray[i].listing.room_type, infowindow)
 
            var myLatLng = new google.maps.LatLng(lat, lng);
            this.latlngbounds.extend(myLatLng);

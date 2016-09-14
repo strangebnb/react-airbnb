@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   list-style-type: none;
+  margin-bottom: 3px;
 }
 
 .val {
@@ -12,13 +13,13 @@
 
 .container-search {
     width: 100%;
-    height: 90vh;
+    // height: 60vh;
     position: absolute;
     padding-top: 55px;
 }
 
 .GMap-canvas {
-    top: 20px;
+    top: 15px;
     display: block;
     width: 41%;
     height: 90vh;
@@ -98,6 +99,13 @@
 //Section Searchbox
 .date-picker{
   width: 70%;
+}
+
+.date-picker-container {
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  transform: (translate(-50%, -50%));
 }
 
 .SearchBar {
@@ -268,13 +276,16 @@ input[type='checkbox']:checked:before {
 }
 
 .room-type-icon {
-  margin: 0;
+  margin: 7px 0 0 7px;
   padding: 0 0 0 5px;
+  height: auto;
   width: auto;
+  max-width: 27px;
+  max-height: 27px;
 }
 
 .rheostat-container {
-  margin-top: 15px;
+  margin-top: 5px;
   width: 100%;
 }
 
@@ -365,7 +376,7 @@ input[type='checkbox']:checked:before {
   justify-content: center;
   // border: 1px dotted teal;
   width: 100%;
-  height: 700px;
+  height: 65vh;
   background: #F5F5F5;
   padding-top: 30px;
   overflow: scroll;
@@ -436,4 +447,68 @@ input[type='checkbox']:checked:before {
   right: 15px;
   top: 70px;
   text-shadow: 1px 1px #dddddd;
+}
+
+.img-container-gmap {
+  width: 200px;
+  height: 105px;
+  overflow: hidden;
+  // border: 1px dotted blue;
+}
+
+.price-inside-img-gmap {
+  position: absolute;
+  color: white;
+  font-size: 10px;
+  font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+  position: absolute;
+  top: 65px;
+  background: rgba(45,45,45,0.9);
+  padding: 7px 15px 7px 15px;
+}
+
+.slider-img-gmap {
+  width: 100%;
+  margin: 0 auto
+}
+
+.gm-style-iw + div {
+  display: none;
+}
+
+.gm-style-iw {
+  // border: 1px dotted pink;
+  padding-left:10px;
+  margin: 0;
+}
+
+.panel-card-section-gmap {
+  padding: 6px 7px 0px 7px;
+  // border: 1px dotted teal;
+  width:200px;
+}
+
+.img-title-gmap {
+  font-size: 13px;
+  line-height: 1;
+  font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+  box-sizing: border-box;
+  color: #525252;
+  margin: 0;
+  -webkit-margin-before: 0em;
+-webkit-margin-after: 0em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+}
+
+.room-type-card-section-gmap {
+  color: #9d9d9d;
+  font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  margin-top: 7px;
+  margin-bottom: 0px;
+  -webkit-margin-before: 0em;
+-webkit-margin-after: 0em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
 }
