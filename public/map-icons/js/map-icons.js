@@ -103,31 +103,32 @@ MarkerLabel.prototype.draw = function() {
 	div.style.display = 'block';
 	div.style.left = (position.x - (div.offsetWidth / 2)) + 'px';
 	div.style.top = (position.y - div.offsetHeight-14) + 'px';
-	// div.style.background = "URL('assets/map-icons/price-icon.png')";
-	div.style.padding = '5px'
+	div.style.padding = '5px';
+	div.style.textAlign = 'center';
 
 	var img = document.createElement('img');
 
 	img.src = this.image_;
 			img.style.zIndex = '0';
-		 img.style.width = '135%';
+		 img.style.width = '60px';
 		 img.style.position = 'absolute';
 		//  img.style.height = '100%';
-		 img.style.top = '1px'
-		 img.style.left = '-11px';
+		 img.style.top = '-6px'
+		 img.style.left = '-19px';
 		 img.src = "map-icons/price-icon.png";
 		 div.appendChild(img)
 
 	var p = document.createElement('p');
 
 	p.innerHTML = this.text
-
-	div.appendChild(p);
 	p.style.zIndex = '0';
  	p.style.width = '100%';
  	p.style.position = 'absolute';
 //  img.style.height = '100%';
- 	p.style.top = '0px'
- 	p.style.left = '-1px';
+ 	p.style.top = '11.5px'
+ 	p.style.left = '-5px';
+	p.style.padding = 0;
+	p.style.margin = 0;
+	div.appendChild(p);
 
 };
