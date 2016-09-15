@@ -5,22 +5,12 @@ $darkest: #4B4B4B;
 
 
 .room-parent-container {
-  margin-top: 67px;
   font-family: 'Roboto';
   color: #4B4B4B;
-  width: 100vw;
-  height: 100vh;
-}
-.progress-bar-container {
-  height: 40px;
-  width: 100vw;
-}
-.progress-items {
-  visibility: hidden;
 }
 .active-tab {
   padding: 12px 14px;
-  font-size: 16px;
+  font-size: 15px;
   width: 16.666666666666668%;
   max-width: 100%;
   background-color: #E6E6E6;
@@ -31,7 +21,7 @@ $darkest: #4B4B4B;
 }
 .inactive-tab {
   padding: 12px 14px;
-  font-size: 16px;
+  font-size: 15px;
   width: 16.666666666666668%;
   max-width: 100%;
   background-color: #FAFAFA;
@@ -45,18 +35,14 @@ $darkest: #4B4B4B;
 }
 .content {
   margin-top: 15px;
-  display: flex;
-  flex-direction: row;
 }
 .form-side {
-  width: 100%;
-  height: 90vh;
   background-color: white;
-  display: flex;
+  margin-top: 15px;
 }
 .form-container {
-  width: 484px;
-  height: 550px;
+  float: none;
+  padding: 50px;
   margin: 0 0 0 0;
   .form-title-large {
     color: $darkest;
@@ -96,9 +82,6 @@ $darkest: #4B4B4B;
   border-top: 1px solid $medium;
   margin-top: 100px;
   .back-next {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     margin-top: 20px;
   }
 }
@@ -137,25 +120,14 @@ $darkest: #4B4B4B;
 	display: inline-block;
 	position: relative;
 }
-.instruction-side{
-  display: none;
-
-}
 .note-container {
-  height: auto;
-  width: 320px;
+  max-width: 306px;
   padding: 26px;
   margin: 50px 0 0 26px;
   background-color: white;
   border: 1px solid $medium;
   border-radius: 3px;
-  .note {
-    width: 254px;
-    // height: 270px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+
   .note-title {
     color: $darkest;
   }
@@ -171,19 +143,9 @@ $darkest: #4B4B4B;
 
 @media (min-width: 797px) {
   .instruction-side {
-    display: block;
-    width: 44%;
-    height: 90vh;
-    background-color: #FAFAFA;
-  }
-  .form-side {
-    width: 56%;
-    justify-content: flex-end;
+    margin-top: 5px;
   }
   .form-container {
-    margin: 50px 20px 0 0;
-  }
-  .progress-items {
-    visibility: visible;
+    float: right;
   }
 }
