@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -74,22 +75,34 @@ render(){
             <div className="progress-bar-container">
               <div className="progress-items">
                   <div>
+                    <Link to='/host/room'>
                     <div className= "inactive-tab">Place type</div>
+                    </Link>
                   </div>
                   <div>
+                    <Link to='/host/bedrooms'>
                     <div className= "inactive-tab">Bedrooms</div>
+                    </Link>
                   </div>
                   <div>
+                    <Link to='/host/bathrooms'>
                     <div className= "active-tab">Baths</div>
+                    </Link>
                   </div>
                   <div>
+                    <Link to='/host/location'>
                     <div className= "inactive-tab">Location</div>
+                    </Link>
                   </div>
                   <div>
+                    <Link to='/host/amenities'>
                     <div className= "inactive-tab">Amenities</div>
+                    </Link>
                   </div>
                   <div>
+                    <Link to='/host/spaces'>
                     <div className= "inactive-tab">Shared spaces</div>
+                    </Link>
                   </div>
               </div>
               <div className="progress-bar">

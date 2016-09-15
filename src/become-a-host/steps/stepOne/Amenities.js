@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Checkbox from 'material-ui/Checkbox';
 import FlatButton from 'material-ui/FlatButton';
@@ -44,22 +45,34 @@ render(){
             <div className="progress-bar-container">
               <div className="progress-items">
                   <div>
+                    <Link to='/host/room'>
                     <div className= "inactive-tab">Place type</div>
+                    </Link>
                   </div>
                   <div>
+                    <Link to='/host/bedrooms'>
                     <div className= "inactive-tab">Bedrooms</div>
+                    </Link>
                   </div>
                   <div>
+                    <Link to='/host/bathrooms'>
                     <div className= "inactive-tab">Baths</div>
+                    </Link>
                   </div>
                   <div>
+                    <Link to='/host/location'>
                     <div className= "inactive-tab">Location</div>
+                    </Link>
                   </div>
                   <div>
+                    <Link to='/host/amenities'>
                     <div className= "active-tab">Amenities</div>
+                    </Link>
                   </div>
                   <div>
+                    <Link to='/host/spaces'>
                     <div className= "inactive-tab">Shared spaces</div>
+                    </Link>
                   </div>
               </div>
               <div className="progress-bar">
@@ -69,10 +82,10 @@ render(){
             <div className="content">
               <div className="form-side">
                 <div className="form-container">
-                  <div style={{height: 500, overflow: "scroll"}}>
+                  <div >
                     <div className="form-title-large">What amenitites do you offer?</div>
                       <MuiThemeProvider>
-                      <div>
+                      <div style={{height: 400, overflow: "scroll"}}>
                       <Checkbox
                          label="Essentials"
                          labelStyle={{color: '#4B4B4B'}}
@@ -138,43 +151,43 @@ render(){
                          labelStyle={{color: '#4B4B4B'}}
                          style={styles.box}
                       />
-                      <div style={{marginTop: '60px'}}>Safety Amenities</div>
+                      <div style={{}}>Safety Amenities</div>
                       <Checkbox
                          label="Smoke detector"
                          labelStyle={{color: '#4B4B4B'}}
-                         style={{width: '250px'}}
+                         style={styles.box}
                       />
                       <Checkbox
                          label="Carbon monoxide detector"
                          labelStyle={{color: '#4B4B4B'}}
-                         style={{width: '250px'}}
+                         style={styles.box}
                       />
                       <Checkbox
                          label="First aid kit"
                          labelStyle={{color: '#4B4B4B'}}
-                         style={{width: '250px'}}
+                         style={styles.box}
                       />
                       <Checkbox
                          label="Safety card"
                          labelStyle={{color: '#4B4B4B'}}
-                         style={{width: '250px'}}
+                         style={styles.box}
                       />
                       <Checkbox
                          label="Fire extinguisher"
                          labelStyle={{color: '#4B4B4B'}}
-                         style={{width: '250px'}}
+                         style={styles.box}
                       />
                       <Checkbox
                          label="Lock on bedroom door"
                          labelStyle={{color: '#4B4B4B'}}
-                         style={{width: '250px'}}
+                         style={styles.box}
                       />
                       </div>
                       </MuiThemeProvider>
                     <div>
 
                     </div>
-                    <div className="step-nav">
+                    <div className="step-nav" style={{marginTop: 0}}>
                       <MuiThemeProvider>
                         <div className="back-next">
                           <div>
