@@ -150,27 +150,49 @@ class Rooms extends Component {
                         <FlatButton style={{position: "absolute", top: "345px", right: '20px', backgroundColor:'white', float: 'right'}} label="View Photos"  labelStyle={{textTransform: "none", color:'#484848', margin: "0 10px"}}  />
                 </MuiThemeProvider>
             </div>
-            <img style={{borderRadius: '100%', height: '75px', width: '75px'}}src={this.state.listing.hosts[0].picture_url} />
-            <h3>{this.state.listing.name}</h3>
-            <span>{this.state.listing.city}, {this.state.listing.state}, {this.state.listing.country}</span>
-            <span>
-              <div>{this.state.listing.room_type}</div>
-              {(this.state.listing.person_capacity === 1)
-                ? <div>{this.state.listing.person_capacity} guest</div>
-                : <div>{this.state.listing.person_capacity} guests</div>
-              }
-              {(this.state.listing.bedrooms === 1)
-                ? <div>{this.state.listing.bedrooms} bedroom</div>
-              : <div>{this.state.listing.bedrooms} bedrooms</div>
-              }
-              {(this.state.listing.beds === 1)
-              ? <div>{this.state.listing.beds} bed</div>
-              : <div>{this.state.listing.beds} beds</div>
-              }
-            </span>
-            <br/>
+            <div className="row">
+              <div className="col-xs-offset-4 col-sm-3-offset-2">
+                <img  style={{borderRadius: '100%', height: '75px', width: '75px'}}src={this.state.listing.hosts[0].picture_url} />
+              </div>
+
+              <h3>{this.state.listing.name}</h3>
+              <span>{this.state.listing.city}, {this.state.listing.state}, {this.state.listing.country}</span>
+              <span>
+                <div>{this.state.listing.room_type}</div>
+                {(this.state.listing.person_capacity === 1)
+                  ? <div>{this.state.listing.person_capacity} guest</div>
+                  : <div>{this.state.listing.person_capacity} guests</div>
+                }
+                {(this.state.listing.bedrooms === 1)
+                  ? <div>{this.state.listing.bedrooms} bedroom</div>
+                : <div>{this.state.listing.bedrooms} bedrooms</div>
+                }
+                {(this.state.listing.beds === 1)
+                ? <div>{this.state.listing.beds} bed</div>
+                : <div>{this.state.listing.beds} beds</div>
+                }
+              </span>
+            </div>
             <div>About this listing</div>
             <div>{this.state.listing.summary}</div>
+            <div style={{color: "#ff6166"}}>Contact Host</div>
+            <br/>
+            <div>The Space</div>
+            <div>Accommodates: {this.state.listing.person_capacity}</div>
+            <div>Bathrooms: {this.state.listing.bathrooms}</div>
+            <div>Bedrooms: {this.state.listing.bedrooms}</div>
+            <div>Beds: {this.state.listing.beds}</div>
+            {(this.state.listing.check_in_time > 12)
+              ? <div>Check In: Anytime after {this.state.listing.check_in_time-12}PM</div>
+              : <div>Check In: anytime after {this.state.listing.check_in_time}AM</div>
+            }
+            {(this.state.listing.check_out_time > 12)
+              ? <div>Check Out:{this.state.listing.check_out_time-12}PM</div>
+            : <div>Check Out:{this.state.listing.check_out_time}AM</div>
+            }
+            <div>Property type: {this.state.listing.property_type}</div>
+            <div>Room type: {this.state.listing.room_type}</div>
+            <br/>
           </div>
         );
     }
