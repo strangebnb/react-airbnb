@@ -38,11 +38,20 @@ $darkest: #4B4B4B;
 }
 .form-side {
   background-color: white;
-  margin-top: 15px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 90px;
+}
+
+.instruction-side {
+  position: fixed;
+  right: 0;
+  top: 130px;
 }
 .form-container {
   float: none;
-  padding: 50px;
+  padding: 20px;
   margin: 0 0 0 0;
   .form-title-large {
     color: $darkest;
@@ -77,10 +86,11 @@ $darkest: #4B4B4B;
   margin-top: 4px;
 }
 .step-nav {
-  height: 100px;
-  width: 100%;
+  position: fixed;
+    z-index: 111;
+    left: 0px;
+    bottom: 0px;
   border-top: 1px solid $medium;
-  margin-top: 100px;
   .back-next {
     margin-top: 20px;
   }
@@ -132,11 +142,23 @@ $darkest: #4B4B4B;
   }
 }
 
-@media (min-width: 797px) {
+.next-btn {
+  text-align: right;
+}
+
+.back-btn {
+
+}
+
+@media (min-width: 768px) {
   .instruction-side {
     margin-top: 5px;
   }
   .form-container {
     float: right;
+    margin-top: 30px;
+  }
+  .form-side {
+      top: 140px;
   }
 }
