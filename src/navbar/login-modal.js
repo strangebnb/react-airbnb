@@ -8,10 +8,24 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
 
-
 const style = {
   marginLeft: 20,
+  width: '330px'
 };
+
+const customContentStyle = {
+  width: '400px',
+  maxWidth: 'none',
+};
+
+const pink = {
+  color: '#FF5E63',
+  borderColor: '#FF5E63'
+}
+
+const grey = {
+  color: '#EDEFED',
+}
 
 export default class DialogExampleSimple extends React.Component {
   constructor(props){
@@ -79,6 +93,7 @@ export default class DialogExampleSimple extends React.Component {
         label="Cancel"
         primary={true}
         onTouchTap={this.handleClose}
+        labelStyle={pink}
       />,
       <FlatButton
         label="Submit"
@@ -86,13 +101,33 @@ export default class DialogExampleSimple extends React.Component {
         keyboardFocused={true}
         onTouchTap={this.handleClose}
         onClick={this.submitLogin}
+        labelStyle={pink}
       />,
     ];
 
     const form = <Paper zDepth={2}>
-      <TextField onChange={this.onEmail} hintText="Email" style={style} underlineShow={false} onKeyDown={this.submitLogin} />
+      <TextField onChange={this.onEmail}
+        // hintText="Email"
+        style={style}
+        underlineShow={true}
+        onKeyDown={this.submitLogin}
+        underlineFocusStyle={pink}
+        floatingLabelText="Email"
+        floatingLabelStyle={pink}
+        floatingLabelFocusStyle={grey}
+      />
       <Divider />
-      <TextField onChange={this.onPassword} type='password' hintText="Password" style={style} underlineShow={false} onKeyDown={this.submitLogin} />
+      <TextField onChange={this.onPassword}
+        type='password'
+        // hintText="Password"
+        style={style}
+        underlineShow={true}
+        onKeyDown={this.submitLogin}
+        underlineFocusStyle={pink}
+        floatingLabelText="Password"
+        floatingLabelStyle={pink}
+        floatingLabelFocusStyle={grey}
+      />
       <Divider />
     </Paper>
 
@@ -106,6 +141,7 @@ export default class DialogExampleSimple extends React.Component {
             modal={false}
             open={this.state.open}
             onRequestClose={this.handleClose} onSubmit={this.submitLogin}
+            contentStyle={customContentStyle}
           >
             {form}
           </Dialog>

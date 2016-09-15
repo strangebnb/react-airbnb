@@ -266,7 +266,7 @@ if(this.state.picture_urls.length != 0){
 
        let contentString = `<div class='img-container-gmap'>
        <img class='slider-img-gmap' src='${pic}'/></div>
-       <div class='price-inside-img-gmap'>${price}</div>
+       <div class='price-inside-img-gmap'>$${price}</div>
        <div class='panel-card-section-gmap '>
          <p class='img-title-gmap'>${name}</p>
          <p class='room-type-card-section-gmap'>${room_type}</p>
@@ -297,8 +297,6 @@ if(this.state.picture_urls.length != 0){
      }
 
      renderMap = (arr, priceRange = [null,null]) => {
-
-       console.log(arr);
 
        axios.post('/search',{
          searchVal: this.state.location,
