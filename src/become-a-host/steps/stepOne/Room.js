@@ -77,7 +77,7 @@ render(){
   return(
       <div className="room-parent-container">
             <div className="progress-bar-container">
-              <div className="progress-items">
+              <div className="progress-items hidden-xs">
                   <div>
                     <div className= "active-tab">Place type</div>
                   </div>
@@ -101,8 +101,8 @@ render(){
 
               </div>
             </div>
-            <div className="content">
-              <div className="form-side">
+            <div className="content row">
+              <div className="form-side col-md-8 col-sm-7 col-xs-12">
                 <div className="form-container">
                   <div>
                     <div className="form-title-large">What kind of place are you listing?</div>
@@ -203,7 +203,7 @@ render(){
                 </div>
               </div>
 
-              <div className="instruction-side">
+              <div className="instruction-side col-md-4 col-sm-5 hidden-xs">
                 <div className="note-container">
                     <MuiThemeProvider>
                       <Lightbulb style={{ color: "#40BDB6", height: "30px", width: "30px", marginBottom: "18px" }}/>
