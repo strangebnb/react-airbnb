@@ -9,3 +9,5 @@ nodeserver/AWS/config.json
 public/bundle
 public/assets
 misc
+
+legacy.js

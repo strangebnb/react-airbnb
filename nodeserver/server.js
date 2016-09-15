@@ -5,7 +5,6 @@ import session from 'express-session';
 import passport from 'passport';
 import massive from 'massive';
 import path from 'path';
-import Auth0Strategy from 'passport-auth0';
 import AWS from 'aws-sdk';
 import request from 'request';
 import moment from 'moment'
@@ -51,23 +50,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-var strategy = new Auth0Strategy({
-        domain: serverConfig.authDomain, //authO config begin
-        clientID: serverConfig.authId,
-        clientSecret: serverConfig.authSecret,
-        callbackURL: '/callback'
-    },
-    function(accessToken, refreshToken, extraParams, profile, done) {
-        console.log('accessToken: ', accessToken);
-        console.log('refreshToken: ', refreshToken);
-        console.log('extraParams: ', extraParams);
-        console.log('profile: ', profile);
-        return done(null, profile);
-    }
-);
-
-passport.use(strategy);
-
 passport.serializeUser(function(user, done) {
     done(null, user);
 });
@@ -76,22 +58,32 @@ passport.deserializeUser(function(user, done) {
     done(null, user);
 });
 
-app.get('/login',
-  passport.authenticate('auth0', {}), function (req, res) {
-  res.redirect("/");
-});
-
-app.get('/callback',
-    passport.authenticate('auth0', {
-        failureRedirect: '/login'
-    }),
-    function(req, res) {
-        if (!req.user) {
-            throw new Error('user null');
-        }
-        res.redirect("/");
-    }
-);
+app.post('/login', (req, res, next) => {
+  console.log('airbnbing', req.body.password, ' ' , req.body.email);
+  var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
+  var data = {
+    client_id: "d306zoyjsyarp7ifhu67rjxn52tv0t20",
+    currency: 'USD',
+    grant_type: 'password',
+    locale: "en-US",
+    username: req.body.email,
+    password: req.body.password
+  };
+  var options = {
+    method: 'post',
+    url: 'https://api.airbnb.com/v1/authorize',
+    body: data,
+    json: true
+  };
+request(options, function(err, res, body) {
+  if (err) inspect(err, 'error at jsoning');
+  var headers = res.headers
+  var statusCode = res.statusCode
+  inspect(headers, 'headers')
+  inspect(statusCode, 'statusCode')
+  inspect(body, 'body')
+})
+})
 
 app.get('/getData', (req, res, next) => {
     if (req.session.searchResults) {
@@ -109,8 +101,8 @@ app.get('/getData', (req, res, next) => {
         searchResults.startDate = '10/24/2016'
         searchResults.endDate = '10/31/2016'
         searchResults.numGuests = 1
-        searchResults.minPrice =
-        searchResults.maxPrice =
+        // searchResults.minPrice =
+        // searchResults.maxPrice =
         res.json(searchResults);
       });
     }
@@ -141,32 +133,12 @@ app.post('/search', (req, res, next) => {
     });
 })
 
-app.post('/postImage', function(req, res, next) {
-    console.log('hi');
-    const buf = new Buffer(req.body.imageBody.replace(/^data:image\/\w+;base64,/, ""), 'base64');
-
-    const bucketName = 'matttran/' + req.body.userEmail; //uniqueID
-    const params = {
-        Bucket: bucketName,
-        Key: req.body.imageName,
-        Body: buf,
-        ContentType: 'image/' + req.body.imageExtension,
-        ACL: 'public-read'
-    }
-
-    s3.upload(params, function(err, data) {
-        if (err) {
-            console.log('ERROR', err);
-            return res.status(500).send(err)
-        };
-        console.log('UPLOADED:', data);
-        res.status(200).json(data);
-    })
-})
 
 app.post('/sendMessage', (req, res, next) => {
+
   // THIS NEEDS TO HAVE NEW DATA
   var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
+  
   var data = {
     listing_id: "14978040",
     number_of_guests: "1",

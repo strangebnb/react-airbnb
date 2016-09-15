@@ -6,14 +6,54 @@ import moment from 'moment'
 import Rheostat from 'rheostat'
 import _ from 'lodash'
 import Slider from 'react-slick'
-import PrevArrow from './PrevArrow'
 
 import DateRangePickerGmapPage from '../date-range-picker/DateRangePickerGmapPage.jsx';
 
 require('./searchResults.scss');
-require('./_datepicker2.scss');
+require('./date-picker-results.scss');
 
 var sliderMin = 0;
+
+class ProgressBar extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return(
+      <div className='rheostat-progress'></div>
+    )
+  }
+}
+
+class PrevArrow extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return(
+      <div {...this.props} className='prev-arrow'>
+        <i style={{color: 'white', fontSize: '40px'}} className="fa fa-chevron-left" aria-hidden="true"></i>
+      </div>
+    )
+  }
+}
+
+class NextArrow extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+
+    return(
+      <div {...this.props} className='next-arrow'>
+        <i style={{color: 'white', fontSize: '40px'}} className="fa fa-chevron-right" aria-hidden="true"></i>
+      </div>
+      )
+  }
+}
 
 export default class SearchResults extends React.Component {
 
@@ -21,7 +61,6 @@ export default class SearchResults extends React.Component {
     super(props)
 
     this.state = {
-      zoom: 12,
       iCenter: {
           lng: -90.1056957,
           lat: 29.9717272
@@ -48,6 +87,10 @@ export default class SearchResults extends React.Component {
       sliderMax: 100,
       roomTypeSelected: null,
       picture_urls: [],
+      propertyNames: [],
+      star_rating: [],
+      price_array: [],
+      room_type_array: []
   }
 
   axios.get('/getData').then(response => {
@@ -86,7 +129,8 @@ static propTypes() {
 render = () => {
 
   var settings = {
-    //  prevArrow: {PrevArrow},
+     nextArrow: <NextArrow />,
+     prevArrow: <PrevArrow />,
      arrows: true,
      infinite: true,
      slidesToShow: 1,
@@ -98,196 +142,218 @@ let arrOfSliders = [];
 
 if(this.state.picture_urls.length != 0){
   for(let i = 0; i < this.state.picture_urls.length; i++){
-   var slider = <Slider className='slider' {...settings}>
-     <div><img src={this.state.picture_urls[i][0]} ></img></div>
-     <div><img src={this.state.picture_urls[i][1]} ></img></div>
-     <div><img src={this.state.picture_urls[i][2]} ></img></div>
-     <div><img src={this.state.picture_urls[i][3]} ></img></div>
-     <div><img src={this.state.picture_urls[i][4]} ></img></div>
+   var slider = <div className='slider-container'><Slider className='slider' {...settings}>
+     <div className='img-container'><img className='slider-img' src={this.state.picture_urls[i][0]} ></img></div>
+     <div className='img-container'><img className='slider-img' src={this.state.picture_urls[i][1]} ></img></div>
+     <div className='img-container'><img className='slider-img' src={this.state.picture_urls[i][2]} ></img></div>
+     <div className='img-container'><img className='slider-img' src={this.state.picture_urls[i][3]} ></img></div>
+     <div className='img-container'><img className='slider-img' src={this.state.picture_urls[i][4]} ></img></div>
    </Slider>
-
-   arrOfSliders.push(slider);
- }
-
-
-}
-
-  const updateValues = _.debounce(this.updateValue, 200, { 'maxWait': 1000 });
-
-  return(
-    <div>
-      <Navbar/>
-      <div className = 'UpdatedText'>
-        <p>Current Zoom: {this.state.zoom} </p>
-      </div>
-      <main className = 'container-search'>
-        <div className = 'cards-container'>
-          <div className = 'date-panel'>
-            <span>Dates</span>
-            <DateRangePickerGmapPage location = {this.state.location} renderMap = {this.renderMap.bind(this)} className = 'date-picker'/> </div>
-          <div className = 'room-panel'>
-            <span> Room Types </span>
-            <div className = 'checkboxes'>
-              <label>Entire Home</label><input className='checkbox' id='entireHome' type='checkbox' name='Entire home/apt' value={this.state.entireHome} onChange={this.handleRoomTypes}/>
-              <label>Private Room</label><input className='checkbox' id='privateRoom' type='checkbox' name='Private room' value={this.state.privateRoom} onChange={this.handleRoomTypes}/>
-              <label>Shared Room</label><input className='checkbox' id='sharedRoom' type='checkbox' name='Shared room' value={this.state.sharedRoom} onChange={this.handleRoomTypes}/>
-            </div>
-          </div>
-          <div>
-            <Rheostat min={this.state.sliderMin} max={this.state.sliderMax} onValuesUpdated={updateValues} values={this.state.values} className = 'rheostat' />
-            <ol className='tempVals'>
-              <lh>Values</lh>
-              {this.state.values.map((value, i) => (
-                <li className='val' key={i}>
-                  {this.props.formatValue ? this.props.formatValue(value) : value}
-                </li>
-              ))}
-            </ol>
-          </div>
-          <div className='arrayOfSliders'>
-            {arrOfSliders.map((slider, i)=>{
-              return(
-                <div className='slider-container' key={i}>{slider}</div>
-              )
-            })}
-          </div>
-        </div>
-        <div className = 'GMap-canvas' ref = "mapCanvas" >  </div>
-      </main>
-      </div>
-      )
+     <div className='price-inside-img'>${this.state.price_array[i]}</div>
+     <div className='panel-card-section'>
+       <p className='img-title'>{this.state.propertyNames[i]}</p>
+       <p className='room-type-card-section'>{this.state.room_type_array[i]} {this.state.star_rating[i]}</p>
+     </div>
+   </div>
+     arrOfSliders.push(slider);
+     }
     }
 
-    updateValue = (sliderState) => {
-      this.setState({
-        values: sliderState.values,
-    }, this.renderMap(this.state.roomTypeSelected, this.state.values));
-  }
+     return(
+     <div>
+       <main className = 'container-search'>
+         <div className = 'cards-container'>
+           <div className = 'date-panel'>
+             <span className='dates-panel-label'>Dates</span>
+             <div className = 'date-picker-container'><DateRangePickerGmapPage values={this.props.values} roomTypeSelected = {this.props.roomTypeSelected} location = {this.state.location} renderMap = {this.renderMap.bind(this)} className = 'date-picker'/></div>
+           </div>
+           <div className = 'room-panel'>
+             <span className='room-types-header'>Room Types</span>
+             <div className = 'checkboxes'>
+               <div className='room-type-container'><img className='room-type-icon' src='./assets/icons/house.png'/><div className='room-type-checkbox-section'><label>Entire Home</label><input className='checkbox' id='entireHome' type='checkbox' name='Entire home/apt' value={this.state.entireHome} onChange={this.handleRoomTypes}/></div></div>
+               <div className='room-type-container'><img className='room-type-icon'  src='./assets/icons/door.png'/><div className='room-type-checkbox-section'><label>Private Room</label><input className='checkbox' id='privateRoom' type='checkbox' name='Private room' value={this.state.privateRoom} onChange={this.handleRoomTypes}/></div></div>
+               <div className='room-type-container'><img className='room-type-icon'  src='./assets/icons/couch.png'/><div className='room-type-checkbox-section'><label>Shared Room</label><input className='checkbox' id='sharedRoom' type='checkbox' name='Shared room' value={this.state.sharedRoom} onChange={this.handleRoomTypes}/></div></div>
+             </div>
+           </div>
+           <div className ='rheostat-container'>
+             <span className='rheostat-header'>Price Range</span>
+             <Rheostat progressBar={ProgressBar} min={this.state.sliderMin} max={this.state.sliderMax} onValuesUpdated={this.updateValue} values={this.state.values} className = 'rheostat' />
+             <ul className='tempVals'>
+               {this.state.values.map((value, i) => (
+                 <li className='val' key={i}>
+                   ${this.props.formatValue ? this.props.formatValue(value) : value}
+                 </li>
+               ))}
+             </ul>
+           </div>
+           <div className='arrayOfSliders'>
+             {arrOfSliders.map((slider, i)=>{
+               return(
+                 <div key={i}>{slider}</div>
+               )
+             })}
+           </div>
+         </div>
+         <div className = 'GMap-canvas' ref = "mapCanvas" >  </div>
+       </main>
+     </div>
+     )
+     }
 
-      handleRoomTypes = (e) => {
+     updateValue = (sliderState) => {
 
-        if (e.target.value === 'false') {
-           this.setState({[e.target.id]: true}, ()=>{
-             let arr = [this.state.entireHome, this.state.privateRoom, this.state.sharedRoom];
-             return this.renderMap(this.convertToNames(arr));
-           });
-        } else if (e.target.value === 'true') {
+      const renderMap = _.debounce(this.renderMap, 300);
 
-        this.setState({[e.target.id]: false}, ()=>{
+       this.setState({
+         values: sliderState.values,
+       }, renderMap(this.state.roomTypeSelected, this.state.values));
+     }
+
+     handleRoomTypes = (e) => {
+
+       if (e.target.value === 'false') {
+         this.setState({[e.target.id]: true}, ()=>{
            let arr = [this.state.entireHome, this.state.privateRoom, this.state.sharedRoom];
-          return this.renderMap(this.convertToNames(arr));
-        }
-        );
-      }
-    }
+           return this.renderMap(this.convertToNames(arr));
+         });
+       } else if (e.target.value === 'true') {
 
-    convertToNames = (arr) => {
-      var names = ['Entire home/apt', 'Private room', 'Shared room'];
+         this.setState({[e.target.id]: false}, ()=>{
+           let arr = [this.state.entireHome, this.state.privateRoom, this.state.sharedRoom];
+           return this.renderMap(this.convertToNames(arr));
+         }
+         );
+       }
+     }
 
-      for(let i = 0; i < arr.length; i++){
+     convertToNames = (arr) => {
+       var names = ['Entire home/apt', 'Private room', 'Shared room'];
 
-        if(arr[i] === false){
-          names.splice(i,1);
-          arr.splice(i,1);
-          i--;
-        }
-      }
+       for(let i = 0; i < arr.length; i++){
 
-      console.log('names: ', names);
-      this.setState({roomTypeSelected: names});
-      return names
-    }
+         if(arr[i] === false){
+           names.splice(i,1);
+           arr.splice(i,1);
+           i--;
+         }
+       }
 
-    componentDidUnMount() {
-      google.maps.event.clearListeners(map, 'zoom_changed')
-    }
+       this.setState({roomTypeSelected: names});
+       return names
+     }
 
-    createMap = () => {
-      let mapOptions = {
-        zoom: this.state.zoom,
-        center: this.mapCenter()
-      }
-      return new google.maps.Map(this.refs.mapCanvas, mapOptions)
-    }
+     createMap = () => {
+       let mapOptions = {
+         center: this.mapCenter()
+       }
+       return new google.maps.Map(this.refs.mapCanvas, mapOptions)
+     }
 
-    mapCenter = () => {
+     mapCenter = () => {
 
-      return new google.maps.LatLng(
-      this.state.iCenter.lat,
-      this.state.iCenter.lng
-      )
-    }
+       return new google.maps.LatLng(
+       this.state.iCenter.lat,
+       this.state.iCenter.lng
+       )
+     }
 
-    createMarker = (lat, lng, price) => {
+     createMarker = (lat, lng, price, name, pic, id, room_type, infowindow) => {
 
-      var marker = new google.maps.LatLng(
-      lat, lng
-      );
+       var position = new google.maps.LatLng(
+       lat, lng
+       );
 
-      return new Marker({
-        position: marker,
-        map: this.map,
-        icon: {
-          path: SQUARE_PIN,
-          fillOpacity: 0,
-          strokeColor: '#9BA198',
-          strokeWeight: 0,
-        },
-        map_icon_label: '<span class=price>$' + price + '</span>'
-      })
-    }
+       let contentString = `<div class='img-container-gmap'>
+       <img class='slider-img-gmap' src='${pic}'/></div>
+       <div class='price-inside-img-gmap'>$${price}</div>
+       <div class='panel-card-section-gmap '>
+         <p class='img-title-gmap'>${name}</p>
+         <p class='room-type-card-section-gmap'>${room_type}</p>
+       </div>`
 
-    createInfoWindow = () => {
-      let contentString = "<div class='InfoWindow'>I'm a Window that contains Info Yay</div>"
-      return new google.maps.InfoWindow({
-        map: this.map,
-        anchor: this.marker,
-        content: contentString
-      })
-    }
+       var marker = new Marker({
+         position: position,
+         map: this.map,
+         infowindow: infowindow,
+         icon: {
+           path: SQUARE_PIN,
+           fillOpacity: 0,
+           strokeWeight: 0,
+         },
+         map_icon_label: '<span class=price>$' + price + '</span>'
+       })
 
-    handleZoomChange = () => {
-      this.setState({
-        zoom: this.map.getZoom()
-      })
-      // console.log('zoom: ', this.map.getZoom())
-    }
+       google.maps.event.addListener(marker, 'click', () => {
+          infowindow.setContent(contentString);
+          infowindow.open(this.map, marker);
+        });
 
-    renderMap = (arr, priceRange = [null,null]) => {
+        google.maps.event.addListener(this.map, "click", () => {
+          infowindow.close();
+        });
 
-      console.log(arr);
+       return marker
+     }
 
-      axios.post('/search',{
-        searchVal: this.state.location,
-        startDate: this.state.startDate,
-        endDate: this.state.endDate,
-        numGuests: this.state.numGuests,
-        room_types: arr,
-        price_min: this.state.sliderMin,
-        price_max: this.state.sliderMax,
-      }).then(response => {
+     renderMap = (arr, priceRange = [null,null]) => {
 
-      const x = response.data;
+       axios.post('/search',{
+         searchVal: this.state.location,
+         startDate: this.state.startDate,
+         endDate: this.state.endDate,
+         numGuests: this.state.numGuests,
+         room_types: arr,
+         price_min: this.state.sliderMin,
+         price_max: this.state.sliderMax,
+       }).then(response => {
 
-      let listingsArray = response.data.results_json.search_results;
-      this.map = this.createMap()
-      this.latlngbounds = new google.maps.LatLngBounds();
+         const x = response.data;
 
-      let pics_array = []
+         let listingsArray = response.data.results_json.search_results;
+         this.map = this.createMap()
+         this.latlngbounds = new google.maps.LatLngBounds();
 
-      for (let i = 0; i < listingsArray.length; i++) {
+         let pics_array = [];
+         let propertyNames = [];
+         let star_rating = [];
+         let price_array = [];
+         let room_type_array = [];
 
-        const lat = listingsArray[i].listing.lat
-        const lng = listingsArray[i].listing.lng
+         var infowindow = new google.maps.InfoWindow()
 
-        this.marker = this.createMarker(lat, lng, listingsArray[i].pricing_quote.rate.amount)
-        var myLatLng = new google.maps.LatLng(lat, lng);
-        this.latlngbounds.extend(myLatLng);
+         for (let i = 0; i < listingsArray.length; i++) {
 
-        pics_array.push(listingsArray[i].listing.picture_urls)
+           const lat = listingsArray[i].listing.lat
+           const lng = listingsArray[i].listing.lng
 
-          this.setState({picture_urls: pics_array})
-          }
+           this.marker = this.createMarker(lat, lng, listingsArray[i].pricing_quote.rate.amount, listingsArray[i].listing.name, listingsArray[i].listing.picture_url, listingsArray[i].listing.id, listingsArray[i].listing.room_type, infowindow)
+
+           var myLatLng = new google.maps.LatLng(lat, lng);
+           this.latlngbounds.extend(myLatLng);
+
+           pics_array.push(listingsArray[i].listing.picture_urls);
+           propertyNames.push(listingsArray[i].listing.name);
+           star_rating.push(listingsArray[i].listing.star_rating);
+           price_array.push(listingsArray[i].pricing_quote.rate.amount);
+           room_type_array.push(listingsArray[i].listing.room_type)
+
+           this.setState({picture_urls: pics_array,
+             propertyNames: propertyNames,
+             star_rating: star_rating,
+             price_array: price_array,
+             room_type_array: room_type_array
+           })
+           }
+
+         if(x.max_price_total === null && x.min_price_total === null){
+              const min = Math.min(...price_array);
+              const max = Math.max(...price_array);
+           this.setState({
+             sliderMin: min,
+             sliderMax: max,
+             values: [min, max]
+           })
+         }
 
       this.map.fitBounds(this.latlngbounds);
 
@@ -297,19 +363,7 @@ if(this.state.picture_urls.length != 0){
           lng: x.center_lng
         }
       })
-
-      google.maps.event.addListener(this.map, 'zoom_changed', () => this.handleZoomChange())
-
     })
   }
 
 }
-
-    var initialCenter = {
-      lng: -90.1056957,
-      lat: 29.9717272
-    }
-
-    // ReactDOM.render( <SearchResults initialCenter = {initialCenter} />, document.getElementById('container'));
-
-    // export default SearchResults

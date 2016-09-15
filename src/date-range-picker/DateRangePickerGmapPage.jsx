@@ -21,7 +21,8 @@ class DateRangePickerGmapPage extends React.Component {
   }
 
   onDatesChange({ startDate, endDate }) {
-      console.log('hi');
+      console.log('startDate: ', startDate);
+      console.log('startDate: ', endDate);
 
       this.setState({ startDate, endDate });
 
@@ -32,7 +33,6 @@ class DateRangePickerGmapPage extends React.Component {
         numGuests: this.state.numGuests
       }).then(response =>{
         console.log('OOMFGGGFGGG ', response);
-          this.props.setDates(this.state.startDate, this.start.endDate)
           this.props.renderMap(response.data);
       })
   }
@@ -46,6 +46,18 @@ class DateRangePickerGmapPage extends React.Component {
       const x = e.target.value.match(/\d\d?/)
 
       this.setState({numGuests: parseInt(x[0])});
+
+      axios.post('/search',{
+        searchVal: this.props.location,
+        startDate: this.state.startDate.format('MM/DD/YYYY'),
+        endDate: this.state.endDate.format('MM/DD/YYYY'),
+        numGuests: this.state.numGuests,
+        room_types: this.props.roomTypeSelected,
+        price_min: this.props.values[0],
+        price_max: this.props.values[1],
+      }).then(response =>{
+          this.props.renderMap(response.data);
+      })
   }
 
   render() {
