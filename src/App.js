@@ -18,6 +18,7 @@ import Amenities from './become-a-host/steps/stepOne/Amenities';
 import Spaces from './become-a-host/steps/stepOne/Spaces';
 import Highlights from './become-a-host/steps/stepTwo/Highlights'
 import SearchResults from './search-results/SearchResults';
+import Rooms from './rooms/Rooms';
 
 
 injectTapEventPlugin();
@@ -47,6 +48,7 @@ ReactDOM.render((
 				<Route path="/host/spaces" component={Spaces} />
 				<Route path="/host/highlights" component={Highlights} />
 			<Route path="/profile/:id" component={Profile} />
+			<Route path="/rooms/:rid" component={Rooms} />
 			<Route path="/search-results" component={SearchResults} />
 
 		</Route>
