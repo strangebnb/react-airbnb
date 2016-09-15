@@ -4,21 +4,13 @@ $dark: #A2A2A2;
 $darkest: #4B4B4B;
 
 
-.main-container {
-  margin-top: 67px;
-  font-family: Roboto;
+.room-parent-container {
+  font-family: 'Roboto';
   color: #4B4B4B;
-  width: 100vw;
-}
-.progress-bar-container {
-  height: 40px;
-}
-.progress-items {
-  visibility: hidden;
 }
 .active-tab {
   padding: 12px 14px;
-  font-size: 16px;
+  font-size: 15px;
   width: 16.666666666666668%;
   max-width: 100%;
   background-color: #E6E6E6;
@@ -29,7 +21,7 @@ $darkest: #4B4B4B;
 }
 .inactive-tab {
   padding: 12px 14px;
-  font-size: 16px;
+  font-size: 15px;
   width: 16.666666666666668%;
   max-width: 100%;
   background-color: #FAFAFA;
@@ -43,19 +35,24 @@ $darkest: #4B4B4B;
 }
 .content {
   margin-top: 15px;
-  display: flex;
-  flex-direction: row;
 }
 .form-side {
-  width: 100%;
-  height: 84vh;
   background-color: white;
-  display: flex;
-  justify-content: flex-end;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 90px;
+}
+
+.instruction-side {
+  position: fixed;
+  right: 0;
+  top: 130px;
 }
 .form-container {
-  width: 484px;
-  margin: 50px 20px 0 0;
+  float: none;
+  padding: 20px;
+  margin: 0 0 0 0;
   .form-title-large {
     color: $darkest;
     font-size: 24px;
@@ -68,30 +65,17 @@ $darkest: #4B4B4B;
   }
 }
 .button-container {
-  width: 320px;
+  // width: 320px;
   border: 1px solid $medium;
   border-radius: 4px;
   margin-bottom: 30px;
-  .lineItem {
+  display: flex;
+  flex-direction: row;
+  .placetype-icon {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 1px solid $medium;
-    height: 65px;
-    padding: 20px;
-    padding-right: 15px;
-  }
-  .checkboxIcon {
-    color: $medium;
-    // padding-right: 20px;
-    height: 40px;
-    width: 40px;
-    height: 65px;
-    padding: 20px;
-    padding-right: 15px;
-  }
-  .button {
-    width: 250px;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 50px;
   }
 }
 .drop-down-menu {
@@ -102,38 +86,58 @@ $darkest: #4B4B4B;
   margin-top: 4px;
 }
 .step-nav {
-  height: 100px;
-  width: 100%;
+  position: fixed;
+    z-index: 111;
+    left: 0px;
+    bottom: 0px;
   border-top: 1px solid $medium;
-  margin-top: 100px;
   .back-next {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     margin-top: 20px;
   }
 }
-.instruction-side{
-  visibility: hidden;
-  width: 44%;
-  height: 85vh;
-  background-color: #FAFAFA;
+.incrementer {
+  @extend .drop-down-menu;
+  padding: 22px 0 0 20px;
+  .increment-label {
+    color: $dark;
+    padding-left: 6px;
+  }
+  .increment-number {
+    color: $medium;
+  }
+  .subtract {
+    background: none;
+    border: none;
+    border-left: 1px solid $medium;
+    font-size: 42px;
+    font-weight: 300;
+    width: 63px;
+    margin-top: -22px;
+    color: $medium;
+  }
+  .add {
+    @extend .subtract;
+    color: $dark;
+  }
+}
+.clicker {
+  -webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 9px;
+	border-radius: 3px;
+	display: inline-block;
+	position: relative;
 }
 .note-container {
-  height: auto;
-  width: 320px;
+  max-width: 306px;
   padding: 26px;
   margin: 50px 0 0 26px;
   background-color: white;
   border: 1px solid $medium;
   border-radius: 3px;
-  .note {
-    width: 254px;
-    height: 270px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+
   .note-title {
     color: $darkest;
   }
@@ -147,14 +151,23 @@ $darkest: #4B4B4B;
   }
 }
 
-@media (min-width: 744px) {
+.next-btn {
+  text-align: right;
+}
+
+.back-btn {
+
+}
+
+@media (min-width: 768px) {
   .instruction-side {
-    visibility: visible;
+    margin-top: 5px;
+  }
+  .form-container {
+    float: right;
+    margin-top: 30px;
   }
   .form-side {
-    width: 56%;
-  }
-  .progress-items {
-    visibility: visible;
+      top: 140px;
   }
 }
