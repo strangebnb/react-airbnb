@@ -161,7 +161,6 @@ if(this.state.picture_urls.length != 0){
 
      return(
      <div>
-       <Navbar/>
        <main className = 'container-search'>
          <div className = 'cards-container'>
            <div className = 'date-panel'>
