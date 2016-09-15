@@ -177,7 +177,7 @@ if(this.state.picture_urls.length != 0){
              </div>
            </div>
            <div className ='rheostat-container'>
-             <span className='room-types-header'>Room Types</span>
+             <span className='rheostat-header'>Price Range</span>
              <Rheostat progressBar={ProgressBar} min={this.state.sliderMin} max={this.state.sliderMax} onValuesUpdated={this.updateValue} values={this.state.values} className = 'rheostat' />
              <ul className='tempVals'>
                {this.state.values.map((value, i) => (

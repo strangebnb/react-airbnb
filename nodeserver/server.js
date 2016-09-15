@@ -9,6 +9,7 @@ import Auth0Strategy from 'passport-auth0';
 import AWS from 'aws-sdk';
 import request from 'request';
 import moment from 'moment'
+import FacebookStrategy from 'passport-facebook';
 
 var inspect = require('eyespect').inspector();
 var airbnb = require('airapi');
@@ -65,6 +66,32 @@ var strategy = new Auth0Strategy({
         return done(null, profile);
     }
 );
+
+passport.use(new FacebookStrategy({
+    clientID: serverConfig.fbKey,
+    clientSecret: serverConfig.fbSecret,
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    console.log('accessToken: ', accessToken)
+      console.log('refreshToken: ', refreshToken)
+        console.log('profile: ', profile)
+
+      return cb(null, user);
+
+  }
+));
+
+
+app.get('/auth/facebook',
+  passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
 
 passport.use(strategy);
 
