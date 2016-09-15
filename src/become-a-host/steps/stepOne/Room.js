@@ -115,7 +115,7 @@ render(){
               </div>
             </div>
             <div className="content row">
-              <div className="form-side col-sm-6 col-xs-12">
+              <div className="form-side col-sm-7 col-xs-12">
                 <div className="form-container">
                   <div>
                     <div className="form-title-large">What kind of place are you listing?</div>
@@ -216,7 +216,7 @@ render(){
                 </div>
               </div>
 
-              <div className="instruction-side col-sm-6 hidden-xs">
+              <div className="instruction-side col-sm-5 hidden-xs">
                 <div className="note-container">
                     <MuiThemeProvider>
                       <Lightbulb style={{ color: "#40BDB6", height: "30px", width: "30px", marginBottom: "18px" }}/>
