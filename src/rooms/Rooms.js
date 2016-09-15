@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import Header from "./Header";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
-// var airbnb = require('airapi');
-// var acorn =require('acorn');
+require('./rooms.component.scss');
+
 
 import axios from 'axios';
 
@@ -143,20 +144,17 @@ class Rooms extends Component {
     console.log("render", this.state.listing);
         return (
           <div>
-            <div style={{position: 'relative', width: '100vw'}}>
-              <img style={{height: '400px', width: '100%'}} src={this.state.listing.picture_urls[0]}/>
-              <div style={{fontSize: '18px',position: "absolute", top: "345px",  color: "white",  backgroundColor: "rgba(0,0,0,.6)", fontWeight:"200", padding: "5px 10px", letterSpacing: '1px'}}>${this.state.listing.price}</div>
-                <MuiThemeProvider>
-                        <FlatButton style={{position: "absolute", top: "345px", right: '20px', backgroundColor:'white', float: 'right'}} label="View Photos"  labelStyle={{textTransform: "none", color:'#484848', margin: "0 10px"}}  />
-                </MuiThemeProvider>
-            </div>
+            <Header/>
             <div className="row">
-              <div className="col-xs-offset-4 col-sm-3-offset-2">
-                <img  style={{borderRadius: '100%', height: '75px', width: '75px'}}src={this.state.listing.hosts[0].picture_url} />
+              <div className="col-xs-12 col-sm-5" style={{paddingTop:"25px"}}>
+                <img style={{borderRadius: '100%', height: '85px', width: '85px'}}src={this.state.listing.hosts[0].picture_url} />
+              </div>
+              <div className="col-xs-12 col-sm-7">
+                <div className="center-block">{this.state.listing.name}</div>
+                <span>{this.state.listing.city}, {this.state.listing.state}, {this.state.listing.country}</span>
               </div>
 
-              <h3>{this.state.listing.name}</h3>
-              <span>{this.state.listing.city}, {this.state.listing.state}, {this.state.listing.country}</span>
+
               <span>
                 <div>{this.state.listing.room_type}</div>
                 {(this.state.listing.person_capacity === 1)
