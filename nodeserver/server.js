@@ -58,8 +58,8 @@ passport.deserializeUser(function(user, done) {
     done(null, user);
 });
 
-app.post('/login', (req, res, next) => {
-  console.log('airbnbing', req.body.password, ' ' , req.body.email);
+app.post('/login', (req, response, next) => {
+
   var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
   var data = {
     client_id: "d306zoyjsyarp7ifhu67rjxn52tv0t20",
@@ -73,16 +73,47 @@ app.post('/login', (req, res, next) => {
     method: 'post',
     url: 'https://api.airbnb.com/v1/authorize',
     body: data,
-    json: true
+    json: true,
   };
-request(options, function(err, res, body) {
-  if (err) inspect(err, 'error at jsoning');
-  var headers = res.headers
-  var statusCode = res.statusCode
-  inspect(headers, 'headers')
-  inspect(statusCode, 'statusCode')
-  inspect(body, 'body')
+
+  request(options, (err, res, body) => {
+    if (err) inspect(err, 'error at jsoning');
+   req.session.token = body.access_token;
+   console.log('req.session.token: ', req.session.token)
+    var headers = res.headers
+    var statusCode = res.statusCode
+    inspect(headers, 'headers')
+    inspect(statusCode, 'statusCode')
+    inspect(body, 'body')
+    console.log('response.redirect:',response.redirect);
+    return response.redirect(302, '/profile/1');
+
+  })
+
 })
+
+app.get('/dashboard', (req, res, next) => {
+
+  const data2 = {
+    client_id: "d306zoyjsyarp7ifhu67rjxn52tv0t20",
+    currency: 'USD',
+    locale: "en-US",
+  }
+
+  const options = {
+    method: 'get',
+    url: 'https://api.airbnb.com/v1/account/active',
+    headers: {"X-Airbnb-OAuth-Token": req.session.token},
+    data: data2
+  }
+
+  console.log('hit');
+  request(options, (err, response, body) => {
+    // console.log('Res from airbnb: ', res)
+
+    req.session.user = body;
+      res.json({body});
+    })
 })
 
 app.get('/getData', (req, res, next) => {
@@ -138,7 +169,7 @@ app.post('/sendMessage', (req, res, next) => {
 
   // THIS NEEDS TO HAVE NEW DATA
   var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
-  
+
   var data = {
     listing_id: "14978040",
     number_of_guests: "1",

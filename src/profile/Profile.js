@@ -48,9 +48,12 @@ var data = {
 
 
 class Profile extends Component {
-  componentWillMount(){
+  constructor(props){
+    super(props)
 
-      axios.post('/sendMessage', data, config).then(response =>{ console.log(response)});
+      // axios.post('/sendMessage', data, config).then(response =>{ console.log(response)});
+      axios.post('/dashboard').then(response =>{ console.log(response)});
+
 
   }
 

@@ -76,7 +76,6 @@ export default class DialogExampleSimple extends React.Component {
   }
 
   submitLogin = (e) => {
-    if (e.keyCode === 13) {
       axios.post('/login', {
         email: this.state.email,
         password: this.state.password
@@ -84,7 +83,6 @@ export default class DialogExampleSimple extends React.Component {
       .then(function (response) {
         console.log(response);
       })
-  }
 }
 
   render() {
