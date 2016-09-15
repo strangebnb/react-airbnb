@@ -1,0 +1,32 @@
+<svg id="group-1" xmlns="http://www.w3.org/2000/svg" viewBox="393 285 25 25">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #95989a;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 1px;
+      }
+
+      .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #ef5350;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="rectangle-1" class="cls-1" transform="translate(393 285)">
+    <rect class="cls-3" width="25" height="25" rx="4"/>
+    <rect class="cls-4" x="0.5" y="0.5" width="24" height="24" rx="3.5"/>
+  </g>
+  <line id="line-1" class="cls-2" x2="6" y2="6" transform="translate(397.5 297.5)"/>
+  <line id="line-2" class="cls-2" x1="11" y2="13" transform="translate(403.5 290.5)"/>
+</svg>

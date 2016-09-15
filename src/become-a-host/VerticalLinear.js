@@ -120,7 +120,7 @@ class VerticalLinearStepper extends React.Component {
                 <div style={styles.stepTitle}>Start with the basics</div>
                 <div style={styles.stepSubtitle}>Beds, bathrooms, amenities, and more</div>
               </StepLabel>
-              <Link to='/room'>
+              <Link to='/host/room'>
                 <div style={styles.buttonContainer}>
                   {this.renderStepActions(1)}
                 </div>

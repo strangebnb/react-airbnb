@@ -11,7 +11,6 @@ const style = {
   padding: '9px 24px',
   marginLeft: 'auto',
   marginRight: 'auto',
-  marginTop: '66px',
   height: '36px',
   backgroundColor: '#484848',
   item: {

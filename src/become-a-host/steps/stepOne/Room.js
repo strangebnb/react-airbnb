@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Checkbox from 'material-ui/Checkbox';
 import DropDownMenu from 'material-ui/DropDownMenu';
@@ -29,7 +30,7 @@ const styles = {
   customWidth: {
     width: 320,
     marginTop: '3px',
-    border: "none"
+    border: "none",
   },
   dropDown: {
     backgroundColor: "#484848",
@@ -39,6 +40,22 @@ const styles = {
     marginBottom: "1vh",
     borderRadius: "3px",
   },
+  radio: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "270px",
+    borderBottom: "1px solid #E6E6E6",
+    height: "65px",
+    padding: "20px 5px",
+    paddingRight: "15px",
+  },
+  placetypeIcon: {
+    color: "#E6E6E6",
+    borderBottom: "1px solid #E6E6E6",
+    height: "65px",
+    padding: "10px ",
+    width: '48px'
+  }
 };
 
 export default React.createClass({
@@ -59,73 +76,84 @@ handleClick(){
 },
 render(){
   return(
-      <div className="main-container">
+      <div className="room-parent-container">
             <div className="progress-bar-container">
-              <div className="progress-items">
-                  <div>
-                    <div className= "active-tab">Place type</div>
-                  </div>
-                  <div>
-                    <div className= "inactive-tab">Bedrooms</div>
-                  </div>
-                  <div>
-                    <div className= "inactive-tab">Baths</div>
-                  </div>
-                  <div>
-                    <div className= "inactive-tab">Location</div>
-                  </div>
-                  <div>
-                    <div className= "inactive-tab">Amenities</div>
-                  </div>
-                  <div>
-                    <div className= "inactive-tab">Shared spaces</div>
-                  </div>
+              <div className="progress-items hidden-xs">
+              <div>
+                <Link to='/host/room'>
+                <div className= "active-tab">Place type</div>
+                </Link>
+              </div>
+              <div>
+                <Link to='/host/bedrooms'>
+                <div className= "inactive-tab">Bedrooms</div>
+                </Link>
+              </div>
+              <div>
+                <Link to='/host/bathrooms'>
+                <div className= "inactive-tab">Baths</div>
+                </Link>
+              </div>
+              <div>
+                <Link to='/host/location'>
+                <div className= "inactive-tab">Location</div>
+                </Link>
+              </div>
+              <div>
+                <Link to='/host/amenities'>
+                <div className= "inactive-tab">Amenities</div>
+                </Link>
+              </div>
+              <div>
+                <Link to='/host/spaces'>
+                <div className= "inactive-tab">Shared spaces</div>
+                </Link>
+              </div>
               </div>
               <div className="progress-bar">
 
               </div>
             </div>
-            <div className="content">
-              <div className="form-side">
+            <div className="content row">
+              <div className="form-side col-sm-7 col-xs-12">
                 <div className="form-container">
                   <div>
                     <div className="form-title-large">What kind of place are you listing?</div>
-
                     <div className="button-container">
-
-                    <MuiThemeProvider>
-
-                      <div>
-                      <RadioButtonGroup name="shipSpeed" defaultSelected="not_light" onChange={this.handleClick}>
-                         <RadioButton
-                           value="light"
-                           label="Simple"
-
-
-                         />
-                         <RadioButton
-                           value="not_light"
-                           label="Selected by default"
-
-                         />
-                         <RadioButton
-                           value="ludicrous"
-                           label="Custom icon"
-                           checkedIcon={<SelectedCircle />}
-                           uncheckedIcon={<OpenCircle />}
-
-                         />
-                       </RadioButtonGroup>
+                      <MuiThemeProvider>
+                        <div className="placetype-icon">
+                          <Home style={styles.placetypeIcon}/>
+                          <Hotel style={styles.placetypeIcon}/>
+                          <Seat style={styles.placetypeIcon}/>
+                        </div>
+                        </MuiThemeProvider>
+                        <div style={{width: '100%'}}>
+                        <MuiThemeProvider>
+                        <RadioButtonGroup labelPosition="left" name="shipSpeed" onChange={this.handleClick}>
+                           <RadioButton
+                             value="light"
+                             label="Entire place"
+                             style={styles.radio}
+                            />
+                           <RadioButton
+                             value="not_light"
+                             label="Private room"
+                             style={styles.radio}
+                           />
+                           <RadioButton
+                             value="ludicrous"
+                             label="Shared room"
+                             style={styles.radio}
+                           />
+                         </RadioButtonGroup>
+                         </MuiThemeProvider>
                       </div>
-
-                      </MuiThemeProvider>
-
                     </div>
                     <div>
                       <div className="form-title-medium">What type of property is this?</div>
                       <div className="drop-down-menu">
                       <MuiThemeProvider>
-                        <DropDownMenu value={this.state.value} onChange={this.handleChange} style={styles.customWidth}
+                        <DropDownMenu maxHeight = {300} value={this.state.value} onChange={this.handleChange} style={styles.customWidth}
                             autoWidth={false} underlineStyle={styles.dropDown}>
                            <MenuItem value={1} primaryText="Select One" />
                            <MenuItem value={2} primaryText="Apartment" />
@@ -162,22 +190,22 @@ render(){
                       </MuiThemeProvider>
                       </div>
                     </div>
-                    <div className="step-nav">
+                    <div className="step-nav col-sm-6 col-xs-12">
                       <MuiThemeProvider>
                         <div className="back-next">
-                          <div>
+                          <div className="col-lg-2 col-lg-offset-5 col-sm-3 col-sm-offset-3 col-xs-5 back-btn">
                             <FlatButton
                             label="← Back"
                             labelStyle={{textTransform: "none", color: "#E6E6E6"}}
                             />
                           </div>
-                          <div>
+                          <div className="col-sm-5 col-xs-7 next-btn">
                             <RaisedButton
                             label="Next"
-                            labelStyle={{textTransform: "none", color: "white"}}
+                            labelStyle={{textTransform: "none", color: "white", position: "absolute", bottom: 12, right: 61}}
                             backgroundColor="#EF5350"
                             disabledBackgroundColor="#FFCDD2"
-                            style={{width: "180px", height: '45px'}}
+                            style={{width: "180px", height: '45px', positive: "relative"}}
                             disabled={this.state.enabler}
                             />
                           </div>
@@ -188,7 +216,7 @@ render(){
                 </div>
               </div>
 
-              <div className="instruction-side">
+              <div className="instruction-side col-sm-5 hidden-xs">
                 <div className="note-container">
                     <MuiThemeProvider>
                       <Lightbulb style={{ color: "#40BDB6", height: "30px", width: "30px", marginBottom: "18px" }}/>
