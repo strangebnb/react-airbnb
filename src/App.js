@@ -27,8 +27,8 @@ const App = React.createClass({
 	render(){
 		return (
 		<div>
-			<div><Navbar /></div>
-			<div>{this.props.children}</div>
+			<Navbar />
+			{this.props.children}
 		</div>
 		)
 	}
