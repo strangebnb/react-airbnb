@@ -29,7 +29,7 @@ const styles = {
   customWidth: {
     width: 320,
     marginTop: '3px',
-    border: "none"
+    border: "none",
   },
   dropDown: {
     backgroundColor: "#484848",
@@ -102,7 +102,7 @@ render(){
               </div>
             </div>
             <div className="content row">
-              <div className="form-side col-md-8 col-sm-7 col-xs-12">
+              <div className="form-side col-sm-6 col-xs-12">
                 <div className="form-container">
                   <div>
                     <div className="form-title-large">What kind of place are you listing?</div>
@@ -140,7 +140,7 @@ render(){
                       <div className="form-title-medium">What type of property is this?</div>
                       <div className="drop-down-menu">
                       <MuiThemeProvider>
-                        <DropDownMenu value={this.state.value} onChange={this.handleChange} style={styles.customWidth}
+                        <DropDownMenu maxHeight = {300} value={this.state.value} onChange={this.handleChange} style={styles.customWidth}
                             autoWidth={false} underlineStyle={styles.dropDown}>
                            <MenuItem value={1} primaryText="Select One" />
                            <MenuItem value={2} primaryText="Apartment" />
@@ -177,16 +177,16 @@ render(){
                       </MuiThemeProvider>
                       </div>
                     </div>
-                    <div className="step-nav">
+                    <div className="step-nav col-sm-6 col-xs-12">
                       <MuiThemeProvider>
                         <div className="back-next">
-                          <div>
+                          <div className="col-lg-2 col-lg-offset-5 col-sm-3 col-sm-offset-3 col-xs-5 back-btn">
                             <FlatButton
                             label="← Back"
                             labelStyle={{textTransform: "none", color: "#E6E6E6"}}
                             />
                           </div>
-                          <div>
+                          <div className="col-sm-5 col-xs-7 next-btn">
                             <RaisedButton
                             label="Next"
                             labelStyle={{textTransform: "none", color: "white", position: "absolute", bottom: 12, right: 61}}
@@ -203,7 +203,7 @@ render(){
                 </div>
               </div>
 
-              <div className="instruction-side col-md-4 col-sm-5 hidden-xs">
+              <div className="instruction-side col-sm-6 hidden-xs">
                 <div className="note-container">
                     <MuiThemeProvider>
                       <Lightbulb style={{ color: "#40BDB6", height: "30px", width: "30px", marginBottom: "18px" }}/>
