@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Header from "./Header";
+import About from "./About";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 require('./rooms.component.scss');
@@ -145,32 +146,7 @@ class Rooms extends Component {
         return (
           <div>
             <Header/>
-            <div className="row">
-              <div className="col-xs-12 col-sm-5" style={{paddingTop:"25px"}}>
-                <img style={{borderRadius: '100%', height: '85px', width: '85px'}}src={this.state.listing.hosts[0].picture_url} />
-              </div>
-              <div className="col-xs-12 col-sm-7">
-                <div className="center-block">{this.state.listing.name}</div>
-                <span>{this.state.listing.city}, {this.state.listing.state}, {this.state.listing.country}</span>
-              </div>
-
-
-              <span>
-                <div>{this.state.listing.room_type}</div>
-                {(this.state.listing.person_capacity === 1)
-                  ? <div>{this.state.listing.person_capacity} guest</div>
-                  : <div>{this.state.listing.person_capacity} guests</div>
-                }
-                {(this.state.listing.bedrooms === 1)
-                  ? <div>{this.state.listing.bedrooms} bedroom</div>
-                : <div>{this.state.listing.bedrooms} bedrooms</div>
-                }
-                {(this.state.listing.beds === 1)
-                ? <div>{this.state.listing.beds} bed</div>
-                : <div>{this.state.listing.beds} beds</div>
-                }
-              </span>
-            </div>
+            <About/>
             <div>About this listing</div>
             <div>{this.state.listing.summary}</div>
             <div style={{color: "#ff6166"}}>Contact Host</div>
