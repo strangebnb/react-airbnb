@@ -17,6 +17,7 @@ import Location from './become-a-host/steps/stepOne/Location';
 import Amenities from './become-a-host/steps/stepOne/Amenities';
 import Spaces from './become-a-host/steps/stepOne/Spaces';
 import SearchResults from './search-results/SearchResults';
+import Rooms from './rooms/Rooms';
 
 
 injectTapEventPlugin();
@@ -37,7 +38,6 @@ ReactDOM.render((
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Home} />
-			<Route path="/room" component={Room} />
 			<Route path="/host" component={BecomeAHost}>
 				<Route path="/host/room" component={Room} >
 					<Route path="/host/bedrooms" component={Bedrooms} />
@@ -48,6 +48,7 @@ ReactDOM.render((
 				</Route>
 			</Route>
 			<Route path="/profile/:id" component={Profile} />
+			<Route path="/rooms/:rid" component={Rooms} />
 			<Route path="/search-results" component={SearchResults} />
 
 		</Route>
