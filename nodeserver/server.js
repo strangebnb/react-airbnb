@@ -138,7 +138,7 @@ app.post('/sendMessage', (req, res, next) => {
 
   // THIS NEEDS TO HAVE NEW DATA
   var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
-  
+
   var data = {
     listing_id: "14978040",
     number_of_guests: "1",
@@ -171,7 +171,7 @@ request(options, function(err, res, body) {
 
 app.get('/listingInfo', (req,res,next) => {
   //TODO NEED TO GET HOSTING_ID HERE
-  airbnb.getInfo(5332664).then(function(info) {
+  airbnb.getInfo(9998258).then(function(info) {
     res.json(info);
   });
 })
