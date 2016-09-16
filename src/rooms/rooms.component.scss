@@ -1,0 +1,21 @@
+.about-listingName{
+  text-align: center;
+}
+.about-body{
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+
+@media (min-width: 768px) {
+  .about-listingName{
+    text-align: left;
+  }
+  .about-body{
+    padding: 15px;
+  }
+
+}
+@media (min-width: 1128px) {
+
+}

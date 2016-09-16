@@ -10,39 +10,6 @@ require('./rooms.component.scss');
 import axios from 'axios';
 
 
-const style ={
-  margin: 12,
-  heroImage: {
-    // backgroundImage: 'url('+ photo.vid +')',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    width: '100vw',
-    padding: '0',
-
-  },
-  upperHalf:{
-    color: '#fff',
-    height: '81%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: '70px',
-  },
-  searchContainer:{
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    height: '19%',
-    width: '100vw',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-
-
-  }
-
-
-}
-
 
 class Rooms extends Component {
   constructor(props) {

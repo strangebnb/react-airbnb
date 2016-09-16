@@ -1,10 +1,21 @@
 import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import FlatButton from 'material-ui/FlatButton';
+import Home from 'material-ui/svg-icons/action/home';
+import People from 'material-ui/svg-icons/social/people-outline';
+import Contacts from 'material-ui/svg-icons/communication/contacts';
+import Bed from 'material-ui/svg-icons/Notification/airline-seat-individual-suite';
+
 require('./rooms.component.scss');
 
 
+
 import axios from 'axios';
+
+const style ={
+
+
+}
+
 
 
 class About extends React.Component {
@@ -57,30 +68,46 @@ class About extends React.Component {
   render() {
         return (
           <div>
-            <div className="row">
-              <div className="col-xs-12 col-sm-5" style={{paddingTop:"25px"}}>
-                <img style={{borderRadius: '100%', height: '85px', width: '85px'}}src={this.state.listing.hosts[0].picture_url} />
+            <div style={{backgroundColor:"#f5f5f5", paddingTop:"25px", paddingTop:"25px", paddingBottom:"25px", borderBottom:'solid 1px #767676'}} className="row about-body">
+              <div className="col-xs-12 col-sm-4" style={{paddingBottom:"25px"}}>
+                <img className="center-block" style={{borderRadius: '100%', height: '85px', width: '85px'}}src={this.state.listing.hosts[0].picture_url} />
               </div>
-              <div className="col-xs-12 col-sm-7">
-                <div className="center-block">{this.state.listing.name}</div>
-                <span>{this.state.listing.city}, {this.state.listing.state}, {this.state.listing.country}</span>
+              <div className="col-xs-12 col-sm-8">
+                <div className="about-listingName" style={{fontSize:'19px', letterSpacing: '1px'}}> {this.state.listing.name}</div>
+                <div className="about-listingName" style={{fontSize: '11px', color: '#767676', letterSpacing: '1px', marginTop:"5px", marginBottom:"5px"}}>{this.state.listing.city} {this.state.listing.state} {this.state.listing.country}</div>
               </div>
 
 
               <span>
-                <div>{this.state.listing.room_type}</div>
-                {(this.state.listing.person_capacity === 1)
-                  ? <div>{this.state.listing.person_capacity} guest</div>
-                  : <div>{this.state.listing.person_capacity} guests</div>
-                }
-                {(this.state.listing.bedrooms === 1)
-                  ? <div>{this.state.listing.bedrooms} bedroom</div>
-                : <div>{this.state.listing.bedrooms} bedrooms</div>
-                }
-                {(this.state.listing.beds === 1)
-                ? <div>{this.state.listing.beds} bed</div>
-                : <div>{this.state.listing.beds} beds</div>
-                }
+                <MuiThemeProvider>
+                  <div className="placetype-icon">
+                    <div style={{textAlign: "center", fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2"  >
+                    <Home style={{color:'#767676'}} />
+                    <div>{this.state.listing.room_type}</div>
+                    </div>
+                    <div style={{textAlign: "center", fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2"  >
+                    <People style={{color:'#767676'}} />
+                      {(this.state.listing.person_capacity === 1)
+                        ? <div>{this.state.listing.person_capacity} guest</div>
+                        : <div>{this.state.listing.person_capacity} guests</div>
+                      }
+                    </div>
+                    <div style={{textAlign: "center", fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2"  >
+                    <Contacts style={{color:'#767676'}} />
+                      {(this.state.listing.bedrooms === 1)
+                        ? <div>{this.state.listing.bedrooms} bedroom</div>
+                      : <div>{this.state.listing.bedrooms} bedrooms</div>
+                      }
+                    </div>
+                    <div style={{textAlign: "center", fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2"  >
+                    <Bed style={{color:'#767676'}} />
+                      {(this.state.listing.beds === 1)
+                      ? <div>{this.state.listing.beds} bed</div>
+                      : <div>{this.state.listing.beds} beds</div>
+                      }
+                    </div>
+                  </div>
+                </MuiThemeProvider>
               </span>
             </div>
           </div>
