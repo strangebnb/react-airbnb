@@ -171,7 +171,7 @@ request(options, function(err, res, body) {
 
 app.get('/listingInfo', (req,res,next) => {
   //TODO NEED TO GET HOSTING_ID HERE
-  airbnb.getInfo(9998258).then(function(info) {
+  airbnb.getInfo(279345).then(function(info) {
     res.json(info);
   });
 })
