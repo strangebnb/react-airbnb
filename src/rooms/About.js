@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Header from "./Header";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 require('./rooms.component.scss');

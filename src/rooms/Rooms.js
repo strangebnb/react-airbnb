@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from "./Header";
 import About from "./About";
+import Summary from "./Summary"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 require('./rooms.component.scss');
@@ -147,26 +148,7 @@ class Rooms extends Component {
           <div>
             <Header/>
             <About/>
-            <div>About this listing</div>
-            <div>{this.state.listing.summary}</div>
-            <div style={{color: "#ff6166"}}>Contact Host</div>
-            <br/>
-            <div>The Space</div>
-            <div>Accommodates: {this.state.listing.person_capacity}</div>
-            <div>Bathrooms: {this.state.listing.bathrooms}</div>
-            <div>Bedrooms: {this.state.listing.bedrooms}</div>
-            <div>Beds: {this.state.listing.beds}</div>
-            {(this.state.listing.check_in_time > 12)
-              ? <div>Check In: Anytime after {this.state.listing.check_in_time-12}PM</div>
-              : <div>Check In: anytime after {this.state.listing.check_in_time}AM</div>
-            }
-            {(this.state.listing.check_out_time > 12)
-              ? <div>Check Out:{this.state.listing.check_out_time-12}PM</div>
-            : <div>Check Out:{this.state.listing.check_out_time}AM</div>
-            }
-            <div>Property type: {this.state.listing.property_type}</div>
-            <div>Room type: {this.state.listing.room_type}</div>
-            <br/>
+            <Summary/>
           </div>
         );
     }
