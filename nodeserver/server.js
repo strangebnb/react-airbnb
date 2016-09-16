@@ -79,7 +79,6 @@ app.post('/login', (req, response, next) => {
   request(options, (err, res, body) => {
     if (err) inspect(err, 'error at jsoning');
    req.session.token = body.access_token;
-   console.log('req.session.token: ', req.session.token)
     var headers = res.headers
     var statusCode = res.statusCode
     inspect(headers, 'headers')
@@ -117,6 +116,7 @@ app.get('/getMessages', (req, response, next) => {
 }
 request(options, (err, res, body) => {
   if(err){ console.log(err)}
+  console.log('res.body: ', res.body)
     return response.json({"threads": res.body.threads})
   })
 })
@@ -137,8 +137,6 @@ app.get('/getData', (req, res, next) => {
         searchResults.startDate = '10/24/2016'
         searchResults.endDate = '10/31/2016'
         searchResults.numGuests = 1
-        // searchResults.minPrice =
-        // searchResults.maxPrice =
         res.json(searchResults);
       });
     }
@@ -156,8 +154,6 @@ app.post('/search', (req, res, next) => {
         price_min: req.body.price_min,
         price_max: req.body.price_max
     }).then(function(searchResults) {
-        console.log('max price total: ', searchResults.max_price_total)
-        console.log('min price total: ', searchResults.min_price_total)
         searchResults.location = req.body.searchVal
         searchResults.startDate = req.body.startDate
         searchResults.endDate = req.body.endDate
