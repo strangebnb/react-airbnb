@@ -35,7 +35,7 @@ class Header extends React.Component {
         return (
           <div>
             <div style={{position: 'relative', width: '100vw'}}>
-              <img style={{height: '400px', width: '100%'}} src={this.state.listing.picture_urls[0]}/>
+              <img className="header-picture" src={this.state.listing.picture_urls[0]}/>
               <div style={{fontSize: '18px',position: "absolute", top: "345px",  color: "white",  backgroundColor: "rgba(0,0,0,.6)", fontWeight:"200", padding: "5px 10px", letterSpacing: '1px'}}>${this.state.listing.price}</div>
                 <MuiThemeProvider>
                         <FlatButton style={{position: "absolute", top: "345px", right: '20px', backgroundColor:'white', float: 'right'}} label="View Photos"  labelStyle={{textTransform: "none", color:'#484848', margin: "0 10px"}}  />
