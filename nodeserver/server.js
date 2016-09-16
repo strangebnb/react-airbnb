@@ -58,8 +58,8 @@ passport.deserializeUser(function(user, done) {
     done(null, user);
 });
 
-app.post('/login', (req, res, next) => {
-  console.log('airbnbing', req.body.password, ' ' , req.body.email);
+app.post('/login', (req, response, next) => {
+
   var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
   var data = {
     client_id: "d306zoyjsyarp7ifhu67rjxn52tv0t20",
@@ -73,16 +73,52 @@ app.post('/login', (req, res, next) => {
     method: 'post',
     url: 'https://api.airbnb.com/v1/authorize',
     body: data,
-    json: true
+    json: true,
   };
-request(options, function(err, res, body) {
-  if (err) inspect(err, 'error at jsoning');
-  var headers = res.headers
-  var statusCode = res.statusCode
-  inspect(headers, 'headers')
-  inspect(statusCode, 'statusCode')
-  inspect(body, 'body')
+
+  request(options, (err, res, body) => {
+    if (err) inspect(err, 'error at jsoning');
+   req.session.token = body.access_token;
+   console.log('req.session.token: ', req.session.token)
+    var headers = res.headers
+    var statusCode = res.statusCode
+    inspect(headers, 'headers')
+    inspect(statusCode, 'statusCode')
+    inspect(body, 'body')
+
+    options.method = 'get'
+    options.url = 'https://api.airbnb.com/v1/account/active'
+    options.headers = {"X-Airbnb-OAuth-Token": req.session.token}
+    options.data = null
+
+    request(options, (err, res, body) => {
+      req.session.data = body
+      return response.json("data": req.session.data);
+    })
+
+  })
 })
+
+app.get('/dashboard', (req, res, next) => {
+  res.json({"data": req.session.data});
+})
+
+app.get('/getMessages', (req, response, next) => {
+
+  if(req.session.token === undefined){
+    req.session.token = '9v1yzmuie0cesz84hyxk44pd5'
+  }
+
+  const options = {
+  method: 'GET',
+  url: 'https://api.airbnb.com/v1/threads?locale=en-US&client_id=3092nxybyb0otqw18e8nh5nty&offset=0&items_per_page=10&currency=USD&role=guest',
+  headers: {"X-Airbnb-OAuth-Token": req.session.token},
+  json: true,
+}
+request(options, (err, res, body) => {
+  if(err){ console.log(err)}
+    return response.json({"threads": res.body.threads})
+  })
 })
 
 app.get('/getData', (req, res, next) => {
@@ -175,7 +211,6 @@ app.get('/listingInfo', (req,res,next) => {
     res.json(info);
   });
 })
-
 
 
 app.get('*', function(request, response) {

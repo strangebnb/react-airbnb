@@ -5,6 +5,9 @@ import ProfileDash from "./ProfileDash";
 
 import axios from 'axios';
 
+
+
+
 const style = {
   padding: '0px 20px',
   marginLeft: 'auto',
@@ -59,17 +62,17 @@ class Profile extends Component {
           <div className="profile-container">
 
             <ProfileDash />
-              <h2>User id: {this.props.params.id} </h2>
-             <div style={style} className="row bodyWidth profile-container">
+            <h2>User id: {this.props.params.id} </h2>
+            <div style={style} className="row bodyWidth profile-container">
               <div className="col-md-3 col-sm-3 col-xs-12">
-                  <img className="profilePic" src="https://a2.muscache.com/im/pictures/07389693-7185-429e-8e86-9c7d3f9dd248.jpg"/>
-                  <div style={style.info}>
-                    <div style={{textAlign: 'center'}}>
-                      <div style={{fontSize: '32px', marginBottom:'15px'}}>Gial</div>
-                      <div style={style.pink}>View Profile</div>
-                      <div style={style.pink}>Edit Profile</div>
-                    </div>
+                <img className="profilePic" src="https://a2.muscache.com/im/pictures/07389693-7185-429e-8e86-9c7d3f9dd248.jpg"/>
+                <div style={style.info}>
+                  <div style={{textAlign: 'center'}}>
+                    <div style={{fontSize: '32px', marginBottom:'15px'}}>Gial</div>
+                    <div style={style.pink}>View Profile</div>
+                    <div style={style.pink}>Edit Profile</div>
                   </div>
+                </div>
                   <br/>
                   <br/>
                 <div style={style.outline}>
