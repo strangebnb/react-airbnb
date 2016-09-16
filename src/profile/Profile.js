@@ -45,12 +45,17 @@ var data = {
   message: "hello Paxton. this is coming from our code!!!"
 };
 
-
-
 class Profile extends Component {
-  componentWillMount(){
+  constructor(props){
+    super(props)
 
-      axios.post('/sendMessage', data, config).then(response =>{ console.log(response)});
+    this.state = {
+      user: null
+    }
+      axios.get('/dashboard').then(response =>{
+        console.log(response.data.data.user.user)
+        this.setState({user: response.data.data.user.user})
+      });
 
   }
 
@@ -59,21 +64,21 @@ class Profile extends Component {
           <div className="profile-container">
 
             <ProfileDash />
-              <h2>User id: {this.props.params.id} </h2>
-             <div style={style} className="row bodyWidth profile-container">
-              <div className="col-md-3 col-sm-3 col-xs-12">
-                  <img className="profilePic" src="https://a2.muscache.com/im/pictures/07389693-7185-429e-8e86-9c7d3f9dd248.jpg"/>
-                  <div style={style.info}>
-                    <div style={{textAlign: 'center'}}>
-                      <div style={{fontSize: '32px', marginBottom:'15px'}}>Gial</div>
-                      <div style={style.pink}>View Profile</div>
-                      <div style={style.pink}>Edit Profile</div>
-                    </div>
+            <h2> {this.state.user !== null && this.state.user.id} </h2>
+            <div style={style} className="row bodyWidth profile-container">
+              <div className="col-sm-3 col-xs-12">
+                <img className="profilePic" src={this.state.user !== null && this.state.user.picture_large_url}/>
+                <div style={style.info}>
+                  <div style={{textAlign: 'center'}}>
+                    <div style={{fontSize: '32px', marginBottom:'15px'}}>{this.state.user !== null && this.state.user.first_name}</div>
+                    <div style={style.pink}>View Profile</div>
+                    <div style={style.pink}>Edit Profile</div>
                   </div>
-                  <br/>
-                  <br/>
+                </div>
+                <br/>
+                <br/>
                 <div style={style.outline}>
-                  <div style={style.headerStyle}> Verifications</div>
+                  <div style={style.headerStyle}>{this.state.user !== null ? this.state.user.email : 'Verfications'}</div>
                   <div style={style.info}><div style={style.pink}>Add Verifications</div></div>
                 </div>
                 <br/>
