@@ -1,4 +1,4 @@
-.about-listingName{
+.cnt-sm-left-md{
   text-align: center;
 }
 .about-body{
@@ -11,7 +11,7 @@
 }
 
 @media (min-width: 768px) {
-  .about-listingName{
+  .cnt-sm-left-md{
     text-align: left;
   }
   .about-body{
@@ -24,5 +24,8 @@
 
 }
 @media (min-width: 1128px) {
-
+  .header-picture{
+    height: 550px;
+    width: 100%;
+  }
 }

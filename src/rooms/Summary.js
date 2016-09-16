@@ -1,14 +1,20 @@
 import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import FlatButton from 'material-ui/FlatButton';
+import Home from 'material-ui/svg-icons/action/home';
+import People from 'material-ui/svg-icons/social/people-outline';
+import Contacts from 'material-ui/svg-icons/communication/contacts';
+import Bed from 'material-ui/svg-icons/Notification/airline-seat-individual-suite';
+
 require('./rooms.component.scss');
+
 
 
 import axios from 'axios';
 
 
 
-class Summary extends Component {
+
+class Summary extends React.Component {
   constructor(props) {
     super(props)
 
@@ -17,44 +23,19 @@ class Summary extends Component {
         city: null,
         state: null,
         country: null,
-        id: null,
         name: null,
         picture_url: null,
-        price: null,
-        thumbnail_url: null,
         user: {
           id: null,
         },
         hosts: [{
           picture_url: null,
         }],
-        user_id: null,
-        xl_picture_url: null,
-        address: null,
-        bathrooms: null,
         bedrooms: null,
         beds: null,
-        cancellation_policy: null,
-        country_code: null,
-        has_availability: null,
         person_capacity: null,
-        picture_count: null,
-        picture_urls: [],
-        property_type: null,
         reviews_count: null,
         room_type:null,
-        access: null,
-        amenities: [],
-        cancel_policy: null,
-        check_in_time: null,
-        check_in_time_end: null,
-        check_in_time_ends_at: null,
-        check_in_time_start: null,
-        check_out_time: null,
-        cleaning_fee_native: null,
-        currency_symbol_right: null,
-        summary: null,
-        house_rules: null,
       }
     }
     axios.get('/listingInfo').then(hostInfo =>{
@@ -63,42 +44,17 @@ class Summary extends Component {
           city: hostInfo.data.listing.city,
           state: hostInfo.data.listing.state,
           country: hostInfo.data.listing.country,
-          id: hostInfo.data.listing.city,
           name: hostInfo.data.listing.name,
           picture_url: hostInfo.data.listing.picture_url,
-          price: hostInfo.data.listing.price,
-          thumbnail_url: hostInfo.data.listing.thumbnail_url,
           user: {
             id: hostInfo.data.listing.id,
           },
           hosts: hostInfo.data.listing.hosts,
-          user_id: hostInfo.data.listing.user_id,
-          xl_picture_url: hostInfo.data.listing.xl_picture_url,
-          address: hostInfo.data.listing.address,
-          bathrooms: hostInfo.data.listing.bathrooms,
           bedrooms: hostInfo.data.listing.bedrooms,
           beds: hostInfo.data.listing.beds,
-          cancellation_policy: hostInfo.data.listing.cancellation_policy,
-          country_code: hostInfo.data.listing.country_code,
-          has_availability: hostInfo.data.listing.has_availability,
           person_capacity: hostInfo.data.listing.person_capacity,
-          picture_count: hostInfo.data.listing.picture_count,
-          picture_urls: hostInfo.data.listing.picture_urls,
-          property_type: hostInfo.data.listing.property_type,
           reviews_count: hostInfo.data.listing.reviews_count,
           room_type:hostInfo.data.listing.room_type,
-          access: hostInfo.data.listing.access,
-          amenities: hostInfo.data.listing.amenities,
-          cancel_policy: hostInfo.data.listing.cancel_policy,
-          check_in_time: hostInfo.data.listing.check_in_time,
-          check_in_time_end: hostInfo.data.listing.check_in_time_end,
-          check_in_time_ends_at: hostInfo.data.listing.check_in_time_ends_at,
-          check_in_time_start: hostInfo.data.listing.check_in_time_start,
-          check_out_time: hostInfo.data.listing.check_out_time,
-          cleaning_fee_native: hostInfo.data.listing.cleaning_fee_native,
-          currency_symbol_right: hostInfo.data.listing.currency_symbol_right,
-          summary: hostInfo.data.listing.summary,
-          house_rules: hostInfo.data.listing.house_rules,
         }
       })
     });
@@ -106,29 +62,52 @@ class Summary extends Component {
 
 
   render() {
-    
         return (
           <div>
-            <div>About this listing</div>
-            <div>{this.state.listing.summary}</div>
-            <div style={{color: "#ff6166"}}>Contact Host</div>
-            <br/>
-            <div>The Space</div>
-            <div>Accommodates: {this.state.listing.person_capacity}</div>
-            <div>Bathrooms: {this.state.listing.bathrooms}</div>
-            <div>Bedrooms: {this.state.listing.bedrooms}</div>
-            <div>Beds: {this.state.listing.beds}</div>
-            {(this.state.listing.check_in_time > 12)
-              ? <div>Check In: Anytime after {this.state.listing.check_in_time-12}PM</div>
-              : <div>Check In: anytime after {this.state.listing.check_in_time}AM</div>
-            }
-            {(this.state.listing.check_out_time > 12)
-              ? <div>Check Out:{this.state.listing.check_out_time-12}PM</div>
-            : <div>Check Out:{this.state.listing.check_out_time}AM</div>
-            }
-            <div>Property type: {this.state.listing.property_type}</div>
-            <div>Room type: {this.state.listing.room_type}</div>
-            <br/>
+            <div style={{backgroundColor:"#fff", paddingTop:"25px", paddingTop:"25px", paddingBottom:"25px", borderBottom:'solid 1px #DCE0E0'}} className="row about-body">
+              <div className="col-xs-12 col-sm-4" style={{paddingBottom:"25px"}}>
+                <img className="center-block" style={{borderRadius: '100%', height: '85px', width: '85px'}}src={this.state.listing.hosts[0].picture_url} />
+                <div style={{textAlign: "center", fontSize: '13px', color: '#767676', paddingTop: '5px'}} className="hidden-xs">{this.state.listing.hosts[0].first_name}</div>
+              </div>
+
+              <div className="col-xs-12 col-sm-8">
+                <div className="cnt-sm-left-md" style={{fontSize:'19px', letterSpacing: '1px'}}> {this.state.listing.name}</div>
+                <div className="cnt-sm-left-md" style={{fontSize: '11px', color: '#767676', letterSpacing: '1px', marginTop:"5px", marginBottom:"5px"}}>{this.state.listing.city} {this.state.listing.state} {this.state.listing.country}</div>
+              </div>
+
+
+              <span>
+                <MuiThemeProvider>
+                  <div className="placetype-icon">
+                    <div style={{fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2 cnt-sm-left-md"  >
+                    <Home style={{color:'#767676'}} />
+                    <div>{this.state.listing.room_type}</div>
+                    </div>
+                    <div style={{fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2 cnt-sm-left-md"  >
+                    <People style={{color:'#767676'}} />
+                      {(this.state.listing.person_capacity === 1)
+                        ? <div>{this.state.listing.person_capacity} guest</div>
+                        : <div>{this.state.listing.person_capacity} guests</div>
+                      }
+                    </div>
+                    <div style={{fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2 cnt-sm-left-md"  >
+                    <Contacts style={{color:'#767676'}} />
+                      {(this.state.listing.bedrooms === 1)
+                        ? <div>{this.state.listing.bedrooms} bedroom</div>
+                      : <div>{this.state.listing.bedrooms} bedrooms</div>
+                      }
+                    </div>
+                    <div style={{fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2 cnt-sm-left-md"  >
+                    <Bed style={{color:'#767676'}} />
+                      {(this.state.listing.beds === 1)
+                      ? <div>{this.state.listing.beds} bed</div>
+                      : <div>{this.state.listing.beds} beds</div>
+                      }
+                    </div>
+                  </div>
+                </MuiThemeProvider>
+              </span>
+            </div>
           </div>
         );
     }

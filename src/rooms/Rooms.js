@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from "./Header";
 import About from "./About";
 import Summary from "./Summary"
+import Footer from '../footer/Footer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 require('./rooms.component.scss');
@@ -114,8 +115,8 @@ class Rooms extends Component {
         return (
           <div>
             <Header/>
-            <About/>
             <Summary/>
+            <About/>
           </div>
         );
     }
