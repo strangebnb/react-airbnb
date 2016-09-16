@@ -20,6 +20,7 @@ import Highlights from './become-a-host/steps/stepTwo/Highlights'
 import SearchResults from './search-results/SearchResults';
 import LoginModal from './navbar/login-modal'
 import Rooms from './rooms/Rooms';
+import Inbox from './profile/Inbox.js';
 
 
 injectTapEventPlugin();
@@ -52,6 +53,7 @@ ReactDOM.render((
 			<Route path="/profile(/:id)" component={Profile} />
 			<Route path="/rooms/:rid" component={Rooms} />
 			<Route path="/search-results" component={SearchResults} />
+			<Route path="/inbox" component={Inbox} />
 
 		</Route>
 

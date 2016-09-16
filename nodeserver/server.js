@@ -92,8 +92,6 @@ app.post('/login', (req, response, next) => {
     options.data = null
 
     request(options, (err, res, body) => {
-      console.log('Res from airbnb: ', res)
-      console.log('Get User Info Body: ', body)
       req.session.data = body
       return response.json("data": req.session.data);
     })
@@ -103,6 +101,24 @@ app.post('/login', (req, response, next) => {
 
 app.get('/dashboard', (req, res, next) => {
   res.json({"data": req.session.data});
+})
+
+app.get('/getMessages', (req, response, next) => {
+
+  if(req.session.token === undefined){
+    req.session.token = '9v1yzmuie0cesz84hyxk44pd5'
+  }
+
+  const options = {
+  method: 'GET',
+  url: 'https://api.airbnb.com/v1/threads?locale=en-US&client_id=3092nxybyb0otqw18e8nh5nty&offset=0&items_per_page=10&currency=USD&role=guest',
+  headers: {"X-Airbnb-OAuth-Token": req.session.token},
+  json: true,
+}
+request(options, (err, res, body) => {
+  if(err){ console.log(err)}
+    return response.json({"threads": res.body.threads})
+  })
 })
 
 app.get('/getData', (req, res, next) => {
@@ -195,7 +211,6 @@ app.get('/listingInfo', (req,res,next) => {
     res.json(info);
   });
 })
-
 
 
 app.get('*', function(request, response) {
