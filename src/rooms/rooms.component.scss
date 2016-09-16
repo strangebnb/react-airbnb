@@ -1,0 +1,31 @@
+.cnt-sm-left-md{
+  text-align: center;
+}
+.about-body{
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+.header-picture{
+  height: 400px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .cnt-sm-left-md{
+    text-align: left;
+  }
+  .about-body{
+    padding: 15px;
+  }
+  .header-picture{
+    height: 460px;
+    width: 100%;
+  }
+
+}
+@media (min-width: 1128px) {
+  .header-picture{
+    height: 550px;
+    width: 100%;
+  }
+}

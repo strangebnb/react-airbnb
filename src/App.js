@@ -19,6 +19,7 @@ import Spaces from './become-a-host/steps/stepOne/Spaces';
 import Photos from './become-a-host/steps/stepTwo/UploadPhotos';
 import Highlights from './become-a-host/steps/stepTwo/Highlights'
 import SearchResults from './search-results/SearchResults';
+import LoginModal from './navbar/login-modal'
 import Rooms from './rooms/Rooms';
 
 
@@ -40,6 +41,7 @@ ReactDOM.render((
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Home} />
+			<Route path="/login" component={LoginModal}></Route>
 			<Route path="/host" component={BecomeAHost}/>
 				<Route path="/host/room" component={Room} />
 				<Route path="/host/bedrooms" component={Bedrooms} />

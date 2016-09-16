@@ -1,8 +1,4 @@
 import React, {Component} from 'react';
-import Header from "./Header";
-import About from "./About";
-import Summary from "./Summary"
-import Footer from '../footer/Footer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 require('./rooms.component.scss');
@@ -10,9 +6,14 @@ require('./rooms.component.scss');
 
 import axios from 'axios';
 
+const style = {
+  boldFont: {
+    fontWeight: '500'
+  }
+}
 
 
-class Rooms extends Component {
+class About extends Component {
   constructor(props) {
     super(props)
 
@@ -111,15 +112,38 @@ class Rooms extends Component {
 
   render() {
 
-    console.log("render", this.state.listing);
         return (
           <div>
-            <Header/>
-            <Summary/>
-            <About/>
+          <div style={{backgroundColor:"#f5f5f5", paddingBottom:"25px"}}>
+           <div className="row" style={{maxWidth:'651', marginLeft:'auto', marginRight:'auto', padding:"0 15px", letterSpacing:'1px'}} >
+            <div className="cnt-sm-left-md" style={{fontSize:"16px", fontWeight:"500", paddingTop: '35px', Color:'#484848'}}>About this listing</div>
+            <div style={{fontSize: '13px', color:'#4d4d4d', paddingTop: '15px'}}>{this.state.listing.summary}</div>
+            <div style={{color: "#D43242", fontSize: '13px', fontWeight:'500', paddingTop:'10px'}}>Contact Host</div>
+              <div style={{marginTop: '15px', marginBottom: "15px", border: "0", borderTop: '1px solid #dce0e0'}}></div>
+              <div className="col-sm-4" style={{fontSize: '13px',  color: "#767676", padding:'0px'}} >The Space</div>
+              <div className="col-sm-4" style={{fontSize: '13px', color:'#4d4d4d', padding:'0px'}}>
+                <div>Accommodates: <span style={style.boldFont}>{this.state.listing.person_capacity}</span></div>
+                <div>Bathrooms: <span style={style.boldFont}>{this.state.listing.bathrooms}</span></div>
+                <div>Bedrooms: <span style={style.boldFont}>{this.state.listing.bedrooms}</span></div>
+                <div>Beds: <span style={style.boldFont}>{this.state.listing.beds}</span></div>
+              </div>
+              <div className="col-sm-4" style={{fontSize: '13px', color:'#4d4d4d', padding:'0px'}}>
+              {(this.state.listing.check_in_time > 12)
+                ? <div>Check In: <span style={style.boldFont}>Anytime after {this.state.listing.check_in_time-12}PM</span></div>
+                : <div>Check In: <span style={style.boldFont}>Anytime after {this.state.listing.check_in_time}AM</span></div>
+              }
+              {(this.state.listing.check_out_time > 12)
+                ? <div>Check Out:<span style={style.boldFont}>{this.state.listing.check_out_time-12}PM</span></div>
+              : <div>Check Out:<span style={style.boldFont}>{this.state.listing.check_out_time}AM</span></div>
+              }
+              <div>Property type: <span style={style.boldFont}>{this.state.listing.property_type}</span></div>
+              <div>Room type: <span style={style.boldFont}>{this.state.listing.room_type}</span></div>
+              </div>
+              </div>
+            </div>
           </div>
         );
     }
 }
 
-export default Rooms;
+export default About;

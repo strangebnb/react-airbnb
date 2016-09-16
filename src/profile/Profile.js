@@ -5,9 +5,6 @@ import ProfileDash from "./ProfileDash";
 
 import axios from 'axios';
 
-
-
-
 const style = {
   padding: '0px 20px',
   marginLeft: 'auto',
@@ -60,7 +57,7 @@ class Profile extends Component {
     render() {
         return (
           <div className="profile-container">
-        
+
             <ProfileDash />
               <h2>User id: {this.props.params.id} </h2>
              <div style={style} className="row bodyWidth profile-container">
