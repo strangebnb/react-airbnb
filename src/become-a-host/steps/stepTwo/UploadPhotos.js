@@ -1,4 +1,5 @@
 import React from 'react';
+import Middle from './photo.component.middle.js'
 import './photo.component.scss'
 
 const styles ={
@@ -12,6 +13,10 @@ const styles ={
 }
 
 export default React.createClass({
+onDrop: function(files) {
+  console.log("Recieved Files:", files);
+},
+
 render(){
   return(
     <div className="papaBear">
@@ -21,13 +26,7 @@ render(){
             <div className="main-panel-container col-sm-12">
               <div className="main-panel">
                 <div className="panel-body">
-                    <div className="va-middle">
-                      <div className="btn">
-                        <i></i>
-                        <span>Upload Photos</span>
-                      </div>
-                      <span>or drag them in</span>
-                    </div>
+                    <Middle />
                 </div>
               </div>
             </div>
