@@ -52,8 +52,7 @@ class Profile extends Component {
     super(props)
 
       // axios.post('/sendMessage', data, config).then(response =>{ console.log(response)});
-      axios.post('/dashboard').then(response =>{ console.log(response)});
-
+      axios.get('/dashboard').then(response =>{ console.log(response.data.data.user.user)});
 
   }
 

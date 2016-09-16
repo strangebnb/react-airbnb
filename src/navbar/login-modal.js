@@ -7,6 +7,7 @@ import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 
 const style = {
   marginLeft: 20,
@@ -46,42 +47,30 @@ export default class DialogExampleSimple extends React.Component {
   };
 
   onEmail = (e) => {
-    console.log(e.target.value)
-    this.setState({email: e.target.value}, ()=>{
-      if (e.keyCode === 13) {
-        axios.post('/login', {
-          email: this.state.email,
-          password: this.state.password
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-    }
-    });
+    console.log(e.keyCode)
+    this.setState({email: e.target.value});
   }
 
   onPassword = (e) => {
-    console.log(e.target.value)
-    this.setState({password: e.target.value}, ()=>{
-      if (e.keyCode === 13) {
-        axios.post('/login', {
-          email: this.state.email,
-          password: this.state.password
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-    }
-    });
+    console.log(e.keyCode)
+    this.setState({password: e.target.value})
   }
 
   submitLogin = (e) => {
+      console.log('browserHistory: ', browserHistory)
+    this.setState({open: false});
+
       axios.post('/login', {
         email: this.state.email,
         password: this.state.password
       })
-      .then(function (response) {
-        console.log(response);
+      .then(function (response, err) {
+        if(err) {
+          console.log(err)
+        }
+        console.log('response: ', response);
+
+        browserHistory.push('/profile/');
       })
 }
 
@@ -97,8 +86,7 @@ export default class DialogExampleSimple extends React.Component {
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.handleClose}
-        onClick={this.submitLogin}
+        onTouchTap={this.submitLogin}
         labelStyle={pink}
       />,
     ];
@@ -108,7 +96,6 @@ export default class DialogExampleSimple extends React.Component {
         // hintText="Email"
         style={style}
         underlineShow={true}
-        onKeyDown={this.submitLogin}
         underlineFocusStyle={pink}
         floatingLabelText="Email"
         floatingLabelStyle={pink}
@@ -120,7 +107,6 @@ export default class DialogExampleSimple extends React.Component {
         // hintText="Password"
         style={style}
         underlineShow={true}
-        onKeyDown={this.submitLogin}
         underlineFocusStyle={pink}
         floatingLabelText="Password"
         floatingLabelStyle={pink}

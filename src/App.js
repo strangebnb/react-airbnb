@@ -49,7 +49,7 @@ ReactDOM.render((
 			<Route path="/host/amenities" component={Amenities} />
 			<Route path="/host/spaces" component={Spaces} />
 			<Route path="/host/highlights" component={Highlights} />
-			<Route path="/profile/:id" component={Profile} />
+			<Route path="/profile(/:id)" component={Profile} />
 			<Route path="/rooms/:rid" component={Rooms} />
 			<Route path="/search-results" component={SearchResults} />
 

@@ -85,35 +85,24 @@ app.post('/login', (req, response, next) => {
     inspect(headers, 'headers')
     inspect(statusCode, 'statusCode')
     inspect(body, 'body')
-    console.log('response.redirect:',response.redirect);
-    return response.redirect(302, '/profile/1');
+
+    options.method = 'get'
+    options.url = 'https://api.airbnb.com/v1/account/active'
+    options.headers = {"X-Airbnb-OAuth-Token": req.session.token}
+    options.data = null
+
+    request(options, (err, res, body) => {
+      console.log('Res from airbnb: ', res)
+      console.log('Get User Info Body: ', body)
+      req.session.data = body
+      return response.json("data": req.session.data);
+    })
 
   })
-
 })
 
 app.get('/dashboard', (req, res, next) => {
-
-  const data2 = {
-    client_id: "d306zoyjsyarp7ifhu67rjxn52tv0t20",
-    currency: 'USD',
-    locale: "en-US",
-  }
-
-  const options = {
-    method: 'get',
-    url: 'https://api.airbnb.com/v1/account/active',
-    headers: {"X-Airbnb-OAuth-Token": req.session.token},
-    data: data2
-  }
-
-  console.log('hit');
-  request(options, (err, response, body) => {
-    // console.log('Res from airbnb: ', res)
-
-    req.session.user = body;
-      res.json({body});
-    })
+  res.json({"data": req.session.data});
 })
 
 app.get('/getData', (req, res, next) => {
