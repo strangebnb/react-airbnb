@@ -198,16 +198,13 @@ request(options, function(err, res, body) {
   if (err) inspect(err, 'error at jsoning');
   var headers = res.headers
   var statusCode = res.statusCode
-  inspect(headers, 'headers')
-  inspect(statusCode, 'statusCode')
-  inspect(body, 'body')
 })
 })
 
 
 app.get('/listingInfo', (req,res,next) => {
   //TODO NEED TO GET HOSTING_ID HERE
-  airbnb.getInfo(9998258).then(function(info) {
+  airbnb.getInfo(279345).then(function(info) {
     res.json(info);
   });
 })
