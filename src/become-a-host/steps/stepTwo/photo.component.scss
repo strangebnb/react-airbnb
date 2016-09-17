@@ -1,0 +1,23 @@
+.papaBear {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+.lys-redesign-div {
+  min-height: calc(100vh - 62px);
+  position: relative;
+}
+.list-your-space_content {
+  padding-top: 71px;
+}
+.centered-content {
+  max-width: 912px;
+  margin: 0 auto;
+  display: table;
+}
+.va-middle {
+  background-image: url('https://a2.muscache.com/airbnb/static/list_your_space/upload-photos-ghosts-21da2dc0ca06d8f7637a453783a27720.png');
+  background-size: cover;
+  height: 200px;
+}
