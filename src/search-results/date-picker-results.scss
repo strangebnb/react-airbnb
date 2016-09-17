@@ -519,3 +519,9 @@
 
 .SingleDatePickerInput {
   border: 1px solid #dbdbdb; }
+
+  @media (max-width: 768px) {
+    .DateRangePicker {
+      display: none !important;
+    }
+  }
