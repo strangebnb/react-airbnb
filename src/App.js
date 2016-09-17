@@ -21,7 +21,6 @@ import SearchResults from './search-results/SearchResults';
 import LoginModal from './navbar/login-modal'
 import Rooms from './rooms/Rooms';
 import Inbox from './profile/Inbox.js';
-import User from './user/User.js';
 
 
 injectTapEventPlugin();
@@ -52,11 +51,10 @@ ReactDOM.render((
 			<Route path="/host/spaces" component={Spaces} />
 			<Route path="/host/highlights" component={Highlights} />
 			<Route path="/profile(/:id)" component={Profile} />
-			<Route path="/rooms(/:rid)" component={Rooms} />
+			<Route path="/rooms/:rid" component={Rooms} />
 			<Route path="/search-results" component={SearchResults} />
 			<Route path="/inbox" component={Inbox} />
-			<Route path="/user(/:id)" component={User} />
-
+			
 		</Route>
 
 </Router>
