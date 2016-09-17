@@ -60,7 +60,7 @@ passport.deserializeUser(function(user, done) {
 
 app.post('/login', (req, response, next) => {
 
-  var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
+  var config = {"X-Airbnb-OAuth-Token": "446qdnlk8o0j79zjz4py8mrum"};
   var data = {
     client_id: "d306zoyjsyarp7ifhu67rjxn52tv0t20",
     currency: 'USD',
@@ -79,7 +79,6 @@ app.post('/login', (req, response, next) => {
   request(options, (err, res, body) => {
     if (err) inspect(err, 'error at jsoning');
    req.session.token = body.access_token;
-   console.log('req.session.token: ', req.session.token)
     var headers = res.headers
     var statusCode = res.statusCode
     inspect(headers, 'headers')
@@ -106,7 +105,8 @@ app.get('/dashboard', (req, res, next) => {
 app.get('/getMessages', (req, response, next) => {
 
   if(req.session.token === undefined){
-    req.session.token = '9v1yzmuie0cesz84hyxk44pd5'
+    req.session.token = '446qdnlk8o0j79zjz4py8mrum'
+    console.log('req.session.token: ', req.session.token)
   }
 
   const options = {
@@ -115,8 +115,10 @@ app.get('/getMessages', (req, response, next) => {
   headers: {"X-Airbnb-OAuth-Token": req.session.token},
   json: true,
 }
+
 request(options, (err, res, body) => {
   if(err){ console.log(err)}
+  console.log('res.body: ', res.body)
     return response.json({"threads": res.body.threads})
   })
 })
@@ -137,12 +139,27 @@ app.get('/getData', (req, res, next) => {
         searchResults.startDate = '10/24/2016'
         searchResults.endDate = '10/31/2016'
         searchResults.numGuests = 1
-        // searchResults.minPrice =
-        // searchResults.maxPrice =
         res.json(searchResults);
       });
     }
 });
+
+app.get('/viewUser/:id', (req, response, next) => {
+  console.log('Params: ' , req.params)
+  const options = {
+  method: 'get',
+  url: `https://api.airbnb.com/v2/users/${req.params.id}?client_id=3092nxybyb0otqw18e8nh5nty&_format=v1_legacy_show`,
+  headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
+  json: true
+}
+
+request(options, (err, res, body) => {
+  // console.log('user res: ', res)
+  // console.log('user body: ', body)
+  response.json({'succces': body})
+})
+
+})
 
 app.post('/search', (req, res, next) => {
 
@@ -156,8 +173,6 @@ app.post('/search', (req, res, next) => {
         price_min: req.body.price_min,
         price_max: req.body.price_max
     }).then(function(searchResults) {
-        console.log('max price total: ', searchResults.max_price_total)
-        console.log('min price total: ', searchResults.min_price_total)
         searchResults.location = req.body.searchVal
         searchResults.startDate = req.body.startDate
         searchResults.endDate = req.body.endDate
@@ -183,8 +198,9 @@ app.post('/sendMessage', (req, res, next) => {
     checkout_date: "2018-04-02T22:00:00.000-0700",
     checkin_date: "2018-04-01T00:00:00.000-0700",
     locale: "en-US",
-    message: "hello Paxton. this is coming from our code!!!"
+    message: req.body.message
   };
+
   var options = {
     method: 'post',
     url: 'https://api.airbnb.com/v1/threads/create',
@@ -194,17 +210,21 @@ app.post('/sendMessage', (req, res, next) => {
     body: data,
     json: true
   };
+  console.log('data to be sent:', data)
 request(options, function(err, res, body) {
-  if (err) inspect(err, 'error at jsoning');
+  console.log('body: ',body)
+  if (err) {inspect(err, 'error at jsoning')
+    console.log(err)
+  };
   var headers = res.headers
   var statusCode = res.statusCode
 })
 })
 
 
-app.get('/listingInfo', (req,res,next) => {
-  //TODO NEED TO GET HOSTING_ID HERE
-  airbnb.getInfo(279345).then(function(info) {
+app.get('/listingInfo/:rid', (req,res,next) => {
+  console.log(req.params)
+  airbnb.getInfo(req.params.rid).then(function(info) {
     res.json(info);
   });
 })

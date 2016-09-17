@@ -109,10 +109,11 @@ class Rooms extends Component {
   render() {
 
     console.log("render", this.state.listing);
+    console.log("props", this.props.params.rid);
         return (
           <div>
             <Header/>
-            <Summary/>
+            <Summary rid={this.props && this.props.params.rid}/>
             <About/>
           </div>
         );

@@ -11,9 +11,6 @@ require('./rooms.component.scss');
 
 import axios from 'axios';
 
-
-
-
 class Summary extends React.Component {
   constructor(props) {
     super(props)
@@ -38,7 +35,10 @@ class Summary extends React.Component {
         room_type:null,
       }
     }
-    axios.get('/listingInfo').then(hostInfo =>{
+    axios.get(`/listingInfo/${this.props.rid}`).then(hostInfo =>{
+
+      console.log("hostInfo: " , hostInfo)
+
       this.setState({
         listing: {
           city: hostInfo.data.listing.city,
@@ -66,13 +66,13 @@ class Summary extends React.Component {
           <div>
             <div style={{backgroundColor:"#fff", paddingTop:"25px", paddingTop:"25px", paddingBottom:"25px", borderBottom:'solid 1px #DCE0E0'}} className="row about-body">
               <div className="col-xs-12 col-sm-4" style={{paddingBottom:"25px"}}>
-                <img className="center-block" style={{borderRadius: '100%', height: '85px', width: '85px'}}src={this.state.listing.hosts[0].picture_url} />
+                <img className="center-block" style={{borderRadius: '100%', height: '85px', width: '85px'}}src={this.state.listing !== undefined && this.state.listing.hosts[0].picture_url} />
                 <div style={{textAlign: "center", fontSize: '13px', color: '#767676', paddingTop: '5px'}} className="hidden-xs">{this.state.listing.hosts[0].first_name}</div>
               </div>
 
               <div className="col-xs-12 col-sm-8">
-                <div className="cnt-sm-left-md" style={{fontSize:'19px', letterSpacing: '1px'}}> {this.state.listing.name}</div>
-                <div className="cnt-sm-left-md" style={{fontSize: '11px', color: '#767676', letterSpacing: '1px', marginTop:"5px", marginBottom:"5px"}}>{this.state.listing.city} {this.state.listing.state} {this.state.listing.country}</div>
+                <div className="cnt-sm-left-md" style={{fontSize:'19px', letterSpacing: '1px'}}> {this.state.listing !== undefined && this.state.listing.name}</div>
+                <div className="cnt-sm-left-md" style={{fontSize: '11px', color: '#767676', letterSpacing: '1px', marginTop:"5px", marginBottom:"5px"}}>{this.state.listing !== undefined && this.state.listing.city} {this.state.listing.state} {this.state.listing.country}</div>
               </div>
 
 
@@ -81,27 +81,27 @@ class Summary extends React.Component {
                   <div className="placetype-icon">
                     <div style={{fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2 cnt-sm-left-md"  >
                       <Home style={{color:'#767676'}} />
-                      <div>{this.state.listing.room_type}</div>
+                      <div>{this.state.listing !== undefined && this.state.listing.room_type}</div>
                     </div>
                     <div style={{fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2 cnt-sm-left-md"  >
-                    <People style={{color:'#767676'}} />
-                      {(this.state.listing.person_capacity === 1)
-                        ? <div>{this.state.listing.person_capacity} guest</div>
-                        : <div>{this.state.listing.person_capacity} guests</div>
+                      <People style={{color:'#767676'}} />
+                      {(this.state.listing !== undefined && this.state.listing.person_capacity === 1)
+                        ? <div>{this.state.listing !== undefined && this.state.listing.person_capacity} guest</div>
+                        : <div>{this.state.listing !== undefined && this.state.listing.person_capacity} guests</div>
                       }
                     </div>
                     <div style={{fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2 cnt-sm-left-md"  >
-                    <Contacts style={{color:'#767676'}} />
-                      {(this.state.listing.bedrooms === 1)
-                        ? <div>{this.state.listing.bedrooms} bedroom</div>
-                      : <div>{this.state.listing.bedrooms} bedrooms</div>
+                      <Contacts style={{color:'#767676'}} />
+                      {(this.state.listing !== undefined && this.state.listing.bedrooms === 1)
+                        ? <div>{this.state.listing !== undefined && this.state.listing.bedrooms} bedroom</div>
+                        : <div>{this.state.listing !== undefined && this.state.listing.bedrooms} bedrooms</div>
                       }
                     </div>
                     <div style={{fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2 cnt-sm-left-md"  >
-                    <Bed style={{color:'#767676'}} />
-                      {(this.state.listing.beds === 1)
-                      ? <div>{this.state.listing.beds} bed</div>
-                      : <div>{this.state.listing.beds} beds</div>
+                      <Bed style={{color:'#767676'}} />
+                      {(this.state.listing !== undefined && this.state.listing.beds === 1)
+                        ? <div>{this.state.listing !== undefined && this.state.listing.beds} bed</div>
+                        : <div>{this.state.listing !== undefined && this.state.listing.beds} beds</div>
                       }
                     </div>
                   </div>

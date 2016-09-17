@@ -25,7 +25,6 @@
 }
 
 .cards-container {
-    width: 59%;
     float: left;
     background: white;
 }
@@ -104,6 +103,7 @@
   left: 50%;
   top: 50%;
   transform: (translate(-50%, -50%));
+  width: 100%;
 }
 
 .SearchBar {
@@ -510,4 +510,10 @@ input[type='checkbox']:checked:before {
 -webkit-margin-after: 0em;
 -webkit-margin-start: 0px;
 -webkit-margin-end: 0px;
+}
+
+@media (min-width: 768px) {
+  .cards-container,  {
+    width: 59%;
+  }
 }

@@ -1,0 +1,13 @@
+.threads {
+  width: 800px;
+  margin: 55px auto;
+  // margin-top: 55px;
+  background: #FFFFFF;
+}
+
+@media (max-width: 767px) {
+  .threads {
+    width: 375px;
+    margin: 10px auto;
+  }
+}
