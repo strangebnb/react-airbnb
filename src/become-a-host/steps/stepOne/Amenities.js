@@ -43,7 +43,7 @@ render(){
   return(
       <div className="room-parent-container">
             <div className="progress-bar-container">
-              <div className="progress-items">
+              <div className="progress-items hidden-xs">
                   <div>
                     <Link to='/host/room'>
                     <div className= "inactive-tab">Place type</div>
@@ -79,8 +79,8 @@ render(){
 
               </div>
             </div>
-            <div className="content">
-              <div className="form-side">
+            <div className="content row">
+              <div className="form-side col-sm-7 col-xs-12">
                 <div className="form-container">
                   <div >
                     <div className="form-title-large">What amenitites do you offer?</div>
@@ -187,16 +187,16 @@ render(){
                     <div>
 
                     </div>
-                    <div className="step-nav" style={{marginTop: 0}}>
+                    <div className="step-nav">
                       <MuiThemeProvider>
                         <div className="back-next">
-                          <div>
+                          <div className="col-xs-5 back-btn">
                             <FlatButton
                             label="← Back"
                             labelStyle={{textTransform: "none", color: "#E6E6E6"}}
                             />
                           </div>
-                          <div>
+                          <div className="col-xs-7 next-btn">
                             <RaisedButton
                             label="Next"
                             labelStyle={{textTransform: "none", color: "white", position: "absolute", bottom: 12, right: 61}}
@@ -213,7 +213,7 @@ render(){
                 </div>
               </div>
 
-              <div className="instruction-side">
+              <div className="instruction-side col-sm-5 hidden-xs">
                 <div className="note-container">
                     <MuiThemeProvider>
                       <Lightbulb style={{ color: "#40BDB6", height: "30px", width: "30px", marginBottom: "18px" }}/>

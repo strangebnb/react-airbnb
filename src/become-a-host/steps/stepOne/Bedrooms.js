@@ -165,16 +165,16 @@ render(){
                           <GuestIncrementer />
                         </div>
                     </div>
-                    <div className="step-nav col-sm-6 col-xs-12">
+                    <div className="step-nav">
                       <MuiThemeProvider>
                         <div className="back-next">
-                          <div className="col-lg-2 col-lg-offset-5 col-sm-3 col-sm-offset-3 col-xs-5 back-btn">
+                          <div className="col-xs-5 back-btn">
                             <FlatButton
                             label="← Back"
                             labelStyle={{textTransform: "none", color: "#E6E6E6"}}
                             />
                           </div>
-                          <div className="col-sm-5 col-xs-7 next-btn">
+                          <div className="col-xs-7 next-btn">
                             <RaisedButton
                             label="Next"
                             labelStyle={{textTransform: "none", color: "white", position: "absolute", bottom: 12, right: 61}}

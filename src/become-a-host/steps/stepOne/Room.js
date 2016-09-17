@@ -17,8 +17,7 @@ import SelectedCircle from 'material-ui/svg-icons/image/adjust';
 
 require ("../steps.scss")
 
-
-
+ 
 
 const styles = {
   block: {
