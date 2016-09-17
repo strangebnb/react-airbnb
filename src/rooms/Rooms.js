@@ -5,11 +5,8 @@ import Summary from "./Summary"
 import Footer from '../footer/Footer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
-require('./rooms.component.scss');
-
-
 import axios from 'axios';
-
+require('./rooms.component.scss');
 
 
 class Rooms extends Component {
