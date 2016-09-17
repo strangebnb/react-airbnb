@@ -56,7 +56,7 @@ export default class DialogExampleSimple extends React.Component {
     this.setState({password: e.target.value})
   }
 
-  submitLogin = (e) => {
+  submitLogin = () => {
       console.log('browserHistory: ', browserHistory)
     this.setState({open: false});
 

@@ -198,8 +198,9 @@ app.post('/sendMessage', (req, res, next) => {
     checkout_date: "2018-04-02T22:00:00.000-0700",
     checkin_date: "2018-04-01T00:00:00.000-0700",
     locale: "en-US",
-    message: "hello Paxton. this is coming from our code!!!"
+    message: req.body.message
   };
+
   var options = {
     method: 'post',
     url: 'https://api.airbnb.com/v1/threads/create',
@@ -209,17 +210,21 @@ app.post('/sendMessage', (req, res, next) => {
     body: data,
     json: true
   };
+  console.log('data to be sent:', data)
 request(options, function(err, res, body) {
-  if (err) inspect(err, 'error at jsoning');
+  console.log('body: ',body)
+  if (err) {inspect(err, 'error at jsoning')
+    console.log(err)
+  };
   var headers = res.headers
   var statusCode = res.statusCode
 })
 })
 
 
-app.get('/listingInfo', (req,res,next) => {
-  //TODO NEED TO GET HOSTING_ID HERE
-  airbnb.getInfo(279345).then(function(info) {
+app.get('/listingInfo/:rid', (req,res,next) => {
+  console.log(req.params)
+  airbnb.getInfo(req.params.rid).then(function(info) {
     res.json(info);
   });
 })

@@ -54,7 +54,7 @@ ReactDOM.render((
 			<Route path="/host/highlights" component={Highlights} />
 			<Route path="/host/photos" component={Photos} />
 			<Route path="/profile(/:id)" component={Profile} />
-			<Route path="/rooms/:rid" component={Rooms} />
+			<Route path="/rooms(/:rid)" component={Rooms} />
 			<Route path="/search-results" component={SearchResults} />
 			<Route path="/inbox" component={Inbox} />
 			<Route path="/user(/:id)" component={User} />
