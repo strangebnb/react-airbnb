@@ -60,7 +60,7 @@ passport.deserializeUser(function(user, done) {
 
 app.post('/login', (req, response, next) => {
 
-  var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
+  var config = {"X-Airbnb-OAuth-Token": "446qdnlk8o0j79zjz4py8mrum"};
   var data = {
     client_id: "d306zoyjsyarp7ifhu67rjxn52tv0t20",
     currency: 'USD',
@@ -105,7 +105,8 @@ app.get('/dashboard', (req, res, next) => {
 app.get('/getMessages', (req, response, next) => {
 
   if(req.session.token === undefined){
-    req.session.token = '9v1yzmuie0cesz84hyxk44pd5'
+    req.session.token = '446qdnlk8o0j79zjz4py8mrum'
+    console.log('req.session.token: ', req.session.token)
   }
 
   const options = {
@@ -114,6 +115,7 @@ app.get('/getMessages', (req, response, next) => {
   headers: {"X-Airbnb-OAuth-Token": req.session.token},
   json: true,
 }
+
 request(options, (err, res, body) => {
   if(err){ console.log(err)}
   console.log('res.body: ', res.body)
@@ -141,6 +143,23 @@ app.get('/getData', (req, res, next) => {
       });
     }
 });
+
+app.get('/viewUser/:id', (req, response, next) => {
+  console.log('Params: ' , req.params)
+  const options = {
+  method: 'get',
+  url: `https://api.airbnb.com/v2/users/${req.params.id}?client_id=3092nxybyb0otqw18e8nh5nty&_format=v1_legacy_show`,
+  headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
+  json: true
+}
+
+request(options, (err, res, body) => {
+  // console.log('user res: ', res)
+  // console.log('user body: ', body)
+  response.json({'succces': body})
+})
+
+})
 
 app.post('/search', (req, res, next) => {
 
