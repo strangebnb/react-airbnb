@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
+import MessageModal from './message-modal.js'
 require('./rooms.component.scss');
 
 
@@ -118,7 +119,10 @@ class About extends Component {
            <div className="row" style={{maxWidth:'651', marginLeft:'auto', marginRight:'auto', padding:"0 15px", letterSpacing:'1px'}} >
             <div className="cnt-sm-left-md" style={{fontSize:"16px", fontWeight:"500", paddingTop: '35px', Color:'#484848'}}>About this listing</div>
             <div style={{fontSize: '13px', color:'#4d4d4d', paddingTop: '15px'}}>{this.state.listing.summary}</div>
-            <div style={{color: "#D43242", fontSize: '13px', fontWeight:'500', paddingTop:'10px'}}>Contact Host</div>
+
+            <MessageModal />
+
+
               <div style={{marginTop: '15px', marginBottom: "15px", border: "0", borderTop: '1px solid #dce0e0'}}></div>
               <div className="col-sm-4" style={{fontSize: '13px',  color: "#767676", padding:'0px'}} >The Space</div>
               <div className="col-sm-4" style={{fontSize: '13px', color:'#4d4d4d', padding:'0px'}}>

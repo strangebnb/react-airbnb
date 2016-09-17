@@ -46,7 +46,7 @@ $darkest: #4B4B4B;
 
 .instruction-side {
   position: fixed;
-  right: 0;
+  left: 55%;
   top: 130px;
 }
 .form-container {
@@ -65,7 +65,7 @@ $darkest: #4B4B4B;
   }
 }
 .button-container {
-  // width: 320px;
+  width: 320px;
   border: 1px solid $medium;
   border-radius: 4px;
   margin-bottom: 30px;
@@ -88,7 +88,6 @@ $darkest: #4B4B4B;
 .step-nav {
   position: fixed;
     z-index: 111;
-    left: 0px;
     bottom: 0px;
   border-top: 1px solid $medium;
   .back-next {
@@ -165,9 +164,14 @@ $darkest: #4B4B4B;
   }
   .form-container {
     float: right;
+    margin-right: 50px;
     margin-top: 30px;
   }
   .form-side {
       top: 140px;
+      width: 55%;
+  }
+  .step-nav {
+    float: right;
   }
 }

@@ -16,7 +16,7 @@ const style ={
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     width: '100vw',
-    padding: '0',
+    padding: 0,
 
   },
   upperHalf:{
@@ -51,7 +51,7 @@ render(){
             <div>
               <div className="container heroImage" style={style.heroImage}>
                 <div style={style.upperHalf}>
-                  <div className="headerHero" style={{fontSize: "3.5rem", fontWeight: "700", margin: "0", lineSpacing: "1.1", lineHeight: "1.1", paddingBottom: '-10px'}}>LIVE THERE</div>
+                  <div className="headerHero" style={{fontSize: "3.5rem", fontWeight: "700", margin: 0, lineSpacing: 1.1, lineHeight: 1.1, paddingBottom: '-10px'}}>LIVE THERE</div>
                   <p style={{letterSpacing: "1px", padding: '0 10px',
     textAlign: 'center'}}>Book homes from local host in 191+ countries and experience a place like you live there.</p>
                   <RaisedButton label="Learn About Airbnb" labelStyle={{textTransform: "none", fontWeight: "400px", margin: "0 20px", fontWeight: 'bold'}}  />
