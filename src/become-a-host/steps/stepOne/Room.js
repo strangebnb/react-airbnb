@@ -17,7 +17,7 @@ import SelectedCircle from 'material-ui/svg-icons/image/adjust';
 
 require ("../steps.scss")
 
- 
+
 
 const styles = {
   block: {
@@ -64,11 +64,8 @@ getInitialState() {
           enabler: true
   }
 },
-handleChange(e){
-  console.log(e.target.value);
-  this.setState({
-          value: e.target.value,
-  })
+handleChange(event, index, value){
+  this.setState({value})
 },
 handleClick(){
   this.setState({enabler: false})

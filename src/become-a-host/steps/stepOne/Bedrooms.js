@@ -66,14 +66,15 @@ export default React.createClass({
 getInitialState() {
   return {
           value: 1,
-          enabler: true
+          enabler: true,
+          bed: 1
   }
 },
-handleChange(e){
-  console.log(e.target.value);
-  this.setState({
-          value: e.target.value,
-  })
+handleChange(event, index, value){
+  this.setState({value})
+},
+handleChangeTwo(event, index, bed){
+  this.setState({bed})
 },
 handleClick(){
   this.setState({enabler: false})
@@ -148,7 +149,7 @@ render(){
                       </div>
                       <div className="drop-down-menu">
                       <MuiThemeProvider>
-                        <DropDownMenu value={this.state.value} onChange={this.handleChange} style={styles.customWidth}
+                        <DropDownMenu value={this.state.bed} onChange={this.handleChangeTwo} style={styles.customWidth}
                             autoWidth={false} underlineStyle={styles.dropDown}>
                            <MenuItem value={1} primaryText="Real Bed" />
                            <MenuItem value={2} primaryText="Pull-out Sofa" />
@@ -179,9 +180,7 @@ render(){
                             label="Next"
                             labelStyle={{textTransform: "none", color: "white", position: "absolute", bottom: 12, right: 61}}
                             backgroundColor="#EF5350"
-                            disabledBackgroundColor="#FFCDD2"
                             style={{width: "180px", height: '45px', positive: "relative"}}
-                            disabled={this.state.enabler}
                             />
                           </div>
                         </div>

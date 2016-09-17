@@ -24,21 +24,6 @@ const styles = {
 };
 
 export default React.createClass({
-getInitialState() {
-  return {
-          value: 1,
-          enabler: true
-  }
-},
-handleChange(e){
-  console.log(e.target.value);
-  this.setState({
-          value: e.target.value,
-  })
-},
-handleClick(){
-  this.setState({enabler: false})
-},
 render(){
   return(
       <div className="room-parent-container">
@@ -201,9 +186,7 @@ render(){
                             label="Next"
                             labelStyle={{textTransform: "none", color: "white", position: "absolute", bottom: 12, right: 61}}
                             backgroundColor="#EF5350"
-                            disabledBackgroundColor="#FFCDD2"
                             style={{width: "180px", height: '45px', positive: "relative"}}
-                            disabled={this.state.enabler}
                             />
                           </div>
                         </div>
