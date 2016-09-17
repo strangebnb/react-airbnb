@@ -455,7 +455,7 @@ background-color: #fa0008;
   z-index: 1;
   position: absolute;
   top: 145%;
-  left: 0; }
+  left: -60px !important; }
   .DateRangePicker__picker::before, .DateRangePicker__picker::after {
     content: "";
     display: inline-block;
@@ -500,7 +500,7 @@ background-color: #fa0008;
   border-bottom-color: #fff; }
 
 .DateRangePicker__picker--start::after {
-  left: 23px; }
+  left: 63px !important; }
 
 .DateRangePicker__picker--end::after {
   left: 163px; }

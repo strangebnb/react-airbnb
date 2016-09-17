@@ -11,7 +11,7 @@ let RadiumLink = Radium(Link);
 
 var styles = {
   bmBurgerButton: {
-    position: 'fixed',
+    position: 'absolute',
     width: '24px',
     height: '20px',
     left: '10px',

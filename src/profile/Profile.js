@@ -33,17 +33,6 @@ const style = {
   }
 }
 
-var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
-var data = {
-  listing_id: "14978040",
-  number_of_guests: "1",
-  client_id: "d306zoyjsyarp7ifhu67rjxn52tv0t20",
-  currency: 'USD',
-  checkout_date: "2018-04-02T22:00:00.000-0700",
-  checkin_date: "2018-04-01T00:00:00.000-0700",
-  locale: "en-US",
-  message: "hello Paxton. this is coming from our code!!!"
-};
 
 class Profile extends Component {
   constructor(props){
