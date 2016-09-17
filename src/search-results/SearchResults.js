@@ -162,17 +162,17 @@ if(this.state.picture_urls.length != 0){
      return(
      <div>
        <main className = 'container-search'>
-         <div className = 'cards-container'>
+         <div className = 'cards-container col-xs-12'>
            <div className = 'date-panel'>
              <span className='dates-panel-label'>Dates</span>
              <div className = 'date-picker-container'><DateRangePickerGmapPage values={this.props.values} roomTypeSelected = {this.props.roomTypeSelected} location = {this.state.location} renderMap = {this.renderMap.bind(this)} className = 'date-picker'/></div>
            </div>
            <div className = 'room-panel'>
-             <span className='room-types-header'>Room Types</span>
+             <span className='room-types-header hidden-xs'>Room Types</span>
              <div className = 'checkboxes'>
-               <div className='room-type-container'><img className='room-type-icon' src='./assets/icons/house.png'/><div className='room-type-checkbox-section'><label>Entire Home</label><input className='checkbox' id='entireHome' type='checkbox' name='Entire home/apt' value={this.state.entireHome} onChange={this.handleRoomTypes}/></div></div>
-               <div className='room-type-container'><img className='room-type-icon'  src='./assets/icons/door.png'/><div className='room-type-checkbox-section'><label>Private Room</label><input className='checkbox' id='privateRoom' type='checkbox' name='Private room' value={this.state.privateRoom} onChange={this.handleRoomTypes}/></div></div>
-               <div className='room-type-container'><img className='room-type-icon'  src='./assets/icons/couch.png'/><div className='room-type-checkbox-section'><label>Shared Room</label><input className='checkbox' id='sharedRoom' type='checkbox' name='Shared room' value={this.state.sharedRoom} onChange={this.handleRoomTypes}/></div></div>
+               <div className='room-type-container'><img className='room-type-icon' src='/assets/icons/house.png'/><div className='room-type-checkbox-section'><label>Entire Home</label><input className='checkbox' id='entireHome' type='checkbox' name='Entire home/apt' value={this.state.entireHome} onChange={this.handleRoomTypes}/></div></div>
+               <div className='room-type-container'><img className='room-type-icon'  src='/assets/icons/door.png'/><div className='room-type-checkbox-section'><label>Private Room</label><input className='checkbox' id='privateRoom' type='checkbox' name='Private room' value={this.state.privateRoom} onChange={this.handleRoomTypes}/></div></div>
+               <div className='room-type-container'><img className='room-type-icon'  src='/assets/icons/couch.png'/><div className='room-type-checkbox-section'><label>Shared Room</label><input className='checkbox' id='sharedRoom' type='checkbox' name='Shared room' value={this.state.sharedRoom} onChange={this.handleRoomTypes}/></div></div>
              </div>
            </div>
            <div className ='rheostat-container'>
@@ -194,7 +194,7 @@ if(this.state.picture_urls.length != 0){
              })}
            </div>
          </div>
-         <div className = 'GMap-canvas' ref = "mapCanvas" >  </div>
+         <div className = 'GMap-canvas hidden-xs' ref = "mapCanvas" >  </div>
        </main>
      </div>
      )
