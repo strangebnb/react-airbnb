@@ -80,8 +80,8 @@ class Summary extends React.Component {
                 <MuiThemeProvider>
                   <div className="placetype-icon">
                     <div style={{fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2 cnt-sm-left-md"  >
-                    <Home style={{color:'#767676'}} />
-                    <div>{this.state.listing.room_type}</div>
+                      <Home style={{color:'#767676'}} />
+                      <div>{this.state.listing.room_type}</div>
                     </div>
                     <div style={{fontSize: '13px', color: '#767676'}} className="col-xs-3 col-sm-2 cnt-sm-left-md"  >
                     <People style={{color:'#767676'}} />
