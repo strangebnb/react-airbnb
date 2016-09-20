@@ -6,6 +6,7 @@ import moment from 'moment'
 import Rheostat from 'rheostat'
 import _ from 'lodash'
 import Slider from 'react-slick'
+import { Link } from 'react-router'
 
 import DateRangePickerGmapPage from '../date-range-picker/DateRangePickerGmapPage.jsx';
 
@@ -90,7 +91,8 @@ export default class SearchResults extends React.Component {
       propertyNames: [],
       star_rating: [],
       price_array: [],
-      room_type_array: []
+      room_type_array: [],
+      id_array: []
   }
 
   axios.get('/getData').then(response => {
@@ -151,13 +153,13 @@ if(this.state.picture_urls.length != 0){
    </Slider>
      <div className='price-inside-img'>${this.state.price_array[i]}</div>
      <div className='panel-card-section'>
-       <p className='img-title'>{this.state.propertyNames[i]}</p>
+       <Link to={ `/rooms/${this.state.id_array[i]}` }><p className='img-title'>{this.state.propertyNames[i]}</p></Link>
        <p className='room-type-card-section'>{this.state.room_type_array[i]} {this.state.star_rating[i]}</p>
      </div>
    </div>
-     arrOfSliders.push(slider);
-     }
-    }
+       arrOfSliders.push(slider);
+       }
+       }
 
      return(
      <div>
@@ -309,6 +311,8 @@ if(this.state.picture_urls.length != 0){
 
          const x = response.data;
 
+         console.log(x);
+
          let listingsArray = response.data.results_json.search_results;
          this.map = this.createMap()
          this.latlngbounds = new google.maps.LatLngBounds();
@@ -318,6 +322,7 @@ if(this.state.picture_urls.length != 0){
          let star_rating = [];
          let price_array = [];
          let room_type_array = [];
+         this.setState({id_array: x.property_ids})
 
          var infowindow = new google.maps.InfoWindow()
 
