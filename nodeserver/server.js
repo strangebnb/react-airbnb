@@ -188,10 +188,11 @@ app.post('/search', (req, res, next) => {
 app.post('/sendMessage', (req, res, next) => {
 
   // THIS NEEDS TO HAVE NEW DATA
+  console.log(req.body)
   var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
 
   var data = {
-    listing_id: "14978040",
+    listing_id: req.body.id,
     number_of_guests: "1",
     client_id: "d306zoyjsyarp7ifhu67rjxn52tv0t20",
     currency: 'USD',
@@ -225,6 +226,7 @@ request(options, function(err, res, body) {
 app.get('/listingInfo/:rid', (req,res,next) => {
   console.log(req.params)
   airbnb.getInfo(req.params.rid).then(function(info) {
+    console.log("info: ", info);
     res.json(info);
   });
 })

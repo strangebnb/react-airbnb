@@ -53,7 +53,7 @@ export default class blop extends React.Component {
 
   submitMessage = () => {
     console.log(this.state.message);
-    axios.post('/sendMessage', {message:this.state.message} ).then(response => { console.log(response)})
+    axios.post('/sendMessage', {message:this.state.message, id:this.props.rid} ).then(response => { console.log(response)})
     this.setState({open: false});
   }
 
@@ -64,6 +64,7 @@ export default class blop extends React.Component {
   }
 
   render() {
+
     const actions = [
       <FlatButton
         label="Cancel"

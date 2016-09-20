@@ -63,7 +63,7 @@ class About extends Component {
         house_rules: null,
       }
     }
-    axios.get('/listingInfo').then(hostInfo =>{
+    axios.get(`/listingInfo/${this.props.rid}`).then(hostInfo =>{
       this.setState({
         listing: {
           city: hostInfo.data.listing.city,
@@ -115,12 +115,12 @@ class About extends Component {
 
         return (
           <div>
-          <div style={{backgroundColor:"#f5f5f5", paddingBottom:"25px"}}>
-           <div className="row" style={{maxWidth:'651', marginLeft:'auto', marginRight:'auto', padding:"0 15px", letterSpacing:'1px'}} >
-            <div className="cnt-sm-left-md" style={{fontSize:"16px", fontWeight:"500", paddingTop: '35px', Color:'#484848'}}>About this listing</div>
-            <div style={{fontSize: '13px', color:'#4d4d4d', paddingTop: '15px'}}>{this.state.listing.summary}</div>
+            <div style={{backgroundColor:"#f5f5f5", paddingBottom:"25px"}}>
+              <div className="row" style={{maxWidth:651, marginLeft:'auto', marginRight:'auto', padding:"0 15px", letterSpacing:'1px'}} >
+                <div className="cnt-sm-left-md" style={{fontSize:"16px", fontWeight:"500", paddingTop: '35px', Color:'#484848'}}>About this listing</div>
+                <div style={{fontSize: '13px', color:'#4d4d4d', paddingTop: '15px'}}>{this.state.listing.summary}</div>
 
-            <MessageModal />
+                <MessageModal rid={this.props.rid} />
 
 
               <div style={{marginTop: '15px', marginBottom: "15px", border: "0", borderTop: '1px solid #dce0e0'}}></div>
