@@ -50,61 +50,61 @@ class Profile extends Component {
 
     render() {
         return (
-          <div className="profile-container">
-
+          <div>
             <ProfileDash />
-            <h2> {this.state.user !== null && this.state.user.id} </h2>
-            <div style={style} className="row bodyWidth profile-container">
-              <div className="col-sm-3 col-xs-12">
-                <img className="profilePic" src={this.state.user !== null && this.state.user.picture_large_url}/>
-                <div style={style.info}>
-                  <div style={{textAlign: 'center'}}>
-                    <div style={{fontSize: '32px', marginBottom:'15px'}}>{this.state.user !== null && this.state.user.first_name}</div>
-                    <div style={style.pink}>View Profile</div>
-                    <div style={style.pink}>Edit Profile</div>
-                  </div>
-                </div>
-                <br/>
-                <br/>
-                <div style={style.outline}>
-                  <div style={style.headerStyle}>{this.state.user !== null ? this.state.user.email : 'Verfications'}</div>
-                  <div style={style.info}><div style={style.pink}>Add Verifications</div></div>
-                </div>
-                <br/>
-                <br/>
-                <div style={style.outline}>
-                  <div style={style.headerStyle}> Quick Links</div>
+            <div className="profile-container">
+              <div style={style} className="row bodyWidth profile-container">
+                <div className="col-sm-3 col-xs-12">
+                  <img className="profilePic" src={this.state.user !== null && this.state.user.picture_large_url}/>
                   <div style={style.info}>
+                    <div style={{textAlign: 'center'}}>
+                      <div style={{fontSize: '32px', marginBottom:'15px'}}>{this.state.user !== null && this.state.user.first_name}</div>
+                      <div style={style.pink}>View Profile</div>
+                      <div style={style.pink}>Edit Profile</div>
+                    </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <div style={style.outline}>
+                    <div style={style.headerStyle}>{this.state.user !== null ? this.state.user.email : 'Verfications'}</div>
+                    <div style={style.info}><div style={style.pink}>Add Verifications</div></div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <div style={style.outline}>
+                    <div style={style.headerStyle}> Quick Links</div>
+                    <div style={style.info}>
                       <div style={style.pink}>Upcoming Trips</div>
                       <div style={style.pink}>Hosting on Airbnb</div>
                       <div style={style.pink}>Traceling on Airbnb</div>
                       <div style={style.pink}>Help Center</div>
-                </div>
-              </div>
-                <br/>
-              </div>
-              <div className="col-md-9 col-sm-9 col-xs-12">
-                <div style={style.outline}>
-                  <div style={style.headerStyle}> Notifications</div>
-                  <div style={style.info}>	Please confirm your email address by clicking on the link we just emailed you. If you cannot find the email, you can <span style={style.pink}>request a new confirmation email</span> or <span style={style.pink}>change your email address</span>.</div>
-                </div>
-                <br/>
-
-              <MuiThemeProvider>
-                <div style={{border: '1px solid #dce0e0'}}>
-                  <div style={style.info}>
-                      <FlatButton style={{backgroundColor:'#FF5A5F', float: 'right'}} label="Travel Credit"  labelStyle={{textTransform: "none", color:'#fff', margin: "0 20px"}}  />
-                    <div style={{fontSize:'18px', fontWeight:"bold"}}>Invite friends, earn travel credit!</div>
-                    <br/>
-                    Invite friends, earn travel credit!
+                    </div>
                   </div>
+                  <br/>
                 </div>
-              </MuiThemeProvider>
-                <br/>
+                <div className="col-md-9 col-sm-9 col-xs-12">
+                  <div style={style.outline}>
+                    <div style={style.headerStyle}> Notifications</div>
+                    <div style={style.info}>	Please confirm your email address by clicking on the link we just emailed you. If you cannot find the email, you can <span style={style.pink}>request a new confirmation email</span> or <span style={style.pink}>change your email address</span>.</div>
+                  </div>
+                  <br/>
+
+                  <MuiThemeProvider>
+                    <div style={{border: '1px solid #dce0e0'}}>
+                      <div style={style.info}>
+                        <FlatButton style={{backgroundColor:'#FF5A5F', float: 'right'}} label="Travel Credit"  labelStyle={{textTransform: "none", color:'#fff', margin: "0 20px"}}  />
+                        <div style={{fontSize:'18px', fontWeight:"bold"}}>Invite friends, earn travel credit!</div>
+                        <br/>
+                        Invite friends, earn travel credit!
+                      </div>
+                    </div>
+                  </MuiThemeProvider>
+                  <br/>
                   <div style={style.outline}>
                     <div style={style.headerStyle}>Messages</div>
                     <div style={style.info}>When you message hosts or send reservation requests, you’ll see their responses here.</div>
                   </div>
+                </div>
               </div>
             </div>
           </div>

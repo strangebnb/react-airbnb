@@ -6,6 +6,7 @@ import moment from 'moment'
 import Rheostat from 'rheostat'
 import _ from 'lodash'
 import Slider from 'react-slick'
+import { Link } from 'react-router'
 
 import DateRangePickerGmapPage from '../date-range-picker/DateRangePickerGmapPage.jsx';
 
@@ -90,7 +91,8 @@ export default class SearchResults extends React.Component {
       propertyNames: [],
       star_rating: [],
       price_array: [],
-      room_type_array: []
+      room_type_array: [],
+      id_array: []
   }
 
   axios.get('/getData').then(response => {
@@ -151,28 +153,28 @@ if(this.state.picture_urls.length != 0){
    </Slider>
      <div className='price-inside-img'>${this.state.price_array[i]}</div>
      <div className='panel-card-section'>
-       <p className='img-title'>{this.state.propertyNames[i]}</p>
+       <Link to={ `/rooms/${this.state.id_array[i]}` }><p className='img-title'>{this.state.propertyNames[i]}</p></Link>
        <p className='room-type-card-section'>{this.state.room_type_array[i]} {this.state.star_rating[i]}</p>
      </div>
    </div>
-     arrOfSliders.push(slider);
-     }
-    }
+       arrOfSliders.push(slider);
+       }
+       }
 
      return(
      <div>
        <main className = 'container-search'>
-         <div className = 'cards-container'>
+         <div className = 'cards-container col-xs-12'>
            <div className = 'date-panel'>
              <span className='dates-panel-label'>Dates</span>
              <div className = 'date-picker-container'><DateRangePickerGmapPage values={this.props.values} roomTypeSelected = {this.props.roomTypeSelected} location = {this.state.location} renderMap = {this.renderMap.bind(this)} className = 'date-picker'/></div>
            </div>
            <div className = 'room-panel'>
-             <span className='room-types-header'>Room Types</span>
+             <span className='room-types-header hidden-xs'>Room Types</span>
              <div className = 'checkboxes'>
-               <div className='room-type-container'><img className='room-type-icon' src='./assets/icons/house.png'/><div className='room-type-checkbox-section'><label>Entire Home</label><input className='checkbox' id='entireHome' type='checkbox' name='Entire home/apt' value={this.state.entireHome} onChange={this.handleRoomTypes}/></div></div>
-               <div className='room-type-container'><img className='room-type-icon'  src='./assets/icons/door.png'/><div className='room-type-checkbox-section'><label>Private Room</label><input className='checkbox' id='privateRoom' type='checkbox' name='Private room' value={this.state.privateRoom} onChange={this.handleRoomTypes}/></div></div>
-               <div className='room-type-container'><img className='room-type-icon'  src='./assets/icons/couch.png'/><div className='room-type-checkbox-section'><label>Shared Room</label><input className='checkbox' id='sharedRoom' type='checkbox' name='Shared room' value={this.state.sharedRoom} onChange={this.handleRoomTypes}/></div></div>
+               <div className='room-type-container'><img className='room-type-icon' src='/assets/icons/house.png'/><div className='room-type-checkbox-section'><label>Entire Home</label><input className='checkbox' id='entireHome' type='checkbox' name='Entire home/apt' value={this.state.entireHome} onChange={this.handleRoomTypes}/></div></div>
+               <div className='room-type-container'><img className='room-type-icon'  src='/assets/icons/door.png'/><div className='room-type-checkbox-section'><label>Private Room</label><input className='checkbox' id='privateRoom' type='checkbox' name='Private room' value={this.state.privateRoom} onChange={this.handleRoomTypes}/></div></div>
+               <div className='room-type-container'><img className='room-type-icon'  src='/assets/icons/couch.png'/><div className='room-type-checkbox-section'><label>Shared Room</label><input className='checkbox' id='sharedRoom' type='checkbox' name='Shared room' value={this.state.sharedRoom} onChange={this.handleRoomTypes}/></div></div>
              </div>
            </div>
            <div className ='rheostat-container'>
@@ -194,7 +196,7 @@ if(this.state.picture_urls.length != 0){
              })}
            </div>
          </div>
-         <div className = 'GMap-canvas' ref = "mapCanvas" >  </div>
+         <div className = 'GMap-canvas hidden-xs' ref = "mapCanvas" >  </div>
        </main>
      </div>
      )
@@ -309,6 +311,8 @@ if(this.state.picture_urls.length != 0){
 
          const x = response.data;
 
+         console.log(x);
+
          let listingsArray = response.data.results_json.search_results;
          this.map = this.createMap()
          this.latlngbounds = new google.maps.LatLngBounds();
@@ -318,6 +322,7 @@ if(this.state.picture_urls.length != 0){
          let star_rating = [];
          let price_array = [];
          let room_type_array = [];
+         this.setState({id_array: x.property_ids})
 
          var infowindow = new google.maps.InfoWindow()
 

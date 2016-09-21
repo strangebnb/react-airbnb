@@ -33,32 +33,13 @@ const modalHeader={
   padding: "9px 15px 8px"
 }
 
-var config = {"X-Airbnb-OAuth-Token": "ay8njrze1oalc9wgyfp26e67j"};
-var data = {
-  listing_id: "14978040",
-  number_of_guests: "1",
-  client_id: "d306zoyjsyarp7ifhu67rjxn52tv0t20",
-  currency: 'USD',
-  checkout_date: "2018-04-02T22:00:00.000-0700",
-  checkin_date: "2018-04-01T00:00:00.000-0700",
-  locale: "en-US",
-  message: "hello Paxton. this is coming from our code!!!"
-};
-
-
-
-
-
 export default class blop extends React.Component {
-
-
 
   constructor(props){
     super(props)
   this.state = {
     open: false,
-    email: null,
-    password: null,
+    message: null,
   };
 }
 
@@ -70,15 +51,20 @@ export default class blop extends React.Component {
     this.setState({open: false});
   };
 
-
-
-  submitMessage = (e) => {
-    if (e.keyCode === 13) {
-      axios.post('/sendMessage', data, config).then(response => { console.log(response)})
+  submitMessage = () => {
+    console.log(this.state.message);
+    axios.post('/sendMessage', {message:this.state.message, id:this.props.rid} ).then(response => { console.log(response)})
+    this.setState({open: false});
   }
-}
+
+  onMessage = (e) => {
+    this.setState({message: e.target.value}, () => {
+      return console.log(this.state.message);
+    })
+  }
 
   render() {
+
     const actions = [
       <FlatButton
         label="Cancel"
@@ -90,8 +76,7 @@ export default class blop extends React.Component {
         label="Send"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.handleClose}
-        onClick={this.submitMessage}
+        onTouchTap={this.submitMessage}
         labelStyle={pink}
       />,
     ];
@@ -101,7 +86,6 @@ export default class blop extends React.Component {
       <TextField onChange={this.onMessage}
         style={style}
         underlineShow={false}
-        onKeyDown={this.submitMessage}
         underlineFocusStyle={pink}
         floatingLabelText="Send a message"
         floatingLabelStyle={pink}
@@ -113,7 +97,7 @@ export default class blop extends React.Component {
     return (
       <MuiThemeProvider style={{'float': 'right'}}>
         <div>
-        <div onTouchTap={this.handleOpen} style={{color: "#D43242", fontSize: '13px', fontWeight:'500', paddingTop:'10px'}}>Contact Host</div>
+          <div onTouchTap={this.handleOpen} style={{color: "#D43242", fontSize: '13px', fontWeight:'500', paddingTop:'10px'}}>Contact Host</div>
           <Dialog
             title="Contact Host"
             titleStyle={modalHeader}

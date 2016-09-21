@@ -12,108 +12,17 @@ require('./rooms.component.scss');
 class Rooms extends Component {
   constructor(props) {
     super(props)
-
-    this.state={
-      listing: {
-        city: null,
-        state: null,
-        country: null,
-        id: null,
-        name: null,
-        picture_url: null,
-        price: null,
-        thumbnail_url: null,
-        user: {
-          id: null,
-        },
-        hosts: [{
-          picture_url: null,
-        }],
-        user_id: null,
-        xl_picture_url: null,
-        address: null,
-        bathrooms: null,
-        bedrooms: null,
-        beds: null,
-        cancellation_policy: null,
-        country_code: null,
-        has_availability: null,
-        person_capacity: null,
-        picture_count: null,
-        picture_urls: [],
-        property_type: null,
-        reviews_count: null,
-        room_type:null,
-        access: null,
-        amenities: [],
-        cancel_policy: null,
-        check_in_time: null,
-        check_in_time_end: null,
-        check_in_time_ends_at: null,
-        check_in_time_start: null,
-        check_out_time: null,
-        cleaning_fee_native: null,
-        currency_symbol_right: null,
-        summary: null,
-        house_rules: null,
-      }
-    }
-    axios.get('/listingInfo').then(hostInfo =>{
-      this.setState({
-        listing: {
-          city: hostInfo.data.listing.city,
-          state: hostInfo.data.listing.state,
-          country: hostInfo.data.listing.country,
-          id: hostInfo.data.listing.city,
-          name: hostInfo.data.listing.name,
-          picture_url: hostInfo.data.listing.picture_url,
-          price: hostInfo.data.listing.price,
-          thumbnail_url: hostInfo.data.listing.thumbnail_url,
-          user: {
-            id: hostInfo.data.listing.id,
-          },
-          hosts: hostInfo.data.listing.hosts,
-          user_id: hostInfo.data.listing.user_id,
-          xl_picture_url: hostInfo.data.listing.xl_picture_url,
-          address: hostInfo.data.listing.address,
-          bathrooms: hostInfo.data.listing.bathrooms,
-          bedrooms: hostInfo.data.listing.bedrooms,
-          beds: hostInfo.data.listing.beds,
-          cancellation_policy: hostInfo.data.listing.cancellation_policy,
-          country_code: hostInfo.data.listing.country_code,
-          has_availability: hostInfo.data.listing.has_availability,
-          person_capacity: hostInfo.data.listing.person_capacity,
-          picture_count: hostInfo.data.listing.picture_count,
-          picture_urls: hostInfo.data.listing.picture_urls,
-          property_type: hostInfo.data.listing.property_type,
-          reviews_count: hostInfo.data.listing.reviews_count,
-          room_type:hostInfo.data.listing.room_type,
-          access: hostInfo.data.listing.access,
-          amenities: hostInfo.data.listing.amenities,
-          cancel_policy: hostInfo.data.listing.cancel_policy,
-          check_in_time: hostInfo.data.listing.check_in_time,
-          check_in_time_end: hostInfo.data.listing.check_in_time_end,
-          check_in_time_ends_at: hostInfo.data.listing.check_in_time_ends_at,
-          check_in_time_start: hostInfo.data.listing.check_in_time_start,
-          check_out_time: hostInfo.data.listing.check_out_time,
-          cleaning_fee_native: hostInfo.data.listing.cleaning_fee_native,
-          currency_symbol_right: hostInfo.data.listing.currency_symbol_right,
-          summary: hostInfo.data.listing.summary,
-          house_rules: hostInfo.data.listing.house_rules,
-        }
-      })
-    });
   }
 
 
   render() {
 
-    console.log("render", this.state.listing);
+    console.log("props", this.props.params.rid);
         return (
           <div>
-            <Header/>
-            <Summary/>
-            <About/>
+            <Header rid={this.props && this.props.params.rid}/>
+            <Summary rid={this.props && this.props.params.rid}/>
+            <About rid={this.props && this.props.params.rid}/>
           </div>
         );
     }
