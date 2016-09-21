@@ -11,7 +11,7 @@
   background-color:#000;
   opacity:0.1;
 }
-.explore-world-main {
+.main-home-container {
   width: 100%;
   margin-bottom: 70px;
 }
@@ -56,7 +56,7 @@
 
 }
 @media (min-width: 768px) {
-  .explore-world-main {
+  .main-home-container {
     width: 680px;
     margin-left: auto;
     margin-right: auto;
@@ -81,7 +81,7 @@
   }
 }
 @media (min-width: 1128px) {
-  .explore-world-main {
+  .main-home-container {
     width: 1050px;
   }
 }
