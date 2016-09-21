@@ -116,7 +116,7 @@ const styles ={
 export default React.createClass({
 render(){
   return(
-    <div className="explore-world-main">
+    <div className="main-home-container">
               <div style={styles.title}>Explore the world</div>
               <div style={styles.subtitle}>See where people are traveling, all around the world.</div>
 
