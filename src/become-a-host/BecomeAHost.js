@@ -27,8 +27,8 @@ const BecomeAHost = React.createClass ({
               <VerticalLinearStepper />
             </div>
               <div className="col-sm-5 hidden-xs" >
-              <div style={{display: 'table'}}>
-                <div>
+              <div style={{display: 'table', minHeight: 'calc(100vh - 67px)'}}>
+                <div style={{display: 'table-cell', verticalAlign: 'middle'}}>
                   <img style={{width: 500}} src="https://a0.muscache.com/airbnb/belong-anywhere/berlin_economic_impact/header-world-map-1f8479ac2d2a9e4efb0eaad682b91b76.jpg"/>
                 </div>
               </div>
