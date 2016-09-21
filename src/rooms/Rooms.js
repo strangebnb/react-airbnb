@@ -23,6 +23,7 @@ class Rooms extends Component {
             <Header rid={this.props && this.props.params.rid}/>
             <Summary rid={this.props && this.props.params.rid}/>
             <About rid={this.props && this.props.params.rid}/>
+            <Footer rid={this.props && this.props.params.rid}/>
           </div>
         );
     }
