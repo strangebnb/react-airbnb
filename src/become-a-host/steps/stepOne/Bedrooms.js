@@ -66,14 +66,15 @@ export default React.createClass({
 getInitialState() {
   return {
           value: 1,
-          enabler: true
+          enabler: true,
+          bed: 1
   }
 },
-handleChange(e){
-  console.log(e.target.value);
-  this.setState({
-          value: e.target.value,
-  })
+handleChange(event, index, value){
+  this.setState({value})
+},
+handleChangeTwo(event, index, bed){
+  this.setState({bed})
 },
 handleClick(){
   this.setState({enabler: false})
@@ -148,7 +149,7 @@ render(){
                       </div>
                       <div className="drop-down-menu">
                       <MuiThemeProvider>
-                        <DropDownMenu value={this.state.value} onChange={this.handleChange} style={styles.customWidth}
+                        <DropDownMenu value={this.state.bed} onChange={this.handleChangeTwo} style={styles.customWidth}
                             autoWidth={false} underlineStyle={styles.dropDown}>
                            <MenuItem value={1} primaryText="Real Bed" />
                            <MenuItem value={2} primaryText="Pull-out Sofa" />
@@ -165,23 +166,21 @@ render(){
                           <GuestIncrementer />
                         </div>
                     </div>
-                    <div className="step-nav col-sm-6 col-xs-12">
+                    <div className="step-nav">
                       <MuiThemeProvider>
                         <div className="back-next">
-                          <div className="col-lg-2 col-lg-offset-5 col-sm-3 col-sm-offset-3 col-xs-5 back-btn">
+                          <div className="col-xs-5 back-btn">
                             <FlatButton
                             label="← Back"
                             labelStyle={{textTransform: "none", color: "#E6E6E6"}}
                             />
                           </div>
-                          <div className="col-sm-5 col-xs-7 next-btn">
+                          <div className="col-xs-7 next-btn">
                             <RaisedButton
                             label="Next"
                             labelStyle={{textTransform: "none", color: "white", position: "absolute", bottom: 12, right: 61}}
                             backgroundColor="#EF5350"
-                            disabledBackgroundColor="#FFCDD2"
                             style={{width: "180px", height: '45px', positive: "relative"}}
-                            disabled={this.state.enabler}
                             />
                           </div>
                         </div>

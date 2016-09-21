@@ -116,12 +116,12 @@ const styles ={
 export default React.createClass({
 render(){
   return(
-    <div className="main-home-container">
+    <div className="explore-world-main">
               <div style={styles.title}>Explore the world</div>
               <div style={styles.subtitle}>See where people are traveling, all around the world.</div>
 
         <div className="row">
-              <div className="col-lg-8 col-md-12 col-sm-12" id="explore-card-margin">
+              <div className="col-lg-8 col-sm-12 col-xs-12" id="explore-card-margin">
                 <div style={styles.paris}>
                   <a href="http://www.patagonia.com/">
                     <div style={styles.table}>
@@ -132,7 +132,7 @@ render(){
                   </a>
                 </div>
               </div>
-            <div className="col-lg-4 col-md-6 col-sm-12" id="explore-card-margin">
+            <div className="col-lg-4 col-sm-6 col-xs-12" id="explore-card-margin">
               <div style={styles.anna}>
                 <a href="http://www.patagonia.com/">
                   <div style={styles.table}>
@@ -148,7 +148,7 @@ render(){
                 </a>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-sm-6" id="explore-card-margin">
+            <div className="col-lg-4 col-sm-6 col-xs-12" id="explore-card-margin">
               <div style={styles.newYork}>
                 <a href="http://www.patagonia.com/">
                 <div style={styles.table}>
@@ -159,7 +159,7 @@ render(){
                 </a>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 hidden-sm" id="explore-card-margin">
+            <div className="col-lg-4 col-sm-6 hidden-xs" id="explore-card-margin">
               <div style={styles.rome}>
                 <a href="http://www.patagonia.com/">
                 <div style={styles.table}>
@@ -170,7 +170,7 @@ render(){
                 </a>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 hidden-sm" id="explore-card-margin">
+            <div className="col-lg-4 col-sm-6 hidden-xs" id="explore-card-margin">
               <div style={styles.seattle}>
                 <a href="http://www.patagonia.com/">
                 <div style={styles.table}>
@@ -181,7 +181,7 @@ render(){
                 </a>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-sm-12" id="explore-card-margin">
+            <div className="col-lg-4 col-sm-6 col-xs-12" id="explore-card-margin">
               <div style={styles.torsten}>
                 <a href="http://www.patagonia.com/">
                 <div style={styles.table}>
@@ -197,7 +197,7 @@ render(){
                 </a>
               </div>
             </div>
-            <div className="col-lg-8 col-md-12 hidden-sm" id="explore-card-margin">
+            <div className="col-lg-8 col-sm-6 hidden-xs" id="explore-card-margin">
               <div style={styles.london}>
                 <a href="http://www.patagonia.com/">
                 <div style={styles.table}>
@@ -208,7 +208,7 @@ render(){
                 </a>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 hidden-sm" id="explore-card-margin">
+            <div className="col-lg-4 col-sm-12 hidden-xs" id="explore-card-margin">
               <div style={styles.venice}>
                 <a href="http://www.patagonia.com/">
                 <div style={styles.table}>
@@ -219,7 +219,7 @@ render(){
                 </a>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 hidden-sm" id="explore-card-margin">
+            <div className="col-lg-4 col-sm-6 hidden-xs" id="explore-card-margin">
               <div style={styles.portland}>
                 <a href="http://www.patagonia.com/">
                 <div style={styles.table}>
@@ -230,7 +230,7 @@ render(){
                 </a>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 hidden-sm" id="explore-card-margin">
+            <div className="col-lg-4 col-sm-6 hidden-xs" id="explore-card-margin">
               <div style={styles.slc}>
                 <a href="http://www.patagonia.com/">
                 <div style={styles.table}>

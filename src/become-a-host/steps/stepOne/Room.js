@@ -19,7 +19,6 @@ require ("../steps.scss")
 
 
 
-
 const styles = {
   block: {
     maxWidth: 250,
@@ -65,11 +64,8 @@ getInitialState() {
           enabler: true
   }
 },
-handleChange(e){
-  console.log(e.target.value);
-  this.setState({
-          value: e.target.value,
-  })
+handleChange(event, index, value){
+  this.setState({value})
 },
 handleClick(){
   this.setState({enabler: false})

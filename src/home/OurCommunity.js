@@ -123,7 +123,7 @@ const styles ={
 export default React.createClass({
 render(){
   return(
-    <div>
+    <div className="our-community">
       <div style={styles.title} id="our-community" className="row">
         <div className="col-xs-0
                         col-sm-12
