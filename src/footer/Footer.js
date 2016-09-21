@@ -5,8 +5,6 @@ import MenuItem from 'material-ui/MenuItem';
 require ("./footer.scss")
 
 const styles ={
-  float: "bottom",
-  height: "59vh",
   width: "100vw",
   backgroundColor: "#2B2D2E",
   fontFamily: "Roboto",
@@ -43,8 +41,6 @@ const styles ={
   },
   social: {
     height: "20%",
-    width: "75%",
-    borderTop: "1px solid rgba(255, 255, 255, .2)",
     textAlign: "center",
     marginLeft: "auto",
     marginRight: "auto",
@@ -52,7 +48,6 @@ const styles ={
   icons: {
     display: "flex",
     flexDirection: "row",
-    width: "390px",
     marginLeft: "auto",
     marginRight: "auto",
     justifyContent: "space-between",
@@ -74,7 +69,7 @@ const styles ={
 export default React.createClass({
   render(){
     return(
-      <div style={styles} className= "row">
+      <div style={styles} className= "row footer-main">
         <div style={styles.logoOverlay} className= "col-xs-12">
           <div style={styles.siteNav} className="row">
             <MuiThemeProvider>
@@ -101,8 +96,8 @@ export default React.createClass({
               </div>
               </div>
             </MuiThemeProvider>
-              <div className="col-xs-0
-                              col-sm-1
+              <div className="hidden-xs
+                              col-sm-0
                               col-lg-1">
 
               </div>

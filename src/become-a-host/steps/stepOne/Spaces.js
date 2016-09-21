@@ -71,7 +71,6 @@ render(){
                     <div className="form-title-large">What amenitites do you offer?</div>
                       <MuiThemeProvider>
                       <div style={{height: 400, overflow: "scroll"}}>
-                      <input type='checkbox' value="wah"/>
                           <Checkbox
                              label="Kitchen"
                              labelStyle={{color: '#4B4B4B'}}

@@ -20,7 +20,7 @@ class Home extends Component {
           <JustForWknd />
         <ExploreWorld />
       <BelongAnywhere />
-    <OurCommunity />
+    <OurCommunity/>
     <Footer />
           </div>
         );

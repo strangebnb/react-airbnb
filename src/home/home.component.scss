@@ -11,8 +11,12 @@
   background-color:#000;
   opacity:0.1;
 }
-.main-home-container {
+.explore-world-main {
   width: 100%;
+  margin-bottom: 70px;
+}
+#social-media {
+  border: none;
 }
 #explore-card-margin {
   margin-bottom: -30px !important;
@@ -30,6 +34,12 @@
     width: 100%;
     z-index: -1001;
 }
+.belong-anywhere {
+  display: none;
+}
+.our-community {
+  display: none;
+}
 
 @media (max-width: 767px) {
   //TODO: make image shrink
@@ -46,7 +56,7 @@
 
 }
 @media (min-width: 768px) {
-  .main-home-container {
+  .explore-world-main {
     width: 680px;
     margin-left: auto;
     margin-right: auto;
@@ -63,9 +73,15 @@
   .homeCaro{
     width: 686px;
   }
+  .belong-anywhere {
+    display: block;
+  }
+  .our-community {
+    display: block;
+  }
 }
 @media (min-width: 1128px) {
-  .main-home-container {
+  .explore-world-main {
     width: 1050px;
   }
 }

@@ -2,24 +2,45 @@ li:hover {
   color: rgba(255, 255, 255, .6);
   cursor: pointer;
 }
+.footer-main {
+  height: 340px;
+}
 #site-nav {
-  visibility: visible;
+  display: none;
+}
+#drop-downs {
+  width: 80%;
 }
 #join {
-  visibility: visible;
+  display: none;
+}
+#icon-container {
+  width: 290px;
+  margin-right: auto;
+  margin-left: auto;
+}
+#social-media {
+  border-top: none !important;
+  width: 100% !important;
 }
 
-@media (max-width: 767px) {
-    #site-nav {
-      visibility: hidden;
-    }
-    #drop-downs {
-      width: 80%;
-    }
-    #join {
-      visibility: hidden;
-    }
-    #social-media{
-      border: none;
-    }
+@media (min-width: 767px) {
+  .footer-main {
+    height: 59vh;
+  }
+  #site-nav {
+    display: block;
+  }
+  #join {
+    display: block;
+  }
+  #social-media {
+    border-top: 1px solid rgba(255, 255, 255, .2) !important;
+    width: 75% !important;
+  }
+  #icon-container {
+    width: 390px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

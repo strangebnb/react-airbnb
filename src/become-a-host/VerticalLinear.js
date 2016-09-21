@@ -10,14 +10,6 @@ import FlatButton from 'material-ui/FlatButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Link} from 'react-router';
 
-/**
- * Vertical steppers are designed for narrow screen sizes. They are ideal for mobile.
- *
- * To use the vertical stepper with the contained content as seen in spec examples,
- * you must use the `<StepContent>` component inside the `<Step>`.
- *
- * <small>(The vertical stepper can also be used without `<StepContent>` to display a basic stepper.)</small>
- */
 const styles = {
   stepLabel: {
     display: 'flex',
@@ -47,7 +39,19 @@ const styles = {
     paddingBottom: 20,
     marginBottom: 20,
     borderBottom: "1px solid rgba(187, 187, 187, 0.27)",
-  }
+  },
+  stepTitleDisabled: {
+    fontSize: 24,
+    fontFamily: "Roboto",
+    color: "#909090",
+    alignSelf: 'flex-start',
+  },
+  stepSubtitleDisabled: {
+    fontSize: 16,
+    fontFamily: "Roboto",
+    color: "#BBBBBB",
+    alignSelf: 'flex-start',
+  },
 
 }
 
@@ -129,38 +133,23 @@ class VerticalLinearStepper extends React.Component {
             <Step>
               <StepLabel style={styles.stepLabel} icon={<div></div>}>
                 <div style={styles.stepNumber}>STEP 2</div>
-                <div style={styles.stepTitle}>Set the scene</div>
-                <div style={styles.stepSubtitle}>Photos, short description, title</div>
+                <div style={styles.stepTitleDisabled}>Set the scene</div>
+                <div style={styles.stepSubtitleDisabled}>Photos, short description, title</div>
               </StepLabel>
               <div style={styles.buttonContainer}>
-                {this.renderStepActions(1)}
               </div>
             </Step>
             <Step>
               <StepLabel style={styles.stepLabel} icon={<div></div>}>
                 <div style={styles.stepNumber}>STEP 3</div>
-                <div style={styles.stepTitle}>Get ready for guests</div>
-                <div style={styles.stepSubtitle}>price, calendar, booking settings</div>
+                <div style={styles.stepTitleDisabled}>Get ready for guests</div>
+                <div style={styles.stepSubtitleDisabled}>price, calendar, booking settings</div>
               </StepLabel>
               <div style={styles.buttonContainer}>
-                {this.renderStepActions(1)}
               </div>
             </Step>
           </Stepper>
         </MuiThemeProvider>
-        {finished && (
-          <p style={{margin: '20px 0', textAlign: 'center'}}>
-            <a
-              href="#"
-              onClick={(event) => {
-                event.preventDefault();
-                this.setState({stepIndex: 0, finished: false});
-              }}
-            >
-              Click here
-            </a> to reset the example.
-          </p>
-        )}
       </div>
     );
   }

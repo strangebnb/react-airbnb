@@ -12,7 +12,14 @@ export default React.createClass({
     	<div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
       	<div style={{display: "flex", flexDirection: "row"}}>
       	<Counter ref="counter" />
-        <div className="increment-label">beds</div>
+          <div className="increment-label">
+              {console.log("Can I log in here")}
+              {/* {(this.state.number === 1)
+              ? <div>{this.state.listing.beds} bed</div>
+              : <div>{this.state.listing.beds} beds</div>
+              } */}
+              bed
+          </div>
         </div>
       	<Logic decrement={this.decrement} increment={this.increment} />
 
