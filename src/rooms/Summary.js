@@ -64,7 +64,7 @@ class Summary extends React.Component {
   render() {
         return (
           <div>
-            <div style={{backgroundColor:"#fff", paddingTop:"25px", paddingTop:"25px", paddingBottom:"25px", borderBottom:'solid 1px #DCE0E0'}} className="row about-body">
+            <div style={{backgroundColor:"#fff", paddingTop:"25px", paddingBottom:"25px", borderBottom:'solid 1px #DCE0E0'}} className="row about-body">
               <div className="col-xs-12 col-sm-4" style={{paddingBottom:"25px"}}>
                 <img className="center-block" style={{borderRadius: '100%', height: '85px', width: '85px'}}src={this.state.listing !== undefined && this.state.listing.hosts[0].picture_url} />
                 <div style={{textAlign: "center", fontSize: '13px', color: '#767676', paddingTop: '5px'}} className="hidden-xs">{this.state.listing.hosts[0].first_name}</div>
