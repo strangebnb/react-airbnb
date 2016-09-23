@@ -3,7 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Home from 'material-ui/svg-icons/action/home';
 import People from 'material-ui/svg-icons/social/people-outline';
 import Contacts from 'material-ui/svg-icons/communication/contacts';
-import Bed from 'material-ui/svg-icons/Notification/airline-seat-individual-suite';
+import Bed from 'material-ui/svg-icons/notification/airline-seat-individual-suite';
 
 require('./rooms.component.scss');
 
