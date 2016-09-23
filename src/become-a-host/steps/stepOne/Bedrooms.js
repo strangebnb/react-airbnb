@@ -7,7 +7,7 @@ import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import BedIncrementer from '../bedIncrementer'
+import BedIncrementer from '../BedIncrementer'
 import GuestIncrementer from '../GuestIncrementer'
 
 import Lightbulb from 'material-ui/svg-icons/action/lightbulb-outline';
