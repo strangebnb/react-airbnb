@@ -107,7 +107,7 @@ handleClose = () => {
                 <Slider {...settings}>
                   {this.state.listing.picture_urls.map((currentVal, i)=>{
                     return (
-                      <div key={i}><img src={currentVal}></img></div>
+                      <div className="room-slider" key={i}><img className="img-slide" src={currentVal}></img></div>
                     )
                   })}
                 </Slider>

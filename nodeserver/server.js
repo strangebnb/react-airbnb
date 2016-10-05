@@ -5,7 +5,6 @@ import session from 'express-session';
 import passport from 'passport';
 import massive from 'massive';
 import path from 'path';
-import AWS from 'aws-sdk';
 import request from 'request';
 import moment from 'moment'
 
@@ -14,7 +13,6 @@ var airbnb = require('airapi');
 
 // Configs
 import serverConfig from './config.json';
-import awsConfig from './AWS/config.json';
 
 const connectionString = serverConfig.postgresPath; //database path
 const app = module.exports = express();
@@ -30,14 +28,6 @@ app.use(session({
     saveUninitialized: false,
     resave: true
 }));
-
-AWS.config.update({
-    accessKeyId: awsConfig.aws_key, //aws config begins
-    secretAccessKey: awsConfig.aws_secret,
-    region: awsConfig.region
-})
-
-const s3 = new AWS.S3();
 
 app.use(passport.initialize());
 app.use(passport.session());
