@@ -18,7 +18,7 @@ export default React.createClass({
     return(
       <div style={styles.main}>
           <div style={{marginTop: 100}}>
-            <Link to='/host/bathrooms'>
+            <Link to='/host/amenities'>
               <div style={{backgroundColor: '#1F8579', opacity: ".8", textAlign: "center"}}>Under Construction 😲</div>
             </Link>
           </div>
