@@ -120,18 +120,22 @@ render(){
                       <MuiThemeProvider>
                         <div className="back-next">
                           <div className="col-xs-5 back-btn">
+                          <Link to='/host/amenities'>
                             <FlatButton
                             label="← Back"
                             labelStyle={{textTransform: "none", color: "#E6E6E6"}}
                             />
+                          </Link>
                           </div>
                           <div className="col-xs-7 next-btn">
+                          <Link to='/host'>
                             <RaisedButton
                             label="Next"
                             labelStyle={{textTransform: "none", color: "white", position: "absolute", bottom: 12, right: 61}}
                             backgroundColor="#EF5350"
                             style={{width: "180px", height: '45px', positive: "relative"}}
                             />
+                          </Link>
                           </div>
                         </div>
                       </MuiThemeProvider>
