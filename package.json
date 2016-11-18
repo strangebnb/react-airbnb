@@ -69,7 +69,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --content-base public --inline --hot",
-    "bundle": "webpack --config=webpack.config.js --display-error-details"
+    "webpack": "webpack --config=webpack.config.js --display-error-details"
   },
   "author": "",
   "license": "ISC",

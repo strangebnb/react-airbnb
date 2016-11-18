@@ -6,7 +6,7 @@ Run `npm i` to load all dependencies.
 
 ## Build
 
-Run `webpack` or `npm run bundle` to build the project. The build artifacts will be stored in the `public/bundle` directory.
+Run `npm run webpack` or `webpack` to build the project. The build artifacts will be stored in the `public/bundle` directory.
 
 ## Project Description
 
