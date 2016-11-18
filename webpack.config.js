@@ -22,12 +22,7 @@ module.exports = {
         path: path.join(__dirname, "public/bundle/"),
         filename: "[name].js"
     },
-        resolveLoader: {
-                root: path.join(__dirname, "./node_modules")
-        },
         resolve: {
-                root: __dirname,
-                fallback: path.join(__dirname, "./node_modules"),
 		alias: alias 
         },
 
