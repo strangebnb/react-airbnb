@@ -2,6 +2,14 @@ var webpack = require('webpack');
 var path = require('path');
 var CommonsChunkPlugin = require("./node_modules/webpack/lib/optimize/CommonsChunkPlugin");
 
+var reactDomLibPath = path.join(__dirname, "./node_modules/react-dom/lib");
+var alias = {};
+["EventPluginHub", "EventConstants", "EventPluginUtils", "EventPropagators", 
+"SyntheticUIEvent", "CSSPropertyOperations", "ViewportMetrics"].forEach(function(filename){
+	alias["react/lib/"+filename] = path.join(__dirname, "./node_modules/react-dom/lib", filename)
+});
+
+
 module.exports = {
     entry: {
         main: "./src/App.js",
@@ -14,6 +22,10 @@ module.exports = {
         path: path.join(__dirname, "public/bundle/"),
         filename: "[name].js"
     },
+        resolve: {
+		alias: alias 
+        },
+
      plugins: [
         new CommonsChunkPlugin({
             filename: "commons.js",
