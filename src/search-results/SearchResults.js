@@ -311,7 +311,7 @@ if(this.state.picture_urls.length != 0){
 
          const x = response.data;
 
-         console.log(x);
+         console.log('XXX',x);
 
          let listingsArray = response.data.results_json.search_results;
          this.map = this.createMap()
@@ -322,7 +322,7 @@ if(this.state.picture_urls.length != 0){
          let star_rating = [];
          let price_array = [];
          let room_type_array = [];
-         this.setState({id_array: x.property_ids})
+         let id_array = [];
 
          var infowindow = new google.maps.InfoWindow()
 
@@ -340,13 +340,15 @@ if(this.state.picture_urls.length != 0){
            propertyNames.push(listingsArray[i].listing.name);
            star_rating.push(listingsArray[i].listing.star_rating);
            price_array.push(listingsArray[i].pricing_quote.rate.amount);
-           room_type_array.push(listingsArray[i].listing.room_type)
+           room_type_array.push(listingsArray[i].listing.room_type);
+           id_array.push(listingsArray[i].listing.id);
 
            this.setState({picture_urls: pics_array,
              propertyNames: propertyNames,
              star_rating: star_rating,
              price_array: price_array,
-             room_type_array: room_type_array
+             room_type_array: room_type_array,
+             id_array: id_array
            })
            }
 
