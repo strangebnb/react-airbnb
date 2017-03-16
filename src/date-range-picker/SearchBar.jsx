@@ -9,8 +9,8 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       focusedInput: null,
-      startDate: moment('2016-09-10'),
-      endDate: moment('2016-09-30'),
+      // startDate: moment('2016-09-10'),
+      // endDate: moment('2016-09-30'),
       searchVal: 'Manila',
       numGuests: null,
     };

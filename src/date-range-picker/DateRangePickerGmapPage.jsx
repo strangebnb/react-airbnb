@@ -9,8 +9,8 @@ class DateRangePickerGmapPage extends React.Component {
     super(props);
     this.state = {
       focusedInput: null,
-      startDate: moment('2016-10-10'),
-      endDate: moment('2016-10-30'),
+      // startDate: moment('2016-10-10'),
+      // endDate: moment('2016-10-30'),
       searchVal: 'Manila',
       numGuests: 1,
     };
