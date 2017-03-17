@@ -1,9 +1,9 @@
 # Airbnb Clone - A React project at DevMountain
 Demo: http://cyrano.website:4000/
 
-##Install
+## Install
 
-Run `npm i` to load all dependencies.
+Run `npm i` to install all the dependencies.
 
 ## Build
 
